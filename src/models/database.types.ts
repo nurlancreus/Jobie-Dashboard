@@ -9,6 +9,47 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      applications: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: number
+          phone: string | null
+          position: string
+          position_type: string
+          status: string
+          vacancy_key: number | null
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id?: number
+          phone?: string | null
+          position?: string
+          position_type?: string
+          status?: string
+          vacancy_key?: number | null
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: number
+          phone?: string | null
+          position?: string
+          position_type?: string
+          status?: string
+          vacancy_key?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "applications_vacancy_key_fkey"
+            columns: ["vacancy_key"]
+            isOneToOne: false
+            referencedRelation: "vacancies"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       companies: {
         Row: {
           about: string | null
@@ -97,7 +138,24 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      search_vacancies: {
+        Args: {
+          keyword: string
+        }
+        Returns: {
+          about: string | null
+          company_key: number | null
+          created_at: string
+          details: string | null
+          id: number
+          location: string | null
+          max_salary: number | null
+          min_salary: number | null
+          name: string
+          position: string | null
+          position_type: string | null
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never

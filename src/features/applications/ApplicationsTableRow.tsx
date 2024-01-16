@@ -46,7 +46,7 @@ export default function ApplicationsTableRow({
       <td data-type="id" className="font-medium uppercase">
         #{app.id}
       </td>
-      <td data-type="date">{timeAgo(app.date.getTime())}</td>
+      <td data-type="date">{timeAgo(app.created_at)}</td>
       <td data-type="company">
         <div className="flex items-center gap-4">
           <Logo src={company.logo} w={50} h={50} />
@@ -54,22 +54,22 @@ export default function ApplicationsTableRow({
         </div>
       </td>
       <td data-type="type" className="uppercase">
-        {app.type}
+        {app.position_type}
       </td>
-      <td data-type="position">{app.position}</td>
+      <td data-type="position capitalize">{app.position}</td>
       <td data-type="contact">
         <div className="flex items-center gap-4">
-          {app.contact.phone && (
+          {app.phone && (
             <div className="grid place-content-center w-12 h-12 rounded-full border border-solid border-primary-300">
-              <a href={`tel:${app.contact.phone}`}>
+              <a href={`tel:${app.phone}`}>
                 <PhoneIcon />
               </a>
             </div>
           )}
 
-          {app.contact.email && (
+          {app.email && (
             <div className="grid place-content-center w-12 h-12 rounded-full border border-solid border-primary-300">
-              <a href={`mailto:${app.contact.email}`}>
+              <a href={`mailto:${app.email}`}>
                 <EnvelopIcon />
               </a>
             </div>

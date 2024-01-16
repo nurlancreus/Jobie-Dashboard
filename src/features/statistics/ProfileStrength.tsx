@@ -85,8 +85,6 @@ const profileStrengthWithPercentages: ProfileStrengthData[] =
     "app-sent": (day["app-sent"] / totalAppSent) * 100,
   }));
 
-  console.log(profileStrengthWithPercentages)
-
 interface CustomPayload extends Payload {
   dataKey: string;
 }

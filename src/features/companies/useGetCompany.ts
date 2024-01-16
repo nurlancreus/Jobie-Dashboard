@@ -1,8 +1,7 @@
 import { getCompany } from "@/services/apiCompanies";
 import { useQuery } from "@tanstack/react-query";
 
-export function useCompany(id: number) {
-
+export function useGetCompany(id: number) {
   const {
     data: company,
     isLoading,
@@ -12,6 +11,6 @@ export function useCompany(id: number) {
     queryFn: () => getCompany(Number(id)),
     retry: false,
   });
-  
+
   return { company, isLoading, error };
 }

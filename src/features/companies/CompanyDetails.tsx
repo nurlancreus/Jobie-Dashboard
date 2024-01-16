@@ -1,6 +1,6 @@
 import { CloseIcon, LocationIcon, StarIcon, UserIcon } from "@/assets/icons";
-import { companiesData } from "@/data/jobsData";
 import Logo from "@/shared/Logo";
+import { useGetCompany } from "./useGetCompany";
 
 type CompanyDetailsProps = {
   selectedId: number;
@@ -11,9 +11,10 @@ export default function CompanyDetails({
   selectedId,
   setSelectedId,
 }: CompanyDetailsProps) {
-  const company = companiesData.find((company) => company.id === selectedId);
+  const { company, isLoading } = useGetCompany(selectedId);
 
-  if (!company) return <h2>Loading...</h2>;
+  if (isLoading || !company) return <h2>Loading...</h2>;
+
   return (
     <aside className="bg-white rounded-[20px] p-[60px_24px_30px] relative">
       <div>
@@ -46,7 +47,7 @@ export default function CompanyDetails({
               <UserIcon />
             </div>
             <div>
-              <p className="text-xl font-semibold">{company.employeeCount}</p>
+              <p className="text-xl font-semibold">{company.employee_count}</p>
               <span className="text-gray-200 text-sm">Employee</span>
             </div>
           </div>

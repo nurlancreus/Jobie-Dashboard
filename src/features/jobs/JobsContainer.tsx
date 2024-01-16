@@ -9,6 +9,7 @@ import JobList from "./JobList";
 import JobsBodyHeader from "./JobsBodyHeader";
 import Job from "./Job";
 import Pagination from "@/shared/Pagination";
+import Footer from "@/shared/Footer";
 
 export default function JobsMain() {
   const { query, handleQueryChange, handleSubmit } = useSearchQuery();
@@ -36,9 +37,9 @@ export default function JobsMain() {
           data={vacancies as Array<NonNullProps<(typeof vacancies)[number]>>}
           renderProps={(vacancy) => <Job key={vacancy.id} data={vacancy} />}
         />
-        <footer className="mt-12">
-          <Pagination total={count!} variant="vacancies" />
-        </footer>
+        <Footer total={count!} variant="vacancies">
+          <Pagination />
+        </Footer>
       </JobsBody>
     </>
   );

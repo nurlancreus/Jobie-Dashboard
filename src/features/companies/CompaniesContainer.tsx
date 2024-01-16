@@ -11,6 +11,7 @@ import { useGetCompanies } from "./useGetCompanies";
 import { NonNullProps } from "@/models/types";
 import Loader from "@/shared/Loader";
 import Pagination from "@/shared/Pagination";
+import Footer from "@/shared/Footer";
 
 export default function CompaniesContainer() {
   const { query, handleQueryChange, handleSubmit } = useSearchQuery();
@@ -23,8 +24,6 @@ export default function CompaniesContainer() {
   const { companies, isLoading, count } = useGetCompanies();
 
   if (isLoading) return <Loader />;
-
-  console.log("QUERY", JSON.stringify(companies));
 
   return (
     <>
@@ -52,9 +51,10 @@ export default function CompaniesContainer() {
               />
             )}
           />
-          <footer className="mt-12">
-            <Pagination total={count!} variant="companies"/>
-          </footer>
+
+          <Footer total={count!} variant="companies">
+            <Pagination />
+          </Footer>
         </CompaniesBody>
       </div>
       {selectedId && (

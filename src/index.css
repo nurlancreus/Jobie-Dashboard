@@ -1,0 +1,169 @@
+@tailwind base;
+
+@layer base {
+  html {
+    @apply bg-body font-poppins;
+  }
+
+}
+
+@tailwind components;
+@tailwind utilities;
+
+/* UTILITIES */
+
+@layer utilities {
+  .active-nav {
+    @apply bg-body text-dark font-semibold transition [&_svg_path]:fill-primary;
+  }
+
+  .pagination-custom {
+    @apply [&>*]:cursor-pointer [&>.swiper-pagination-bullet-active]:bg-primary [&>.swiper-pagination-bullet:not(.swiper-pagination-bullet-active)]:bg-gray-400 [&>*]:w-3 [&>*]:h-3
+  }
+
+  .form-input {
+    @apply text-lg text-black font-medium placeholder:text-lg placeholder:text-gray-200 pb-5 border-b border-solid border-b-gray-100 focus:outline-none focus:border-b-primary
+  }
+}
+
+@layer components {
+  .input {
+    @apply w-full rounded-full border border-stone-200 px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-400 focus:outline-none focus:ring focus:ring-yellow-400 md:px-6 md:py-3
+  }
+
+  .loader {
+    width: 45px;
+    aspect-ratio: 0.75;
+    --c: no-repeat linear-gradient(theme(colors.primary) 0 0);
+    background: var(--c) 0% 50%, var(--c) 50% 50%, var(--c) 100% 50%;
+    background-size: 20% 50%;
+    animation: loading 1s infinite linear;
+  }
+
+  @keyframes loading {
+    20% {
+      background-position: 0% 0%, 50% 50%, 100% 50%;
+    }
+
+    40% {
+      background-position: 0% 100%, 50% 0%, 100% 50%;
+    }
+
+    60% {
+      background-position: 0% 50%, 50% 100%, 100% 0%;
+    }
+
+    80% {
+      background-position: 0% 50%, 50% 50%, 100% 100%;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  border-radius: 3px;
+  scrollbar-gutter: stable;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.textarea-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #40189D;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-track {
+  background: #BEA1FF;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4E36E2;
+}
+
+/* WIDGETS BG COLORS */
+
+.widget-1 {
+  background-color: #4E36E2;
+}
+
+.widget-2 {
+  background-color: #48A9F8;
+}
+
+.widget-3 {
+  background-color: #1BD084;
+}
+
+.widget-4 {
+  background-color: #8BC740;
+}
+
+/* STATUS BG COLORS */
+
+.status-pending {
+  border-color: #B1B1B1;
+  color: #B1B1B1;
+}
+
+.status-on-hold {
+  border-color: #FF9548;
+  color: #FF9548;
+}
+
+.status-candidate {
+  border-color: #2BC155;
+  background-color: #2BC155;
+  color: #fff;
+}
+
+/* PORTFOLIO BG COLORS */
+
+.portofolio-facebook {
+  background-color: #3D6AD6;
+}
+
+.portofolio-dribbble {
+  background-color: #EA518D;
+}
+
+.portofolio-linkedin {
+  background-color: #0073B1;
+}
+
+.portofolio-youtube {
+  background-color: #FF0000;
+}
+
+/* Custom Legend Icon Classes */
+.custom-legend-following {
+  background-color: #374C98;
+}
+
+.custom-legend-followers {
+  background-color: #FFAB2D;
+}
+
+.custom-legend-following {
+  background-color: #374C98;
+}
+
+.custom-legend-app-sent {
+  background-color: #2BC155;
+}
+
+.custom-legend-app-answered {
+  background-color: #FF9B52;
+}
+
+.custom-legend-hired {
+  background-color: #3F9AE0;
+}

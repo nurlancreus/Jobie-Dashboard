@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ApplicationsIcon, ArrowIcon } from "@/assets/icons";
 import { timeAgo } from "@/utils/helpers";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 const recentActivities = [
   {
@@ -76,32 +77,37 @@ const recentActivities = [
 ];
 
 export default function RecentActivites() {
+  const isAboveLargeScreens = useMediaQuery("(min-width: 1200px)");
   const [isListOpen, setIsListOpen] = useState(false);
-  
+
   const formattedActivities = recentActivities.sort(
     (a, b) => b.timestamp - a.timestamp,
   );
 
   return (
-    <div className="p-[0_26px_26px] relative">
-      <h3 className="text-lg text-dark font-medium mb-5">Recent Activites</h3>
+    <div className="relative basis-3/5 p-4">
+      <h3 className="mb-5 text-lg font-medium text-dark">Recent Activites</h3>
       <ul
-        className={`flex flex-col gap-4 transition-all duration-200 custom-scrollbar ${
-          isListOpen ? "overflow-y-auto h-[380px]" : "overflow-hidden h-[360px]"
+        className={`custom-scrollbar flex flex-col gap-4 transition-all duration-200 ${
+          isListOpen || !isAboveLargeScreens
+            ? "h-[380px] overflow-y-auto"
+            : "h-[360px] overflow-hidden"
         }`}
       >
         {formattedActivities.map((activity) => (
           <Activity key={activity.id} activity={activity} />
         ))}
       </ul>
-      <button
-        className={`w-[60px] h-[60px] shadow-[0px_12px_24px_0_rgba(0,0,0,0.25)] transition-transform duration-200  rounded-full grid place-content-center bg-white absolute left-0 right-0 mx-auto z-1 ${
-          isListOpen ? "rotate-180" : ""
-        }`}
-        onClick={() => setIsListOpen((prev) => !prev)}
-      >
-        <ArrowIcon />
-      </button>
+      {isAboveLargeScreens && (
+        <button
+          className={`z-1 absolute left-0 right-0 mx-auto  grid h-[60px] w-[60px] place-content-center rounded-full bg-white shadow-[0px_12px_24px_0_rgba(0,0,0,0.25)] transition-transform duration-200 ${
+            isListOpen ? "rotate-180" : ""
+          }`}
+          onClick={() => setIsListOpen((prev) => !prev)}
+        >
+          <ArrowIcon />
+        </button>
+      )}
     </div>
   );
 }
@@ -122,11 +128,13 @@ function Activity({ activity }: ActivityProps) {
       className="grid grid-cols-[auto_1fr] items-center gap-4"
       key={activity.id}
     >
-      <span className="grid place-content-center w-[60px] h-[60px] rounded-2xl border [&_svg_path]:fill-primary [&_svg]:w-6 [&_svg]:h-6">
+      <span className="grid h-[60px] w-[60px] place-content-center rounded-2xl border [&_svg]:h-6 [&_svg]:w-6 [&_svg_path]:fill-primary">
         {activity.icon}
       </span>
       <div className="text-sm">
-        <p className="font-medium text-gray-600">{activity.body} <strong>{activity.vacancyCount} Vacancy</strong></p>
+        <p className="font-medium text-gray-600">
+          {activity.body} <strong>{activity.vacancyCount} Vacancy</strong>
+        </p>
         <span className="text-gray-200">{timeAgo(activity.timestamp)}</span>
       </div>
     </li>

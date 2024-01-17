@@ -4,35 +4,23 @@ import Logo from "@/shared/Logo";
 import Titles from "@/shared/Titles";
 import { timeAgo } from "@/utils/helpers";
 
-type ApplicationsTableRowProps = {
-  app: {
-    id: string;
-    date: Date;
-    companyKey: number;
-    type: string;
-    position: string;
-    contact: {
-      phone: string;
-      email: string;
-    };
-    status: string;
-  };
-  company: {
-    id: number;
-    name: string;
-    logo: string;
-    reviews: number;
-    employeeCount: number;
-    about: string;
-    location: string;
-    vacancies: number[];
-  };
+type ApplicationsTableRowProps<AppType, CompanyType> = {
+  app: AppType;
+  company: CompanyType;
 };
 
-export default function ApplicationsTableRow({
-  app,
-  company,
-}: ApplicationsTableRowProps) {
+export default function ApplicationsTableRow<
+  AppType extends {
+    id: number;
+    created_at: string;
+    phone: string | null;
+    email: string | null;
+    position: string;
+    position_type: string;
+    status: "pending" | "on-hold" | "candidate";
+  },
+  CompanyType extends { id: number; logo: string; name: string },
+>({ app, company }: ApplicationsTableRowProps<AppType, CompanyType>) {
   return (
     <tr className="py-8">
       <td className="pl-10">
@@ -56,7 +44,7 @@ export default function ApplicationsTableRow({
       <td data-type="type" className="uppercase">
         {app.position_type}
       </td>
-      <td data-type="position capitalize">{app.position}</td>
+      <td data-type="position" className="capitalize">{app.position}</td>
       <td data-type="contact">
         <div className="flex items-center gap-4">
           {app.phone && (

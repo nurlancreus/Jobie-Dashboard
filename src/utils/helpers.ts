@@ -1,5 +1,5 @@
 // Format Dates
-export const timeAgo = (timestamp: number): string => {
+export const timeAgo = (timestamp: string | number): string => {
   const date: Date = new Date(timestamp);
   const now: Date = new Date();
 
@@ -25,7 +25,7 @@ export const timeAgo = (timestamp: number): string => {
   }
 };
 
-export function formatDateString(dateString: number) {
+export function formatDateString(dateString: string | number) {
   const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
     month: "short",

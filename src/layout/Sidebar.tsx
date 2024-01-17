@@ -49,19 +49,19 @@ export default function Sidebar({ isOpen }: SidebarProps) {
 
   return (
     <aside
-      className={`row-span-full col-start-1 col-end-2 bg-primary text-white ${
+      className={`col-start-1 col-end-2 row-span-full bg-primary text-white ${
         isOpen ? "pl-[32px]" : "pl-[24px]"
-      } transition-all duration-300 flex flex-col gap-6 overflow-hidden`}
+      } flex flex-col gap-6 overflow-hidden transition-all duration-300`}
     >
-      <div className="pl-[14px] py-7">
-        <div className="w-[188px] h-[66px]">
+      <div className="py-7 pl-[14px]">
+        <div className="h-[66px] w-[188px]">
           <Link to="/">
             <img
               src={logo}
               alt="Logo"
               width={188}
               height={66}
-              className="w-full h-full object-fill"
+              className="h-full w-full object-fill"
             />
           </Link>
         </div>
@@ -75,7 +75,7 @@ export default function Sidebar({ isOpen }: SidebarProps) {
               <li key={nav.label} className="group">
                 <Link
                   to={nav.path}
-                  className={`flex items-center transition-colors [&_path]:fill-gray-200 [&_svg]:w-7 [&_svg]:h-7 duration-200 pl-8 text-gray-200 text-lg font-medium gap-11 py-7 rounded-l-[48px] group-hover:active-nav ${
+                  className={`group-hover:active-nav flex items-center gap-11 rounded-l-[48px] py-7 pl-8 text-lg font-medium text-gray-200 transition-colors duration-200 [&_path]:fill-gray-200 [&_svg]:h-7 [&_svg]:w-7 ${
                     isActive ? "active-nav" : ""
                   }`}
                 >
@@ -92,14 +92,14 @@ export default function Sidebar({ isOpen }: SidebarProps) {
         </ul>
       </nav>
       {isOpen && (
-        <div className="mt-auto mb-8">
-          <p className="text-primary-600 text-sm font-semibold whitespace-nowrap">
+        <div className="mb-8 mt-auto">
+          <p className="whitespace-nowrap text-sm font-semibold text-primary-600">
             Jobie Job Portal Admin Dashboard
           </p>
-          <p className="text-primary-600 text-xs mb-6 whitespace-nowrap">
+          <p className="mb-6 whitespace-nowrap text-xs text-primary-600">
             &copy; {new Date().getFullYear()} All Rights Reserved
           </p>
-          <span className="text-primary-700 text-sm whitespace-nowrap">
+          <span className="whitespace-nowrap text-sm text-primary-700">
             Made with ❤ by Peterdraw
           </span>
         </div>

@@ -11,14 +11,15 @@ export default function RecomendedJobs() {
   if (isLoading) return <Loader />;
 
   return (
-    <div className="row-[3/4] col-[2/-1] pt-2">
+    <div className="col-[1/-1] row-[7/8] pt-2 sm:row-[5/6] lg:col-[2/-1] lg:row-[3/4]">
       <div className="mb-[30px]">
         <Title>Recomended Jobs</Title>
       </div>
       <SharedSwiper
         dataList={vacancies as Array<NonNullProps<(typeof vacancies)[number]>>}
-        Component={Job}
         options={{ gap: 30, slidesCount: 2.8, pagination: false }}
+        variant="job"
+        Component={Job}
       />
     </div>
   );

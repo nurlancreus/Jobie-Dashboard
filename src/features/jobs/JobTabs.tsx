@@ -25,7 +25,7 @@ const tabNavigation = [
 
 export default function JobTabs() {
   return (
-    <div className="flex items-center gap-11 mt-10 ml-8">
+    <div className="ml-8 mt-10 flex items-center gap-11">
       <h3 className="text-base font-normal text-gray-300">Suggestions</h3>
       <FilterTabs filterField="position" options={tabNavigation} />
     </div>

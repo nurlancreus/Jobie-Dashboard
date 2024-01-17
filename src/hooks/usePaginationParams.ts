@@ -32,5 +32,5 @@ export default function usePaginationParams(
     setSearchParams(searchParams);
   };
 
-  return { currentPage, handlePagination, from, to, pageSize };
+  return { currentPage, from, to, pageSize, handlePagination };
 }

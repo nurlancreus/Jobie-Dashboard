@@ -4,7 +4,6 @@ import {
   SuitcaseIcon,
   UserIcon,
 } from "@/assets/icons";
-import Widget from "./Widget";
 
 const widgetsData = [
   {
@@ -40,5 +39,34 @@ export default function Widgets() {
         <Widget key={widget.id} widget={widget} />
       ))}
     </>
+  );
+}
+
+type WidgetProps = {
+  widget: {
+    id: number;
+    icon: JSX.Element;
+    label: string;
+    value: number;
+  };
+};
+
+function Widget({ widget }: WidgetProps) {
+  return (
+    <article
+      className={`widget-${widget.id} overflow-hidden rounded-[28px] p-[32px_24px_24px] xl:p-[36px_26px_26px] xxl:p-[40px_30px_30px]`}
+    >
+      <div className="flex justify-between">
+        <span className="grid h-[68px] w-[68px] place-content-center rounded-2xl border border-solid border-primary-300">
+          {widget.icon}
+        </span>
+        <div className="flex flex-col items-end text-white">
+          <p className="whitespace-nowrap text-lg font-medium">
+            {widget.label}
+          </p>
+          <h3 className="text-5xl font-semibold">{widget.value}</h3>
+        </div>
+      </div>
+    </article>
   );
 }

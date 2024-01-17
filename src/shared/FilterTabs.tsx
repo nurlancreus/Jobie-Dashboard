@@ -17,6 +17,8 @@ export default function FilterTabs({ filterField, options }: FilterTabsProps) {
   const handleParams = (value: string) => {
     searchParams.set(filterField, value);
 
+    if (searchParams.get("page")) searchParams.set("page", (1).toString());
+
     setSearchParams(searchParams);
   };
 

@@ -8,6 +8,7 @@ export function useGetApplications() {
   // const queryClient = useQueryClient();
 
   const [searchParams, setSearchParams] = useSearchParams();
+  const filterStatusValue = searchParams.get("status") ?? "all";
   const { currentPage, pageSize, from, to } = usePaginationParams("applications");
 
   const paginationOptions = {
@@ -21,8 +22,8 @@ export function useGetApplications() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["applications", currentPage],
-    queryFn: () => getApplications(paginationOptions), // this fn should return the Promise
+    queryKey: ["applications", currentPage, filterStatusValue],
+    queryFn: () => getApplications(paginationOptions, filterStatusValue), // this fn should return the Promise
   });
 
   // RE-PAGINATION

@@ -7,20 +7,21 @@ import { useGetCompanies } from "../companies/useGetCompanies";
 
 export default function FeaturedCompanies() {
   const { companies } = useGetCompanies();
-  
+
   return (
-    <div className="col-[1/-1] row-[4/-1] mt-5">
-      <div className="flex items-center justify-between mb-7">
+    <div className="col-[1/-1] row-[8/9] mt-5 sm:row-[6/7] lg:col-[1/-1] lg:row-[4/-1]">
+      <div className="mb-7 flex flex-wrap items-center justify-between gap-2">
         <Title>Featured Companies</Title>
         <div className="flex items-center gap-11">
-          <div className="pagination-position space-x-2 pagination-custom"></div>
+          <div className="pagination-position pagination-custom hidden space-x-2 lg:block"></div>
           <ViewMore />
         </div>
       </div>
       <SharedSwiper
         dataList={companies as Array<NonNullProps<(typeof companies)[number]>>}
-        Component={Company}
         options={{ gap: 30, slidesCount: 4.7, pagination: true }}
+        variant="company"
+        Component={Company}
       />
     </div>
   );

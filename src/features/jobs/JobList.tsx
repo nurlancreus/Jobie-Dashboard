@@ -13,7 +13,7 @@ export default function JobList<T>({ data, renderProps }: JobListProps<T>) {
     <div
       className={`grid ${
         layoutParamsValue === "grid" ? "grid-cols-3" : "grid-cols-2"
-      } gap-x-[42px] gap-y-[30px] mt-[30px]`}
+      } mt-[30px] gap-x-[42px] gap-y-[30px]`}
     >
       {data.map(renderProps)}
     </div>

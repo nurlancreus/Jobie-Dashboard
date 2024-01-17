@@ -1,6 +1,11 @@
 import useSortParams from "@/hooks/useSortParams";
 import useSwitchParams from "@/hooks/useSwitchParams";
-import { SELECT_PERIOD_ID, SWITCH_APPLICATIONS_ID, SWITCH_INTERVIEWS_ID, SWITCH_REJECTED_ID } from "@/utils/constants";
+import {
+  SELECT_PERIOD_ID,
+  SWITCH_APPLICATIONS_ID,
+  SWITCH_INTERVIEWS_ID,
+  SWITCH_REJECTED_ID,
+} from "@/utils/constants";
 import { useMemo } from "react";
 import {
   ResponsiveContainer,
@@ -14,11 +19,16 @@ import {
 } from "recharts";
 
 export default function VacancyStatsChart() {
-
   const { paramsValue: selectBy } = useSortParams(SELECT_PERIOD_ID, "year");
 
-  const { switchOn: showApplication } = useSwitchParams(SWITCH_APPLICATIONS_ID, true);
-  const { switchOn: showInterviews } = useSwitchParams(SWITCH_INTERVIEWS_ID, true);
+  const { switchOn: showApplication } = useSwitchParams(
+    SWITCH_APPLICATIONS_ID,
+    true,
+  );
+  const { switchOn: showInterviews } = useSwitchParams(
+    SWITCH_INTERVIEWS_ID,
+    true,
+  );
   const { switchOn: showRejected } = useSwitchParams(SWITCH_REJECTED_ID, true);
 
   const tickState = {
@@ -59,7 +69,7 @@ export default function VacancyStatsChart() {
   }, [tickState.tickCount]);
 
   return (
-    <div className="mt-10">
+    <div className="mt-6 lg:mt-10">
       <ResponsiveContainer width="100%" height={350}>
         <LineChart
           width={500}

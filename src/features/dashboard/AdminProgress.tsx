@@ -52,7 +52,7 @@ type AdminProgressProps = {
 
 export default function AdminProgress({ progress }: AdminProgressProps) {
   return (
-    <div className="flex items-center justify-between w-full">
+    <div className="flex w-full items-center justify-between">
       {progress.map((data) => {
         let color: string;
         switch (data.label) {
@@ -71,7 +71,10 @@ export default function AdminProgress({ progress }: AdminProgressProps) {
         }
 
         return (
-          <div className={`w-fit h-fit p-2 flex-1 relative`} key={data.id}>
+          <div
+            className={`relative h-fit max-h-24 w-fit max-w-24 flex-1 p-2`}
+            key={data.id}
+          >
             <div className="absolute bottom-[-20px] left-0 right-0 text-center">
               {data.label}
             </div>

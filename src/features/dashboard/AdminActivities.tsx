@@ -5,9 +5,9 @@ import { adminData } from "@/data/adminData";
 
 export default function UserActivities() {
   return (
-    <div className="rounded-[20px] bg-white col-[1/2] row-[2/4] h-min">
+    <div className="col-[1/-1] row-[5/6] flex h-min flex-col rounded-[20px] bg-white sm:row-[3/4] sm:flex-row lg:col-[1/2] lg:row-[2/4] lg:flex-col">
       {/* Admin */}
-      <div className="p-[36px_42px_26px]">
+      <div className="lg:p[32px_38px_22px] basis-2/5 p-6 xl:p-[36px_42px_26px]">
         {/* Admin Avatar */}
         <ProfileAvatarName />
 
@@ -15,7 +15,7 @@ export default function UserActivities() {
         <AdminProgress progress={adminData.progress} />
       </div>
 
-      <hr className="my-[26px]" />
+      <hr className="hidden lg:my-4 lg:block" />
 
       {/* Recent Activities */}
       <RecentActivites />

@@ -8,7 +8,7 @@ type PaginationProps = {
   variant?: "vacancies" | "companies" | "applications";
 };
 
-export default function Pagination({ total = 160, variant }: PaginationProps) {
+export default function Pagination({ total = 0, variant }: PaginationProps) {
   const { currentPage, handlePagination, pageSize } =
     usePaginationParams(variant);
   const numOfPages = Math.ceil(total / pageSize);

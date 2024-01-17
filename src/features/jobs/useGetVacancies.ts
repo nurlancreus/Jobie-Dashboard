@@ -12,11 +12,7 @@ export function useGetVacancies() {
   const { currentPage, pageSize, from, to } = usePaginationParams("vacancies");
   const { searchValue } = useSearchQuery();
 
-  const paginationOptions = {
-    currentPage,
-    from,
-    to,
-  };
+  const paginationOptions = { from, to };
 
   const {
     data: { data: vacancies = [], count } = {},

@@ -2,6 +2,7 @@ import { supabase } from "./supabase";
 
 export async function getApplications(
   paginationOpt: Record<string, number>,
+  filterByStatus: string,
 ) {
   const { from, to } = paginationOpt;
 
@@ -10,6 +11,8 @@ export async function getApplications(
     .select("*, vacancies(*, companies(*))", { count: "exact" });
 
   query = query.range(from, to);
+
+  if (filterByStatus !== "all") query = query.eq("status", filterByStatus);
 
   const { data, error, count } = await query;
 

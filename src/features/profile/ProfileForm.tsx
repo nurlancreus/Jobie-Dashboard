@@ -79,10 +79,10 @@ export default function ProfileForm() {
     <form
       id="profileForm"
       name="profileForm"
-      className="bg-white rounded-[20px] pt-7 px-[30px] pb-14"
+      className="rounded-[20px] bg-white px-[30px] pb-14 pt-7"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex items-center justify-between mb-14">
+      <div className="mb-14 flex items-center justify-between">
         <Title fs={24} fw="semibold">
           Edit Profile
         </Title>
@@ -243,12 +243,12 @@ export default function ProfileForm() {
             <div className="relative">
               <select
                 id="selectCity"
-                className="w-full form-input appearance-none"
+                className="form-input w-full appearance-none"
                 {...register("selectCity")}
               >
                 <option value="london">London</option>
               </select>
-              <span className="absolute right-8 bottom-6 [&_path]:stroke-primary">
+              <span className="absolute bottom-6 right-8 [&_path]:stroke-primary ">
                 <Chevron />
               </span>
             </div>
@@ -260,12 +260,12 @@ export default function ProfileForm() {
             <div className="relative">
               <select
                 id="selectCountry"
-                className="w-full form-input appearance-none"
+                className="form-input w-full appearance-none"
                 {...register("selectCountry")}
               >
                 <option value="england">England</option>
               </select>
-              <span className="absolute right-8 bottom-6 [&_path]:stroke-primary">
+              <span className="absolute bottom-6 right-8 [&_path]:stroke-primary">
                 <Chevron />
               </span>
             </div>
@@ -278,7 +278,7 @@ export default function ProfileForm() {
           <FormTextArea label="Tell About You" error={errors?.aboutMe?.message}>
             <textarea
               id="aboutMe"
-              className="w-full h-[170px] resize-none text-gray-800 p-6 bg-body text-sm rounded-[20px] border border-solid border-gray-200 outline-transparent focus:outline-primary-500 textarea-scrollbar"
+              className="textarea-scrollbar h-[170px] w-full resize-none rounded-[20px] border border-solid border-gray-200 bg-body p-6 text-sm text-gray-800 outline-transparent focus:outline-primary-500"
               {...register("aboutMe")}
             ></textarea>
           </FormTextArea>
@@ -290,7 +290,7 @@ export default function ProfileForm() {
             button={
               <button
                 type="button"
-                className="text-primary text-lg font-semibold bg-transparent border-none outline-transparent"
+                className="border-none bg-transparent text-lg font-semibold text-primary outline-transparent"
               >
                 + Add new Skills
               </button>

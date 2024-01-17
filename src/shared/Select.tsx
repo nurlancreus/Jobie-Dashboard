@@ -17,21 +17,19 @@ export default function Select({
   const { paramsValue, handleParams } = useSortParams(id, value);
 
   return (
-    <div
-      className={`relative w-fit [&>svg]:absolute ${
-        variant === "sort"
-          ? "[&>svg:first-child]:left-3 [&>svg:first-child]:bottom-3 [&>svg:last-child>path]:stroke-primary"
-          : ""
-      } [&>svg:last-child]:right-5 [&>svg:last-child]:bottom-5`}
-    >
-      {variant === "sort" && <SortIcon />}
+    <div className="relative w-fit">
+      {variant === "sort" && (
+        <span className={`absolute ${variant === "sort" ? "left-3 bottom-3" : ""}`}>
+          <SortIcon />
+        </span>
+      )}
       <select
         name={id}
         value={paramsValue}
         onChange={(e) => handleParams(e.target.value, id)}
         id={id}
-        className={`border appearance-none bg-transparent border-solid text-gray-700 border-primary-300 py-3 pr-[54px] rounded-[48px] cursor-pointer focus:outline-primary-600 ${
-          variant === "sort" ? "pl-[52px] font-medium" : "pl-[24px]"
+        className={`border appearance-none bg-transparent border-solid text-gray-700 border-primary-300 py-2 lg:py-3 pr-12 lg:pr-[54px] rounded-[48px] cursor-pointer focus:outline-primary-600 ${
+          variant === "sort" ? "pl-12 lg:pl-[52px] font-medium" : "pl-4 lg:pl-6"
         }`}
       >
         {options.map((option) => (
@@ -40,7 +38,13 @@ export default function Select({
           </option>
         ))}
       </select>
-      <Chevron />
+      <span
+        className={`absolute ${
+          variant === "sort" ? "[&_path]:stroke-primary" : ""
+        } right-5 bottom-5`}
+      >
+        <Chevron />
+      </span>
     </div>
   );
 }

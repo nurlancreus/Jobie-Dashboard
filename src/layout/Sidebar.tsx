@@ -49,8 +49,8 @@ export default function Sidebar({ isOpen }: SidebarProps) {
 
   return (
     <aside
-      className={`col-start-1 col-end-2 row-span-full bg-primary text-white ${
-        isOpen ? "pl-[32px]" : "pl-[24px]"
+      className={`col-start-1 col-end-2 row-span-full hidden bg-primary text-white sm:block ${
+        isOpen ? "w-[344px] pl-[32px]" : "w-[120px] pl-[24px]"
       } flex flex-col gap-6 overflow-hidden transition-all duration-300`}
     >
       <div className="py-7 pl-[14px]">

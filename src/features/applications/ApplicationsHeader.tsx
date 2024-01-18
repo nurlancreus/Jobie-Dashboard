@@ -1,7 +1,6 @@
-import useParams from "@/hooks/useSortParams";
 import Select from "@/shared/Select";
-import Titles from "@/shared/Titles";
 import ApplicationsTabs from "./ApplicationsTabs";
+import { ReactNode } from "react";
 
 const sortOptions = [
   {
@@ -14,22 +13,22 @@ const sortOptions = [
   },
 ];
 
-export default function ApplicationsHeader() {
-  const { paramsValue, handleParams } = useParams("sortAppsBy", "newest");
+type ApplicationsHeaderProps = {
+  children: ReactNode;
+};
 
+export default function ApplicationsHeader({ children }: ApplicationsHeaderProps) {
   return (
     <header>
-      <div className="flex items-center justify-between">
-        <div className="flex gap-20">
-          <Titles title="Showing 45 Applicants" />
-          <ApplicationsTabs />
-        </div>
+      <div className="flex items-center justify-between gap-20 [&>*:first-child]:mr-auto">
+        {children}
+        <ApplicationsTabs />
+
         <Select
           variant="sort"
           id="sortAppsBy"
           options={sortOptions}
-          value={paramsValue}
-          handleSelect={handleParams}
+          value="newest"
         />
       </div>
     </header>

@@ -23,3 +23,15 @@ export async function getApplications(
 
   return { data, count };
 }
+
+// Get Statuses
+export async function getApplicationsStatus() {
+  const { data, error } = await supabase.from("applications").select("status");
+
+  if (error) {
+    console.error(error);
+    throw new Error("Applications could not loaded");
+  }
+
+  return { data };
+}

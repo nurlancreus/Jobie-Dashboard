@@ -1,10 +1,14 @@
 import { supabase } from "./supabase";
 
 export async function getVacancies(
-  paginationOpt: Record<string, number>,
+  paginationOpt: {
+    withPagination: boolean;
+    from: number;
+    to: number;
+  },
   searchValue?: string,
 ) {
-  const { from, to } = paginationOpt;
+  const { withPagination, from, to } = paginationOpt;
 
   let query = supabase
     .from("vacancies")
@@ -17,7 +21,7 @@ export async function getVacancies(
     });
   }
 
-  query = query.range(from, to);
+  if (withPagination) query = query.range(from, to);
 
   const { data, error, count } = await query;
 

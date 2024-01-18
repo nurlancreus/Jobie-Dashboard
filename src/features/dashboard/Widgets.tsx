@@ -56,8 +56,8 @@ function Widget({ widget }: WidgetProps) {
     <article
       className={`widget-${widget.id} overflow-hidden rounded-[28px] p-[32px_24px_24px] xl:p-[36px_26px_26px] xxl:p-[40px_30px_30px]`}
     >
-      <div className="flex justify-between">
-        <span className="grid h-[68px] w-[68px] place-content-center rounded-2xl border border-solid border-primary-300">
+      <div className="flex items-center justify-between">
+        <span className="grid min-h-fit min-w-fit place-content-center rounded-2xl border border-solid border-primary-300 p-3">
           {widget.icon}
         </span>
         <div className="flex flex-col items-end text-white">

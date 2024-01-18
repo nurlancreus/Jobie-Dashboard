@@ -13,7 +13,7 @@ import Footer from "@/shared/Footer";
 
 export default function JobsMain() {
   const { query, handleQueryChange, handleSubmit } = useSearchQuery();
-  const { vacancies, count, isLoading } = useGetVacancies();
+  const { vacancies, count, isLoading } = useGetVacancies(true);
 
   if (isLoading) return <Loader />;
 

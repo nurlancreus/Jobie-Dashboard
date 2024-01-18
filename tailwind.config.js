@@ -45,8 +45,8 @@ export default {
       fontSize: {
         heading: ["24px", "42px"],
         // sm: ["14px", "20px"],
-        base: ["clamp(12px,2vw,16px)", "clamp(20px,2vw,24px)"],
-         lg: ["clamp(14px,2vw,18px)", "clamp(24px,2vw,28px)"],
+        base: ["clamp(14px,2vw,16px)", "clamp(20px,2vw,24px)"],
+        lg: ["clamp(16px,2vw,18px)", "clamp(24px,2vw,28px)"],
         // xl: ["24px", "32px"],
         "5xl": ["clamp(36px,2vw + 1px,48px)", "clamp(64px,2vw + 1px,72px)"],
       },
@@ -54,7 +54,7 @@ export default {
     screens: {
       xs: "480px",
       sm: "768px",
-      md: "960px",
+      md: "992px",
       lg: "1200px",
       xl: "1600px",
       xxl: "1800px",

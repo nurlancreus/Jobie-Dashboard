@@ -10,16 +10,16 @@ export default function AppLayout() {
 
   return (
     <div
-      className={`grid transition-all duration-300 grid-rows-[auto_1fr] h-screen ${
-        isOpen ? "grid-cols-[344px_1fr]" : "grid-cols-[120px_1fr]"
+      className={`grid h-screen grid-rows-[auto_1fr] transition-all duration-300 ${
+        isOpen ? "grid-cols-[auto_1fr]" : "grid-cols-[auto_1fr]"
       }`}
     >
       <Sidebar isOpen={isOpen} />
       <Header onToggle={handleToggle} />
-      <div className="grid row-start-2 row-end-3 col-start-2 col-end-3 px-8 xl:px-10 xxl:px-12 overflow-y-auto pt-[30px] pb-12">
+      <div className="col-start-2 col-end-3 row-start-2 row-end-3 grid overflow-y-auto px-4 pb-12 pt-[30px] md:px-6 lg:px-8 xl:px-10 xxl:px-12">
         <Outlet />
       </div>
-      <div className="col-start-2 col-end-3 row-start-1 row-end-2 z-[-1] bg-primary" />
+      <div className="z-[-1] col-start-2 col-end-3 row-start-1 row-end-2 bg-primary" />
     </div>
   );
 }

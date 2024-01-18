@@ -23,25 +23,26 @@ export default function CompaniesBodyHeader({
   dataLength,
 }: CompaniesBodyHeaderProps) {
   return (
-    <div className="flex items-center justify-between mb-[30px]">
+    <div className="mb-[30px] flex flex-wrap items-center justify-between gap-4 [&>*:first-child]:mr-auto">
       <Titles title={`Showing ${dataLength} search results`} />
-      <div className="flex items-center gap-10">
-        <div className="flex items-center">
-          <SwitchBtn id={SWITCH_SALARY_ID} key={SWITCH_SALARY_ID} label="Salary" checked={true} />
-        </div>
-        <div className="flex items-center gap-8">
-          {/* Sort By */}
-          <Select
-            variant="sort"
-            id={SORT_COMPANIES_ID}
-            options={sortOptions}
-            value={"newest"}
-          />
 
-          {/* Layout Buttons */}
-          <LayoutButtons />
-        </div>
-      </div>
+      <SwitchBtn
+        id={SWITCH_SALARY_ID}
+        key={SWITCH_SALARY_ID}
+        label="Salary"
+        checked={true}
+      />
+
+      {/* Sort By */}
+      <Select
+        variant="sort"
+        id={SORT_COMPANIES_ID}
+        options={sortOptions}
+        value={"newest"}
+      />
+
+      {/* Layout Buttons */}
+      <LayoutButtons />
     </div>
   );
 }

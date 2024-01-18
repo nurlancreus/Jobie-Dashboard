@@ -5,14 +5,14 @@ import useSearchQuery from "@/hooks/useSearchQuery";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-export function useGetVacancies() {
+export function useGetVacancies(withPagination = false) {
   // const queryClient = useQueryClient();
 
   const [searchParams, setSearchParams] = useSearchParams();
   const { currentPage, pageSize, from, to } = usePaginationParams("vacancies");
   const { searchValue } = useSearchQuery();
 
-  const paginationOptions = { from, to };
+  const paginationOptions = { withPagination, from, to };
 
   const {
     data: { data: vacancies = [], count } = {},

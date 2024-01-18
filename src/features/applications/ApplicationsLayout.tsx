@@ -1,12 +1,10 @@
-import ApplicationsHeader from "./ApplicationsHeader";
-import ApplicationsTable from "./ApplicationsTable";
+import ApplicationContainer from "./ApplicationContainer";
 
 export default function ApplicationsLayout() {
   return (
     <section>
       <div>
-        <ApplicationsHeader />
-        <ApplicationsTable />
+        <ApplicationContainer />
       </div>
     </section>
   );

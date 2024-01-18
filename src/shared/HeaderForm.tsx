@@ -14,24 +14,28 @@ export default function HeaderForm({
 }: HeaderFormProps) {
   return (
     <form
-      className="bg-white rounded-3xl shadow-[0px_12px_15px_0px_rgba(0,0,0,0.03)] py-4 px-[26px]"
+      className="rounded-3xl bg-white px-[26px] py-4 shadow-[0px_12px_15px_0px_rgba(0,0,0,0.03)]"
       onSubmit={onSubmit}
     >
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-wrap items-center justify-between gap-4">
         {/* LEFT */}
-        <div className="text-base font-semibold text-gray-700 relative [&>svg]:absolute [&>svg:first-child]:left-0 [&>svg:first-child]:top-3 [&>svg:last-child]:right-5 [&>svg:last-child]:bottom-[22px] after:content-[''] after:bg-gray-200 after:absolute after:w-[1px] after:h-[50px] after:right-[-8px] after:bottom-0 after:top-0">
-          <LocationIcon />
-          <select className="w-[224px] pl-9 py-4 appearance-none focus:outline-gray-100">
+        <div className="relative w-full text-base font-semibold text-gray-700 after:absolute after:bottom-0 after:right-[-8px] after:top-0 after:hidden after:h-[50px] after:w-[1px] after:bg-gray-200 after:content-[''] sm:w-auto sm:after:block">
+          <span className="[&>svg]:absolute [&>svg]:left-0 [&>svg]:top-3">
+            <LocationIcon />
+          </span>
+          <select className="w-full min-w-[224px] appearance-none py-4 pl-9 focus:outline-gray-100">
             <option value="around-you">Around You</option>
           </select>
-          <Chevron />
+          <span className="[&>svg]:absolute [&>svg]:bottom-[22px] [&>svg]:right-5">
+            <Chevron />
+          </span>
         </div>
 
         {/* CENTER */}
         <input
           type="text"
           placeholder="Search by Title, Company or any jobs keyword..."
-          className="pt-5 pb-[14px] placeholder:text-base placeholder:text-gray-200 grow px-4 rounded-[48px] focus:outline-primary"
+          className="grow rounded-[48px] px-4 pb-[14px] pt-5 placeholder:text-base placeholder:text-gray-200 focus:outline-primary"
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />

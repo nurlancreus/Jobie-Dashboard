@@ -17,79 +17,80 @@ export default function CompanyDetails({
   // if (isLoading || !company) return <LoaderMini />;
 
   return (
-    <aside className="bg-white rounded-[20px] p-[60px_24px_30px] relative">
+    <aside className="relative mt-8 rounded-[20px] bg-white p-[60px_24px_30px] lg:mt-0">
       {isLoading || !company ? (
         <LoaderMini />
       ) : (
-        <div>
+        <div className="flex flex-col gap-5 sm:flex-row lg:flex-col">
           {/* Close Button */}
           <button
-            className="bg-transparent outline-transparent border-none absolute top-6 right-7"
+            className="absolute right-7 top-6 border-none bg-transparent outline-transparent"
             onClick={() => setSelectedId(null)}
           >
             <CloseIcon />
           </button>
+          <div className="flex-1">
+            {/* Details */}
+            <div className="flex flex-col items-center">
+              <Logo src={company.logo} h={134} w={134} />
+              <div className="mt-[30px]">
+                <h3 className="text-2xl font-medium">{company.name}</h3>
+                <p className="text-gray-900">Creative Design Agency</p>
+              </div>
+            </div>
 
-          {/* Details */}
-          <div className="flex flex-col items-center">
-            <Logo src={company.logo} h={134} w={134} />
-            <div className="mt-[30px]">
-              <h3 className="text-2xl font-medium">{company.name}</h3>
-              <p className="text-gray-900">Creative Design Agency</p>
+            {/* Follow Button */}
+            <button className="mb-10 mt-7 grid w-full place-content-center rounded-[48px] border border-solid border-primary py-4 text-lg font-semibold text-primary transition-colors duration-200 hover:bg-primary hover:text-white">
+              <span>+ Follow</span>
+            </button>
+
+            {/* Numbers */}
+            <div className="flex flex-wrap items-center gap-x-12 gap-y-9">
+              <div className="flex items-center gap-3">
+                <div className="grid h-12 w-12 place-content-center rounded-full bg-primary [&_path]:fill-white [&_svg]:h-4 [&_svg]:w-4">
+                  <UserIcon />
+                </div>
+                <div>
+                  <p className="text-xl font-semibold">
+                    {company.employee_count}
+                  </p>
+                  <span className="text-sm text-gray-200">Employee</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="grid h-12 w-12 place-content-center rounded-full bg-secondary [&_path]:fill-white [&_svg]:h-4 [&_svg]:w-4">
+                  <StarIcon />
+                </div>
+                <div>
+                  <p className="text-xl font-semibold">{company.reviews}</p>
+                  <span className="text-sm text-gray-200">Reviews</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="grid h-12 w-12 place-content-center rounded-full bg-gray-100 [&_path]:fill-gray-700 [&_svg]:h-4 [&_svg]:w-4">
+                  <LocationIcon />
+                </div>
+                <div>
+                  <p className="text-xl font-semibold">{company.location}</p>
+                  <span className="text-sm text-gray-200">Location</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Follow Button */}
-          <button className="rounded-[48px] border border-solid border-primary text-primary text-lg font-semibold transition-colors duration-200 grid place-content-center w-full py-4 hover:bg-primary hover:text-white mt-7 mb-10">
-            <span>+ Follow</span>
-          </button>
-
-          {/* Numbers */}
-          <div className="flex items-center flex-wrap gap-x-12 gap-y-9">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full grid place-content-center bg-primary [&_path]:fill-white [&_svg]:w-4 [&_svg]:h-4">
-                <UserIcon />
-              </div>
-              <div>
-                <p className="text-xl font-semibold">
-                  {company.employee_count}
-                </p>
-                <span className="text-gray-200 text-sm">Employee</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full grid place-content-center bg-secondary [&_path]:fill-white [&_svg]:w-4 [&_svg]:h-4">
-                <StarIcon />
-              </div>
-              <div>
-                <p className="text-xl font-semibold">{company.reviews}</p>
-                <span className="text-gray-200 text-sm">Reviews</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full grid place-content-center bg-gray-100 [&_path]:fill-gray-700 [&_svg]:w-4 [&_svg]:h-4">
-                <LocationIcon />
-              </div>
-              <div>
-                <p className="text-xl font-semibold">{company.location}</p>
-                <span className="text-gray-200 text-sm">Location</span>
-              </div>
-            </div>
-          </div>
-
-          <hr className="h-[1px] my-9 bg-gray-200" />
+          <hr className="my-9 h-[1px] bg-gray-200" />
 
           {/* About Company */}
-          <div>
+          <div className="flex-1">
             <h4 className="text-base font-semibold">About Company</h4>
-            <p className="text-sm text-gray-700 mt-7">{company.about}</p>
-            <div className="flex items-center gap-5 mt-9">
-              <button className="bg-primary flex-1 py-4 grid place-content-center capitalize rounded-[70px] text-white text-lg font-semibold transition-opacity duration-200 hover:opacity-90">
+            <p className="mt-7 text-sm text-gray-700">{company.about}</p>
+            <div className="mt-9 flex items-center gap-5">
+              <button className="grid flex-1 place-content-center rounded-[70px] bg-primary py-4 text-lg font-semibold capitalize text-white transition-opacity duration-200 hover:opacity-90">
                 {company.vacancies.length} Vacancy
               </button>
               <button
                 disabled={true}
-                className="bg-gray-100 flex-1 py-4 grid place-content-center capitalize rounded-[70px] text-gray-500 text-lg font-semibold transition-opacity duration-200 disabled:cursor-not-allowed"
+                className="grid flex-1 place-content-center rounded-[70px] bg-gray-100 py-4 text-lg font-semibold capitalize text-gray-500 transition-opacity duration-200 disabled:cursor-not-allowed"
               >
                 More Detail
               </button>

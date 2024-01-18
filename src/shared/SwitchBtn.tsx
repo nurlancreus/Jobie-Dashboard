@@ -11,14 +11,16 @@ export default function SwitchBtn({ label, id, checked }: SwitchBtn) {
 
   return (
     <div className="flex items-center gap-5">
-      <span className="font-medium text-gray-700">{label}</span>
+      <span className="whitespace-nowrap text-base font-medium text-gray-700">
+        {label}
+      </span>
       <label
         role="checkbox"
         htmlFor={id}
-        className={`w-8 h-4 rounded-3xl relative cursor-pointer after:content-[''] after:w-6 after:h-6 after:transition-all after:duration-300 after:rounded-full after:absolute after:bottom-[-4px] ${
+        className={`relative h-4 w-8 cursor-pointer rounded-3xl after:absolute after:bottom-[-4px] after:h-6 after:w-6 after:rounded-full after:transition-all after:duration-300 after:content-[''] ${
           switchOn
-            ? "bg-primary-300 after:bg-primary after:translate-x-[20px]"
-            : "bg-gray-100 after:bg-gray-300 after:translate-x-[-10px]"
+            ? "bg-primary-300 after:translate-x-[20px] after:bg-primary"
+            : "bg-gray-100 after:translate-x-[-10px] after:bg-gray-300"
         }`}
       />
       <input

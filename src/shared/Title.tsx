@@ -16,10 +16,10 @@ export default function Title({
   //const fontSize = `${fs}px`;
 
   const fontSizeVariants: Record<number, string> = {
-    18: "text-[18px]",
-    20: "text-[20px]",
-    24: "text-[24px]",
-    28: "text-[28px]",
+    18: "text-[clamp(14px,2vw,18px)]",
+    20: "text-[clamp(16px,2vw,20px)]",
+    24: "text-[clamp(20px,2vw,24px)]",
+    28: "text-[clamp(24px,2vw,28px)]",
   };
 
   const fontWeightVariants: Record<string, string> = {
@@ -29,7 +29,7 @@ export default function Title({
 
   return (
     <h3
-      className={`${fontSizeVariants[fs]} ${fontWeightVariants[fw]} leading-[30px] whitespace-nowrap ${caseForm}`}
+      className={`${fontSizeVariants[fs]} ${fontWeightVariants[fw]} leading-[30px] ${caseForm}`}
     >
       {children}
     </h3>

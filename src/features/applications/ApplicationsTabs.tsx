@@ -1,7 +1,8 @@
-import { appsData } from "@/data/appsData";
 import FilterTabs from "@/shared/FilterTabs";
+import { appsData } from "@/data/appsData";
 
 export default function ApplicationsTabs() {
+  
   const tabOptions = appsData.reduce(
     (acc, curr) => {
       if (!acc.map((tab) => tab.value).includes(curr.status)) {

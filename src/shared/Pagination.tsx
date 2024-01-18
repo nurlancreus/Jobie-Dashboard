@@ -1,4 +1,5 @@
 import { PaginationArrow } from "@/assets/icons";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import usePagination from "@/hooks/usePagination";
 import usePaginationParams from "@/hooks/usePaginationParams";
 import { ReactNode } from "react";
@@ -28,19 +29,21 @@ export default function Pagination({ total = 0, variant }: PaginationProps) {
         Previous
       </PaginationButton>
 
-      <ul className="flex items-center h-14 rounded-[62px] overflow-hidden bg-primary-300">
+      <ul className="flex h-10 items-center overflow-hidden rounded-[62px] bg-primary-300 lg:h-12 xl:h-14">
         {paginationRange?.map((page, index) => {
           if (typeof page === "string") {
-            return <li className="px-1 rounded-full" key={index}>&#8230;</li>;
+            return (
+              <li className="rounded-full px-1" key={index}>
+                &#8230;
+              </li>
+            );
           }
 
           return (
             <li key={index}>
               <button
                 disabled={page === currentPage}
-                className="bg-primary-300 text-primary transition font-medium text-lg w-[62px] h-[62px]
-                   rounded-full grid place-content-center hover:text-white hover:bg-primary
-               disabled:text-white disabled:bg-primary disabled:cursor-not-allowed"
+                className="grid h-8 w-8 place-content-center rounded-full bg-primary-300 text-lg font-medium text-primary transition hover:bg-primary hover:text-white disabled:cursor-not-allowed disabled:bg-primary disabled:text-white md:h-10 md:w-10 lg:h-12 lg:w-12 xl:h-[62px] xl:w-[62px]"
                 onClick={() => handlePagination(page)}
               >
                 {page}
@@ -71,6 +74,7 @@ function PaginationButton({
   disabled,
 }: PaginationButtonProps) {
   const { currentPage, handlePagination } = usePaginationParams();
+  const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
 
   const handleClick = (page: number) => {
     if (disabled) return;
@@ -87,13 +91,13 @@ function PaginationButton({
   return (
     <button
       disabled={disabled}
-      className={`py-3 px-6 text-primary font-medium transition text-lg bg-white rounded-[62px] flex items-center gap-3 border-none outline-transparent hover:text-white hover:bg-primary [&_path]:transition [&:hover_path]:stroke-white disabled:cursor-not-allowed ${
+      className={`flex items-center gap-2 rounded-[62px] border-none bg-white px-3 py-2 text-lg font-medium text-primary outline-transparent transition hover:bg-primary hover:text-white disabled:cursor-not-allowed lg:gap-3 lg:px-5 xl:px-6 xl:py-3 [&:hover_path]:stroke-white [&_path]:transition ${
         variant === "next" ? "flex-row-reverse [&>svg]:rotate-180" : ""
       }`}
       onClick={() => handleClick(currentPage)}
     >
       <PaginationArrow />
-      {children}
+      {isAboveSmallScreens && children}
     </button>
   );
 }

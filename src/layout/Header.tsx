@@ -1,18 +1,16 @@
 import { BellIcon, ChatIcon, SearchIcon, ToggleIcon } from "@/assets/icons";
 import { adminData } from "@/data/adminData";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { useLocation } from "react-router-dom";
 
 type HeaderProps = { onToggle: () => void };
 
 export default function Header({ onToggle }: HeaderProps) {
-  const isAboveLargeScreens = useMediaQuery("(min-width: 1300px)");
   const { pathname } = useLocation();
 
   const title = pathname.slice(1).replace("-", " ");
 
   return (
-    <header className="col-start-2 col-end-3 row-start-1 row-end-2 flex justify-between rounded-tl-[48px] bg-body px-8 py-5 xl:px-10 xl:py-7 xxl:px-12 xxl:py-8">
+    <header className="col-start-2 col-end-3 row-start-1 row-end-2 flex justify-between rounded-tl-[48px] bg-body px-6 py-5 lg:px-8 xl:px-10 xl:py-7 xxl:px-12 xxl:py-8">
       {/* Toggle & Title */}
       <div className="flex items-center gap-6 lg:gap-8 xl:gap-11">
         <button
@@ -29,22 +27,21 @@ export default function Header({ onToggle }: HeaderProps) {
       {/* Rest */}
       <div className="xl:gap-18 flex w-2/3 items-center md:gap-10 lg:gap-14 xxl:gap-24">
         {/* Search */}
-        {isAboveLargeScreens && (
-          <form
-            className="relative flex-grow"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <input
-              type="text"
-              placeholder="Search something here..."
-              className="w-full min-w-[300px] rounded-[82px] bg-gray-100 px-6 py-3 placeholder:text-gray-500 focus:outline-primary xl:h-14 xl:px-8 xxl:px-9 xxl:py-4"
-            />
 
-            <button className="absolute bottom-3 right-8 top-3">
-              <SearchIcon />
-            </button>
-          </form>
-        )}
+        <form
+          className="relative hidden flex-grow lg:block"
+          onSubmit={(e) => e.preventDefault()}
+        >
+          <input
+            type="text"
+            placeholder="Search something here..."
+            className="w-full min-w-[300px] rounded-[82px] bg-gray-100 px-6 py-3 placeholder:text-gray-500 focus:outline-primary xl:h-14 xl:px-8 xxl:px-9 xxl:py-4"
+          />
+
+          <button className="absolute bottom-3 right-8 top-3">
+            <SearchIcon />
+          </button>
+        </form>
 
         <div className="ml-auto flex items-center gap-8 lg:gap-10 xl:gap-12 xxl:gap-16">
           {/* Badge Buttons */}

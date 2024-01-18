@@ -16,8 +16,8 @@ export default function Footer({
   const numOfPages = Math.ceil(total / pageSize);
 
   return (
-    <footer className="flex items-center justify-between mt-12">
-      <div className="text-base font-medium text-zinc-900">
+    <footer className="mt-12 flex flex-wrap items-center justify-between gap-5 lg:items-start">
+      <div className="whitespace-nowrap text-base font-medium text-zinc-900">
         Showing <span>{(currentPage - 1) * pageSize + 1}</span> to{" "}
         <span>
           {currentPage === numOfPages ? total : currentPage * pageSize}

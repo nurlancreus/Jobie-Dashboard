@@ -32,7 +32,7 @@ export default function ApplicationsTableRow<
         />
       </td>
       <td data-type="id" className="font-medium uppercase">
-        #{app.id}
+        #APL-{app.id.toString().padStart(4, "0")}
       </td>
       <td data-type="date">{timeAgo(app.created_at)}</td>
       <td data-type="company">
@@ -44,11 +44,13 @@ export default function ApplicationsTableRow<
       <td data-type="type" className="uppercase">
         {app.position_type}
       </td>
-      <td data-type="position" className="capitalize">{app.position}</td>
+      <td data-type="position" className="capitalize">
+        {app.position}
+      </td>
       <td data-type="contact">
         <div className="flex items-center gap-4">
           {app.phone && (
-            <div className="grid place-content-center w-12 h-12 rounded-full border border-solid border-primary-300">
+            <div className="grid h-12 w-12 place-content-center rounded-full border border-solid border-primary-300">
               <a href={`tel:${app.phone}`}>
                 <PhoneIcon />
               </a>
@@ -56,7 +58,7 @@ export default function ApplicationsTableRow<
           )}
 
           {app.email && (
-            <div className="grid place-content-center w-12 h-12 rounded-full border border-solid border-primary-300">
+            <div className="grid h-12 w-12 place-content-center rounded-full border border-solid border-primary-300">
               <a href={`mailto:${app.email}`}>
                 <EnvelopIcon />
               </a>
@@ -66,7 +68,7 @@ export default function ApplicationsTableRow<
       </td>
       <td data-type="status">
         <div
-          className={`w-[130px] grid place-content-center py-3 rounded-[62px] border border-solid text-base font-medium status-${app.status} capitalize`}
+          className={`grid w-[130px] place-content-center rounded-[62px] border border-solid py-3 text-base font-medium status-${app.status} capitalize`}
         >
           {app.status}
         </div>

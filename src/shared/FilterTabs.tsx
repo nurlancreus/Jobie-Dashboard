@@ -23,7 +23,7 @@ export default function FilterTabs({ filterField, options }: FilterTabsProps) {
   };
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex flex-wrap items-center gap-4">
       {options.map((opt) => (
         <FilterButton
           key={opt.value}
@@ -53,7 +53,7 @@ function FilterButton({
   return (
     <button
       type="button"
-      className="bg-primary-300 transition-colors duration-200 whitespace-nowrap text-primary py-[10px] px-[30px] text-base capitalize font-medium rounded-3xl hover:text-white hover:bg-primary disabled:text-white disabled:bg-primary disabled:cursor-not-allowed focus:outline-primary outline-transparent"
+      className="whitespace-nowrap rounded-3xl bg-primary-300 px-4 py-1 lg:px-6 lg:py-2 xl:px-[30px] xl:py-[10px] text-base font-medium capitalize text-primary outline-transparent transition-colors duration-200 hover:bg-primary hover:text-white focus:outline-primary disabled:cursor-not-allowed disabled:bg-primary disabled:text-white"
       onClick={() => handleClick(opt.value)}
       disabled={opt.value === currentFilterValue}
     >

@@ -17,10 +17,12 @@ type ApplicationsHeaderProps = {
   children: ReactNode;
 };
 
-export default function ApplicationsHeader({ children }: ApplicationsHeaderProps) {
+export default function ApplicationsHeader({
+  children,
+}: ApplicationsHeaderProps) {
   return (
     <header>
-      <div className="flex items-center justify-between gap-20 [&>*:first-child]:mr-auto">
+      <div className="flex flex-wrap items-center justify-between gap-x-20 gap-y-4 [&>*:first-child]:mr-auto">
         {children}
         <ApplicationsTabs />
 

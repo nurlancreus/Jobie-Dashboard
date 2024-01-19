@@ -16,7 +16,7 @@ export default function ProfileFormField({
       <FormFieldHeader>{title}</FormFieldHeader>
 
       {/* Form Group Inputs */}
-      <div className="grid grid-cols-3 gap-x-[30px] gap-y-[40px]">
+      <div className="grid-auto-fit-[14rem] grid gap-x-[1.875rem] gap-y-[2.5rem] lg:grid-cols-3">
         {children}
       </div>
     </div>

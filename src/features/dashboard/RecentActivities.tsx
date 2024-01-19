@@ -85,8 +85,8 @@ export default function RecentActivites() {
   );
 
   return (
-    <div className="relative basis-3/5 p-4">
-      <h3 className="mb-5 text-lg font-medium text-dark">Recent Activites</h3>
+    <div className="relative basis-7/12 p-4">
+      <h3 className="mb-5 pt-2 text-lg font-medium text-dark">Recent Activites</h3>
       <ul
         className={`custom-scrollbar flex flex-col gap-4 transition-all duration-200 ${
           isListOpen || !isAboveLargeScreens

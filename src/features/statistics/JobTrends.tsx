@@ -5,35 +5,41 @@ import AdminProgress from "../dashboard/AdminProgress";
 const jobTrends = [
   {
     id: 1,
-    value: 0.66,
+    vacancyNumber: 3_500,
     label: "Engineer",
   },
   {
     id: 2,
-    value: 0.31,
+    vacancyNumber: 7_525,
     label: "Designer",
   },
   {
     id: 3,
-    value: 0.75,
+    vacancyNumber: 1821,
     label: "Manager",
   },
   {
     id: 4,
-    value: 0.62,
+    vacancyNumber: 5_962,
     label: "Programmer",
   },
 ];
 
+const totalVacancies = jobTrends.reduce((acc, curr) => acc + curr.vacancyNumber, 0);
+const trendProgress = jobTrends.map((trend) => {
+  const value = +(trend.vacancyNumber / totalVacancies).toFixed(2);
+  return { ...trend, value };
+});
+
 export default function JobTrends() {
   return (
-    <article data-stats="job-trends">
-      <div className="flex items-center justify-between">
-        <Title>Job Trends</Title>
+    <article data-stats="job-trends" className="job-trends px-6 pt-4 pb-10">
+      <div className="mb-1 flex items-center justify-between">
+        <Title fs={20}>Job Trends</Title>
         <ActionButton />
       </div>
-      <div className="w-full flex items-center pt-5 [&>div]:gap-16">
-        <AdminProgress progress={jobTrends} />
+      <div className="flex w-full items-center pt-5 [&>div]:gap-10">
+        <AdminProgress progress={trendProgress} variant="trends" />
       </div>
     </article>
   );

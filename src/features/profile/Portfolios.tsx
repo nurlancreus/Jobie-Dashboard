@@ -8,10 +8,10 @@ import { adminData } from "@/data/adminData";
 import ActionButton from "@/shared/ActionButton";
 import Title from "@/shared/Title";
 
-export default function Portofolios() {
+export default function Portfolios() {
   return (
-    <div className="bg-white rounded-[20px] pl-7 p-8">
-      <div className="flex items-center justify-between mb-5">
+    <div className="rounded-[1.25rem] bg-white p-6 xl:p-8">
+      <div className="mb-5 flex items-center justify-between">
         <Title>Portfolios</Title>
         <ActionButton />
       </div>
@@ -56,13 +56,13 @@ function Portofolio({ portofolio }: PortofolioProps) {
   }
 
   return (
-    <li className="bg-body rounded-[20px]">
+    <li className="rounded-[1.25rem] bg-body">
       <a
         href={`${baseUrl}${portofolio.path}`}
-        className="flex items-center gap-8"
+        className="flex items-center gap-4 lg:gap-6 xl:gap-8"
       >
         <span
-          className={`w-12 h-12 rounded-2xl grid place-content-center [&_path]:fill-white [&_path]:stroke-white portofolio-${portofolio.site}`}
+          className={`grid h-12 w-12 place-content-center rounded-2xl [&_path]:fill-white [&_path]:stroke-white portofolio-${portofolio.site}`}
         >
           {icon}
         </span>

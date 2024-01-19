@@ -1,3 +1,4 @@
+import { formatNumbers } from "@/utils/helpers";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { CircularProgressbarStyles } from "react-circular-progressbar/dist/types";
 
@@ -47,14 +48,24 @@ type AdminProgressProps = {
     id: number;
     value: number;
     label: string;
+    vacancyNumber?: number;
   }>;
+  variant?: "default" | "trends";
 };
 
-export default function AdminProgress({ progress }: AdminProgressProps) {
+export default function AdminProgress({
+  progress,
+  variant = "default",
+}: AdminProgressProps) {
+  const isJobTrends = variant === "trends";
+
   return (
-    <div className="flex w-full items-center justify-between">
+    <div
+      className={`w-full ${isJobTrends ? "grid grid-cols-[8rem_8rem] grid-rows-2 place-content-center sm:grid-cols-[10rem_10rem_10rem_10rem] sm:grid-rows-1 lg:grid-cols-[10rem_10rem] lg:grid-rows-2 xl:grid-cols-4 xl:grid-rows-1" : "flex items-center justify-between"}  `}
+    >
       {progress.map((data) => {
         let color: string;
+
         switch (data.label) {
           case "React":
             color = "#3EA834";
@@ -69,14 +80,20 @@ export default function AdminProgress({ progress }: AdminProgressProps) {
             color = "#40189D";
             break;
         }
-
         return (
           <div
-            className={`relative h-fit max-h-24 w-fit max-w-24 flex-1 p-2`}
+            className={`relative ${isJobTrends ? "col-span-1" : "h-fit max-h-24 w-fit max-w-24 flex-1"} p-2`}
             key={data.id}
           >
-            <div className="absolute bottom-[-20px] left-0 right-0 text-center">
+            <div
+              className={`absolute ${isJobTrends ? "bottom-[-2.5rem]" : "bottom-[-1.25rem]"}  left-0 right-0 text-center`}
+            >
               {data.label}
+              {data.vacancyNumber && (
+                <p className="text-center text-sm text-dark whitespace-nowrap">
+                  {formatNumbers(data.vacancyNumber)} Vacancy
+                </p>
+              )}
             </div>
             <CircularProgressbar
               value={data.value}

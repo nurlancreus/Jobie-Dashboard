@@ -5,18 +5,18 @@ import AdminProgress from "../dashboard/AdminProgress";
 
 export default function ProfileDetails() {
   return (
-    <div className="bg-white rounded-[20px] pt-9 px-8 pb-10">
+    <div className="rounded-[1.25rem] bg-white px-6 pb-10 pt-5 lg:pt-7 xl:px-8 xl:pt-9">
       {/* Top */}
       <div>
         <ProfileAvatarName />
         <div className="flex items-center gap-5">
-          <div className="flex flex-col items-center gap-1 py-3 flex-1 border border-solid border-gray-100 rounded-[20px]">
-            <h3 className="text-black text-xl font-semibold">228</h3>
-            <h5 className="text-black text-base font-normal">Following</h5>
+          <div className="flex flex-1 flex-col items-center gap-1 rounded-[1.25rem] border border-solid border-gray-100 py-3">
+            <h3 className="text-xl font-semibold text-black">228</h3>
+            <h5 className="text-base font-normal text-black">Following</h5>
           </div>
-          <div className="flex flex-col items-center gap-1 py-3 flex-1 border border-solid border-gray-100 rounded-[20px]">
-            <h3 className="text-black text-xl font-semibold">228</h3>
-            <h5 className="text-black text-base font-normal">Following</h5>
+          <div className="flex flex-1 flex-col items-center gap-1 rounded-[1.25rem] border border-solid border-gray-100 py-3">
+            <h3 className="text-xl font-semibold text-black">228</h3>
+            <h5 className="text-base font-normal text-black">Following</h5>
           </div>
         </div>
       </div>
@@ -26,9 +26,9 @@ export default function ProfileDetails() {
       {/* Bottom */}
       <div>
         {/* Contact */}
-        <div className="flex flex-col gap-5 mb-8">
+        <div className="mb-8 flex flex-col gap-5">
           <div className="flex items-center gap-5">
-            <div className="grid place-content-center w-12 h-12 rounded-full border border-solid border-primary-300">
+            <div className="grid h-12 w-12 place-content-center rounded-full border border-solid border-primary-300">
               <a href={`tel:${adminData.phone}`}>
                 <PhoneIcon />
               </a>
@@ -36,7 +36,7 @@ export default function ProfileDetails() {
             <p className="text-base text-black">{adminData.phone}</p>
           </div>
           <div className="flex items-center gap-5">
-            <div className="grid place-content-center w-12 h-12 rounded-full border border-solid border-primary-300">
+            <div className="grid h-12 w-12 place-content-center rounded-full border border-solid border-primary-300">
               <a href={`tel:${adminData.email}`}>
                 <EnvelopIcon />
               </a>

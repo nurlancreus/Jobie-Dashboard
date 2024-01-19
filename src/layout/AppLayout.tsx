@@ -16,10 +16,10 @@ export default function AppLayout() {
     >
       <Sidebar isOpen={isOpen} />
       <Header onToggle={handleToggle} />
-      <div className="col-start-2 col-end-3 row-start-2 row-end-3 grid overflow-y-auto px-4 pb-12 pt-[30px] md:px-6 lg:px-8 xl:px-10 xxl:px-12">
+      <div className="col-[2/3] row-[2/3] grid overflow-y-auto px-4 pb-12 pt-[30px] md:px-6 lg:px-8 xl:px-10 xxl:px-12">
         <Outlet />
       </div>
-      <div className="z-[-1] col-start-2 col-end-3 row-start-1 row-end-2 bg-primary" />
+      <div className="z-[-1] col-[2/3] row-[1/2] bg-primary" />
     </div>
   );
 }

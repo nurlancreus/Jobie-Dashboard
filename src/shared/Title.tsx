@@ -16,9 +16,9 @@ export default function Title({
   //const fontSize = `${fs}px`;
 
   const fontSizeVariants: Record<number, string> = {
-    18: "text-[clamp(14px,2vw,18px)]",
-    20: "text-[clamp(16px,2vw,20px)]",
-    24: "text-[clamp(20px,2vw,24px)]",
+    18: "text-[18px]",
+    20: "text-[20px]",
+    24: "text-[24px]",
     28: "text-[clamp(24px,2vw,28px)]",
   };
 

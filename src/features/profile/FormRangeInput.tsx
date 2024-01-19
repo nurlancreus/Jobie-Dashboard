@@ -29,7 +29,7 @@ export default function FormRangeInput({
 
   return (
     <div className="flex items-center gap-7 relative">
-      <div className="w-16 h-16 rounded-full grid place-content-center text-base text-primary font-semibold border border-solid border-gray-100">
+      <div className="w-12 h-12 xl:w-16 xl:h-16 rounded-full grid place-content-center text-base text-primary font-semibold border border-solid border-gray-100">
         {value}%
       </div>
       <div className="flex flex-col gap-4 grow">

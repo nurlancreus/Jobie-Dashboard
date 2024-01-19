@@ -9,7 +9,7 @@ import Pagination from "@/shared/Pagination";
 import Loader from "@/shared/Loader";
 
 export default function ApplicationContainer() {
-  const { applications, isLoading, count } = useGetApplications(true);
+  const { applications, isLoading, count } = useGetApplications();
 
   if (isLoading) return <Loader />;
 

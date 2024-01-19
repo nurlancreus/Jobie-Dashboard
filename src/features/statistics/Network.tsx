@@ -1,3 +1,4 @@
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import ActionButton from "@/shared/ActionButton";
 import Title from "@/shared/Title";
 import { formatNumbers } from "@/utils/helpers";
@@ -57,7 +58,7 @@ const renderLegend = (props: DefaultLegendContentProps) => {
               <span className="text-sm font-medium text-gray-900 capitalize">
                 {entry.value}
               </span>
-              <p className="text-lg text-black font-semibold">
+              <p className="text-xl text-black font-semibold">
                 {formatNumbers(payload.value, { maximumFractionDigits: 0 })}{" "}
                 {payload.name}
               </p>
@@ -70,21 +71,23 @@ const renderLegend = (props: DefaultLegendContentProps) => {
 };
 
 export default function Network() {
+  const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
+  
   return (
     <article data-stats="network">
-      <div className="flex items-center justify-between">
-        <Title>Network</Title>
+      <div className="flex items-center justify-between mb-2">
+        <Title fs={20}>Network</Title>
         <ActionButton />
       </div>
       <div className="[&_tspan]:text-lg [&_tspan]:text-black [&_tspan]:font-semibold [&_path]:focus:outline-transparent">
-        <ResponsiveContainer width="100%" height={220}>
-          <PieChart width={250} height={250}>
+        <ResponsiveContainer width="100%" height={isAboveSmallScreens ? 220 : 380}>
+          <PieChart width={350} height={350}>
             <Legend
               content={renderLegend}
               iconType="circle"
               iconSize={25}
-              layout="vertical"
-              verticalAlign="middle"
+              layout={isAboveSmallScreens ? "vertical" : "horizontal"} 
+              verticalAlign={isAboveSmallScreens ? "middle" : "top"}
               align="left"
             />
             <Pie
@@ -92,7 +95,7 @@ export default function Network() {
               cx="50%"
               cy="50%"
               labelLine={false}
-              outerRadius={80}
+              outerRadius={90}
               innerRadius={60}
               fill="#8884d8"
               dataKey="value"

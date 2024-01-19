@@ -60,10 +60,14 @@ export default function ProfileFormRow({
   ].some(Boolean);
 
   return (
-    <div className="flex flex-col gap-10 relative">
+    <div className="relative flex flex-col gap-6 lg:gap-8 xl:gap-10">
       <InputLabel forId={id}>{label}</InputLabel>
 
-      {showIcon && <span className="absolute left-6 bottom-5">{icon!}</span>}
+      {showIcon && (
+        <span className="absolute bottom-3 left-4 lg:bottom-5 lg:left-6">
+          {icon!}
+        </span>
+      )}
 
       {children}
 
@@ -71,7 +75,7 @@ export default function ProfileFormRow({
         <button
           type="button"
           disabled={disabled}
-          className={`bg-transparent border-none text-lg font-semibold  uppercase absolute bottom-5 right-5 disabled:cursor-not-allowed disabled:text-gray-200 ${
+          className={`absolute bottom-3 right-3 border-none bg-transparent text-lg font-semibold uppercase disabled:cursor-not-allowed disabled:text-gray-200 lg:bottom-5 lg:right-5 ${
             showPassword ? "text-gray-200" : "text-primary"
           }`}
           onClick={() =>

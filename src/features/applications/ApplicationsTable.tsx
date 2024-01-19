@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { useSearchParams } from "react-router-dom";
 
 type ApplicationsTableProps<AppType> = {
   data: Array<AppType>;
@@ -12,11 +11,6 @@ export default function ApplicationsTable<AppType>({
   children,
   renderProps,
 }: ApplicationsTableProps<AppType>) {
-  const [searchParams] = useSearchParams();
-
-  const filterSortValue = searchParams.get("sortAppsBy") ?? "newest";
-
-  // switch (filterStatusValue) {
   //   case "pending":
   //     filteredData = applications.filter((app) => app.status === "pending");
   //     break;
@@ -31,37 +25,37 @@ export default function ApplicationsTable<AppType>({
   //     break;
   // }
 
-  const modifier = filterSortValue === "newest" ? -1 : 1;
-
   // filteredData = filteredData
   //   .slice()
   //   .sort((a, b) => (Number(a.created_at) - Number(b.created_at)) * modifier);
 
   return (
     <>
-      <div className="h-fit overflow-auto ">
-        <table className="relative mt-10 w-full min-w-[1300px] border-collapse border-spacing-0 rounded-[20px] bg-white pb-5 [&_td]:py-5 [&_th]:py-8 [&_tr]:border-b [&_tr]:border-b-gray-100">
-          <thead className="text-left text-lg">
-            <tr className="[&>th]:font-medium">
-              <td className="pl-10">
-                <input
-                  type="checkbox"
-                  name={`selectAll`}
-                  id={`selectAll`}
-                  className="cursor-pointer"
-                />
-              </td>
-              <th>ID</th>
-              <th>Date Applied</th>
-              <th>Company</th>
-              <th>Type</th>
-              <th>Postition</th>
-              <th>Contact</th>
-              <th className="pr-6">Status</th>
-            </tr>
-          </thead>
-          <tbody>{data.map(renderProps)}</tbody>
-        </table>
+      <div className="grid">
+        <div className="mt-6 h-fit overflow-auto rounded-[20px] bg-white px-3 lg:mt-8 xl:mt-10">
+          <table className="w-full min-w-[1200px] border-collapse border-spacing-0 [&_td]:px-2 [&_td]:py-3 sm:[&_td]:py-4 xl:[&_td]:py-5 [&_th]:px-3 [&_th]:py-5 sm:[&_th]:py-6 xl:[&_th]:py-8 [&_tr]:border-b [&_tr]:border-b-gray-100">
+            <thead className="text-left text-lg">
+              <tr className="[&>th]:font-medium">
+                <th className="pl-10">
+                  <input
+                    type="checkbox"
+                    name={`selectAll`}
+                    id={`selectAll`}
+                    className="cursor-pointer"
+                  />
+                </th>
+                <th>ID</th>
+                <th>Date Applied</th>
+                <th>Company</th>
+                <th>Type</th>
+                <th>Postition</th>
+                <th>Contact</th>
+                <th className="pr-6">Status</th>
+              </tr>
+            </thead>
+            <tbody className="text-base">{data.map(renderProps)}</tbody>
+          </table>
+        </div>
         {children}
       </div>
     </>

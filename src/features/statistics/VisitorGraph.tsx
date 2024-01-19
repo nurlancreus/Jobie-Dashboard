@@ -68,17 +68,15 @@ const visitorGraphData = [
 export default function VisitorGraph() {
   return (
     <article data-stats="visitor-graph">
-      <div className="flex items-center justify-between">
-        <Title>Visitor Graph</Title>
-        <div className="flex items-center gap-8">
-          <SwitchBtn id="graphDetails" checked={false} label="Show Details" />
-          <Select
-            variant="default"
-            id="selectPeriod"
-            options={selectOptions}
-            value="weekly"
-          />
-        </div>
+      <div className="flex flex-wrap items-center gap-y-3 gap-x-6 justify-between mb-2">
+        <Title fs={20}>Visitor Graph</Title>
+        <SwitchBtn id="graphDetails" checked={false} label="Show Details" />
+        <Select
+          variant="default"
+          id="selectPeriod"
+          options={selectOptions}
+          value="weekly"
+        />
       </div>
       <div>
         <ResponsiveContainer width="100%" height={300}>

@@ -79,14 +79,14 @@ export default function ProfileForm() {
     <form
       id="profileForm"
       name="profileForm"
-      className="rounded-[20px] bg-white px-[30px] pb-14 pt-7"
+      className="rounded-[1.25rem] bg-white px-6 pb-8 pt-5 md:pb-10 lg:pb-12 xl:px-[1.875rem] xl:pb-14 xl:pt-7"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="mb-14 flex items-center justify-between">
+      <div className="mb-8 flex flex-wrap items-center justify-between lg:mb-10 xl:mb-14">
         <Title fs={24} fw="semibold">
           Edit Profile
         </Title>
-        <div className="flex items-center gap-5">
+        <div className="flex flex-wrap items-center gap-5">
           <SwitchBtn
             label="Available for hire?"
             id="forHire"
@@ -248,7 +248,7 @@ export default function ProfileForm() {
               >
                 <option value="london">London</option>
               </select>
-              <span className="absolute bottom-6 right-8 [&_path]:stroke-primary ">
+              <span className="absolute bottom-4 right-6 lg:bottom-6 lg:right-8 [&_path]:stroke-primary ">
                 <Chevron />
               </span>
             </div>
@@ -265,7 +265,7 @@ export default function ProfileForm() {
               >
                 <option value="england">England</option>
               </select>
-              <span className="absolute bottom-6 right-8 [&_path]:stroke-primary">
+              <span className="absolute bottom-4 right-6 lg:bottom-6 lg:right-8 [&_path]:stroke-primary">
                 <Chevron />
               </span>
             </div>
@@ -278,7 +278,7 @@ export default function ProfileForm() {
           <FormTextArea label="Tell About You" error={errors?.aboutMe?.message}>
             <textarea
               id="aboutMe"
-              className="textarea-scrollbar h-[170px] w-full resize-none rounded-[20px] border border-solid border-gray-200 bg-body p-6 text-sm text-gray-800 outline-transparent focus:outline-primary-500"
+              className="textarea-scrollbar h-[10.625rem] w-full resize-none rounded-[1.25rem] border border-solid border-gray-200 bg-body p-4 lg:p-6 text-sm text-gray-800 outline-transparent focus:outline-primary-500"
               {...register("aboutMe")}
             ></textarea>
           </FormTextArea>
@@ -298,7 +298,7 @@ export default function ProfileForm() {
           >
             Skills
           </FormFieldHeader>
-          <div className="grid grid-cols-2 gap-x-16 gap-y-8">
+          <div className="grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:gap-x-12 lg:gap-y-6 xl:gap-x-16 xl:gap-y-8">
             <FormRangeInput
               label="Programming"
               error={errors?.programming?.message}

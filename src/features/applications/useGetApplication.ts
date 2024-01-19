@@ -9,7 +9,13 @@ export function useGetApplications() {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const filterStatusValue = searchParams.get("status") ?? "all";
-  const { currentPage, pageSize, from, to } = usePaginationParams("applications");
+
+  const filterSortValue = (searchParams.get("sortAppsBy") ?? "newest") as
+    | "newest"
+    | "oldest";
+
+  const { currentPage, pageSize, from, to } =
+    usePaginationParams("applications");
 
   const paginationOptions = {
     currentPage,
@@ -23,7 +29,8 @@ export function useGetApplications() {
     error,
   } = useQuery({
     queryKey: ["applications", currentPage, filterStatusValue],
-    queryFn: () => getApplications(paginationOptions, filterStatusValue), // this fn should return the Promise
+    queryFn: () =>
+      getApplications(paginationOptions, filterStatusValue, filterSortValue), // this fn should return the Promise
   });
 
   // RE-PAGINATION

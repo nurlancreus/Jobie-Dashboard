@@ -36,7 +36,7 @@ export default function ApplicationsTableRow<
       </td>
       <td data-type="date">{timeAgo(app.created_at)}</td>
       <td data-type="company">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 pr-4">
           <Logo src={company.logo} w={50} h={50} />
           <Titles title={company.name} subtitle="Creative Design Agency" />
         </div>
@@ -68,7 +68,7 @@ export default function ApplicationsTableRow<
       </td>
       <td data-type="status">
         <div
-          className={`grid w-[130px] place-content-center rounded-[62px] border border-solid py-3 text-base font-medium status-${app.status} capitalize`}
+          className={`grid w-[130px] place-content-center rounded-[62px] border border-solid p-2 xl:py-3 xl:px-4 text-base font-medium status-${app.status} capitalize`}
         >
           {app.status}
         </div>

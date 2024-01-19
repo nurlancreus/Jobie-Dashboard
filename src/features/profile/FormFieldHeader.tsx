@@ -8,7 +8,7 @@ type FormFieldHeaderProps = {
 
 export default function FormFieldHeader({ children, button}: FormFieldHeaderProps) {
   return (
-    <div className="flex items-center gap-8 mb-[30px]">
+    <div className="flex items-center gap-8 mb-[1.875rem]">
       <Title fs={18} fw="semibold" caseForm="uppercase">
         {children}
       </Title>

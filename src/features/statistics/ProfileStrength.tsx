@@ -1,3 +1,4 @@
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import ActionButton from "@/shared/ActionButton";
 import Title from "@/shared/Title";
 import {
@@ -92,41 +93,47 @@ const renderLegend = (props: DefaultLegendContentProps) => {
   const { payload } = props as { payload: Array<CustomPayload> };
 
   return (
-    <ul className="flex flex-col gap-4 pl-6">
-      {payload?.map((entry, index) => {
+    <div className="pl-6 mt-4">
+      <Title caseForm="capitalize" fw="medium" fs={16}>
+        Legend
+      </Title>
+      <ul className="flex flex-col gap-4 mt-2">
+        {payload?.map((entry, index) => {
+          const percentage = profileStrengthWithPercentages[0][
+            entry.dataKey
+          ] as number;
 
-        const percentage = profileStrengthWithPercentages[0][
-          entry.dataKey
-        ] as number;
+          return (
+            <li key={`item-${index}`} className="flex items-center gap-4">
+              <span
+                className={`min-h-6 min-w-8 rounded-xl custom-legend-${entry.dataKey}`}
+              />
 
-        return (
-          <li key={`item-${index}`} className="flex items-center gap-4">
-            <span
-              className={`rounded-xl w-8 h-6 custom-legend-${entry.dataKey}`}
-            />
-
-            <p className="text-lg font-medium text-black capitalize">
-              {percentage.toFixed(0)}%
-            </p>
-            <p className="text-sm font-medium text-gray-900 capitalize">
-              {entry.value}
-            </p>
-          </li>
-        );
-      })}
-    </ul>
+              <p className="text-lg font-medium capitalize text-black">
+                {percentage.toFixed(0)}%
+              </p>
+              <p className="text-sm font-medium capitalize text-gray-900">
+                {entry.value}
+              </p>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
 
 export default function ProfileStrength() {
+  const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
+
   return (
     <article data-stats="profile-strength">
-      <div className="flex items-center justify-between">
-        <Title>Profile Strength</Title>
+      <div className="flex items-center justify-between mb-2">
+        <Title fs={20}>Profile Strength</Title>
         <ActionButton />
       </div>
       <div>
-        <ResponsiveContainer width="100%" height={380}>
+        <ResponsiveContainer width="100%" height={isAboveSmallScreens ? 400 : 650}>
           <BarChart
             width={500}
             height={300}
@@ -137,7 +144,7 @@ export default function ProfileStrength() {
               left: -30,
               bottom: 5,
             }}
-            barCategoryGap={14}
+            barCategoryGap={10}
           >
             <XAxis dataKey="name" dy={5} axisLine={false} tickLine={false} />
             <YAxis axisLine={false} tick={false} tickLine={false} />
@@ -146,9 +153,13 @@ export default function ProfileStrength() {
               content={renderLegend}
               iconType="circle"
               iconSize={15}
-              layout="vertical"
-              verticalAlign="middle"
-              align="right"
+              layout= {isAboveSmallScreens ? "vertical" : "horizontal"}
+              wrapperStyle={{
+                marginLeft: isAboveSmallScreens ? 0 : 50,
+                width: "40%"
+              }}
+              verticalAlign={isAboveSmallScreens ? "middle" : "bottom"}
+              align={isAboveSmallScreens ? "right" : "left"}
             />
             <Bar
               name="application Answered"

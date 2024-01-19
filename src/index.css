@@ -22,7 +22,7 @@
   }
 
   .form-input {
-    @apply text-lg text-black font-medium placeholder:text-lg placeholder:text-gray-200 pb-5 border-b border-solid border-b-gray-100 focus:outline-none focus:border-b-primary
+    @apply text-lg text-black font-medium placeholder:text-lg placeholder:text-gray-200 pb-3 lg:pb-5 border-b border-solid border-b-gray-100 focus:outline-none focus:border-b-primary
   }
 }
 

@@ -3,6 +3,7 @@ import { supabase } from "./supabase";
 export async function getApplications(
   paginationOpt: Record<string, number>,
   filterByStatus: string,
+  sortByDate: "newest" | "oldest",
 ) {
   const { from, to } = paginationOpt;
 
@@ -12,7 +13,13 @@ export async function getApplications(
 
   query = query.range(from, to);
 
+  // Filtering by status
   if (filterByStatus !== "all") query = query.eq("status", filterByStatus);
+
+  // Sorting by date
+  query = query.order("created_at", {
+    ascending: sortByDate === "newest" ? false : true,
+  });
 
   const { data, error, count } = await query;
 

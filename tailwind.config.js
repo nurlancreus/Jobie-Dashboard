@@ -47,6 +47,7 @@ export default {
         // sm: ["14px", "20px"],
         base: ["clamp(14px,2vw,16px)", "clamp(20px,2vw,24px)"],
         lg: ["clamp(16px,2vw,18px)", "clamp(24px,2vw,28px)"],
+        xl: ["clamp(18px,2vw,20px)", "clamp(24px,2vw,28px)"],
         // xl: ["24px", "32px"],
         "5xl": ["clamp(36px,2vw + 1px,48px)", "clamp(64px,2vw + 1px,72px)"],
       },
@@ -60,5 +61,6 @@ export default {
       xxl: "1800px",
     },
   },
-  plugins: [],
+  // eslint-disable-next-line no-undef
+  plugins: [require('@shrutibalasa/tailwind-grid-auto-fit'),],
 };

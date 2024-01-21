@@ -11,23 +11,6 @@ export default function ApplicationsTable<AppType>({
   children,
   renderProps,
 }: ApplicationsTableProps<AppType>) {
-  //   case "pending":
-  //     filteredData = applications.filter((app) => app.status === "pending");
-  //     break;
-  //   case "on-hold":
-  //     filteredData = applications.filter((app) => app.status === "on-hold");
-  //     break;
-  //   case "candidate":
-  //     filteredData = applications.filter((app) => app.status === "candidate");
-  //     break;
-  //   default:
-  //     filteredData = applications;
-  //     break;
-  // }
-
-  // filteredData = filteredData
-  //   .slice()
-  //   .sort((a, b) => (Number(a.created_at) - Number(b.created_at)) * modifier);
 
   return (
     <>

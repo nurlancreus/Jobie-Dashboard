@@ -4,15 +4,19 @@ import usePaginationParams from "@/hooks/usePaginationParams";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
+export type AppsStatusType = "all" | "pending" | "on-hold" | "candidate";
+
+export type AppsSortType = "newest" | "oldest";
+
 export function useGetApplications() {
   // const queryClient = useQueryClient();
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const filterStatusValue = searchParams.get("status") ?? "all";
+  const filterStatusValue = (searchParams.get("status") ??
+    "all") as AppsStatusType;
 
-  const filterSortValue = (searchParams.get("sortAppsBy") ?? "newest") as
-    | "newest"
-    | "oldest";
+  const filterSortValue = (searchParams.get("sortAppsBy") ??
+    "newest") as AppsSortType;
 
   const { currentPage, pageSize, from, to } =
     usePaginationParams("applications");
@@ -23,14 +27,18 @@ export function useGetApplications() {
     to,
   };
 
+  const filterOptions = {
+    filterStatusValue,
+    filterSortValue,
+  };
+
   const {
     data: { data: applications = [], count } = {},
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["applications", currentPage, filterStatusValue],
-    queryFn: () =>
-      getApplications(paginationOptions, filterStatusValue, filterSortValue), // this fn should return the Promise
+    queryKey: ["applications", currentPage, filterStatusValue, filterSortValue],
+    queryFn: () => getApplications(paginationOptions, filterOptions), // this fn should return the Promise
   });
 
   // RE-PAGINATION

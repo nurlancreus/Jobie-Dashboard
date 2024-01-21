@@ -24,7 +24,7 @@ export default function Pagination({ total = 0, variant }: PaginationProps) {
   const isLastPage = currentPage === numOfPages;
 
   return (
-    <nav className="flex items-center gap-4">
+    <nav className="flex items-center gap-2 lg:gap-4">
       <PaginationButton variant="prev" disabled={isFirstPage}>
         Previous
       </PaginationButton>
@@ -74,7 +74,7 @@ function PaginationButton({
   disabled,
 }: PaginationButtonProps) {
   const { currentPage, handlePagination } = usePaginationParams();
-  const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
+  const isAboveMediumScreens = useMediaQuery("(min-width: 992px)");
 
   const handleClick = (page: number) => {
     if (disabled) return;
@@ -97,7 +97,7 @@ function PaginationButton({
       onClick={() => handleClick(currentPage)}
     >
       <PaginationArrow />
-      {isAboveSmallScreens && children}
+      {isAboveMediumScreens && children}
     </button>
   );
 }

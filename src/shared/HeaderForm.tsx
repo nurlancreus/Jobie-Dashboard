@@ -35,7 +35,7 @@ export default function HeaderForm({
         <input
           type="text"
           placeholder="Search by Title, Company or any jobs keyword..."
-          className="grow rounded-[48px] px-4 pb-[14px] pt-5 placeholder:text-base placeholder:text-gray-200 focus:outline-primary"
+          className="grow rounded-[48px] px-4 py-4 placeholder:text-base placeholder:text-gray-200 focus:outline-primary"
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />

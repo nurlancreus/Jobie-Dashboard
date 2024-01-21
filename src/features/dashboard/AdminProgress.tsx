@@ -33,7 +33,7 @@ const progressBarStyles = {
     // Text color
     fill: "#000",
     // Text size
-    fontSize: "22px",
+    fontSize: "18px",
     fontWeight: 600,
     translate: "-18px 8px",
   },
@@ -88,7 +88,7 @@ export default function AdminProgress({
             <div
               className={`absolute ${isJobTrends ? "bottom-[-2.5rem]" : "bottom-[-1.25rem]"}  left-0 right-0 text-center`}
             >
-              {data.label}
+              <p className={`${isJobTrends ? "font-medium text-lg" : "text-sm"}`}>{data.label}</p>
               {data.vacancyNumber && (
                 <p className="text-center text-sm text-dark whitespace-nowrap">
                   {formatNumbers(data.vacancyNumber)} Vacancy

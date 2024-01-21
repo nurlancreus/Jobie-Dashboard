@@ -1,31 +1,54 @@
-import { BellIcon, ChatIcon, SearchIcon, ToggleIcon } from "@/assets/icons";
+import {
+  BellIcon,
+  ChatIcon,
+  MenuArrow,
+  SearchIcon,
+  ToggleIcon,
+} from "@/assets/icons";
+import { useSidebarContext } from "@/contexts/SidebarProvider";
 import { adminData } from "@/data/adminData";
+import MainLogo from "@/shared/MainLogo";
 import { useLocation } from "react-router-dom";
 
-type HeaderProps = { onToggle: () => void };
-
-export default function Header({ onToggle }: HeaderProps) {
+export default function Header() {
+  const { toggle, isScreenSmall, isLargeOpen, isSmallOpen } =
+    useSidebarContext();
   const { pathname } = useLocation();
 
   const title = pathname.slice(1).replace("-", " ");
 
+  let icon: JSX.Element;
+
+  if (isScreenSmall) {
+    if (!isSmallOpen) icon = <MenuArrow />;
+    else icon = <ToggleIcon />;
+  } else {
+    if (!isLargeOpen) icon = <MenuArrow />;
+    else icon = <ToggleIcon />;
+  }
+
   return (
-    <header className="col-start-2 col-end-3 row-start-1 row-end-2 flex justify-between rounded-tl-[48px] bg-body px-6 py-5 lg:px-8 xl:px-10 xl:py-7 xxl:px-12 xxl:py-8">
+    <header className="relative col-start-2 col-end-3 row-start-1 row-end-2 flex items-center justify-between bg-body px-6 py-5 md:rounded-tl-[48px] lg:px-8 xl:px-10 xl:py-7 xxl:px-12 xxl:py-8">
       {/* Toggle & Title */}
-      <div className="flex items-center gap-6 lg:gap-8 xl:gap-11">
+      {isScreenSmall && (
+        <div className="absolute bottom-0 left-0 top-0 w-20 overflow-hidden bg-primary px-2">
+          <MainLogo variant="header" />
+        </div>
+      )}
+      <div className="absolute left-24 top-1/2 flex -translate-y-1/2 items-center gap-6 md:static md:translate-y-0 lg:gap-8 xl:gap-11">
         <button
           className="border-none bg-transparent outline-transparent"
-          onClick={onToggle}
+          onClick={toggle}
         >
-          <ToggleIcon />
+          {icon}
         </button>
-        <h1 className="hidden text-heading font-semibold capitalize sm:block">
+        <h1 className="hidden whitespace-nowrap text-heading font-semibold capitalize sm:block">
           {title}
         </h1>
       </div>
 
       {/* Rest */}
-      <div className="xl:gap-18 flex w-2/3 items-center md:gap-10 lg:gap-14 xxl:gap-24">
+      <div className="xl:gap-18 ml-auto flex w-2/3 items-center md:ml-0 md:gap-8 lg:gap-10 xxl:gap-24">
         {/* Search */}
 
         <form

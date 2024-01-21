@@ -9,7 +9,7 @@ export default function FeaturedCompanies() {
   const { companies } = useGetCompanies();
 
   return (
-    <div className="col-[1/-1] row-[8/9] mt-5 sm:row-[6/7] lg:col-[1/-1] lg:row-[4/-1]">
+    <div className="col-[1/-1] row-[8/9] lg:mt-5 sm:row-[6/7] lg:col-[1/-1] lg:row-[4/-1]">
       <div className="mb-7 flex flex-wrap items-center justify-between gap-2">
         <Title>Featured Companies</Title>
         <div className="flex items-center gap-11">

@@ -53,7 +53,7 @@ function FilterButton({
   return (
     <button
       type="button"
-      className="whitespace-nowrap rounded-3xl bg-primary-300 px-4 py-1 text-base font-medium capitalize text-primary outline-transparent transition-colors duration-200 hover:bg-primary hover:text-white focus:outline-primary disabled:cursor-not-allowed disabled:bg-primary disabled:text-white lg:px-6 lg:py-2 xl:px-[30px] xl:py-[10px]"
+      className="whitespace-nowrap rounded-3xl bg-primary-300 px-4 py-2 text-base font-medium capitalize text-primary outline-transparent transition-colors duration-200 hover:bg-primary hover:text-white focus:outline-primary disabled:cursor-not-allowed disabled:bg-primary disabled:text-white lg:px-6 lg:py-2 xl:px-[30px] xl:py-[10px]"
       onClick={() => handleClick(opt.value)}
       disabled={opt.value === currentFilterValue}
     >

@@ -29,7 +29,7 @@ export default function SharedSwiper<T extends { id: number }>({
   Component,
 }: SharedSwiperProps<T>) {
   return (
-    <div className="">
+    <div>
       <Swiper
         breakpoints={{
           0: {

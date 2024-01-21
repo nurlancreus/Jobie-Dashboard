@@ -9,13 +9,13 @@ const widgetsData = [
   {
     id: 1,
     icon: <CalendarIcon />,
-    label: "Interviews Schedule",
+    label: "Interviews",
     value: 86,
   },
   {
     id: 2,
     icon: <SuitcaseIcon />,
-    label: "Application Sent",
+    label: "Apply",
     value: 75,
   },
   {
@@ -27,7 +27,7 @@ const widgetsData = [
   {
     id: 4,
     icon: <EmailIcon />,
-    label: "Unread Message",
+    label: "Message",
     value: 93,
   },
 ];
@@ -57,7 +57,7 @@ function Widget({ widget }: WidgetProps) {
       className={`widget-${widget.id} overflow-hidden rounded-[28px] p-[32px_24px_24px] xl:p-[36px_26px_26px] xxl:p-[40px_30px_30px]`}
     >
       <div className="flex items-center justify-between">
-        <span className="grid min-h-fit min-w-fit place-content-center rounded-2xl border border-solid border-primary-300 p-3">
+        <span className="grid min-h-fit min-w-fit place-content-center rounded-xl border border-solid border-primary-300 p-2 lg:p-3 [&_svg]:h-8 [&_svg]:w-8 xl:[&_svg]:h-9 xl:[&_svg]:w-9 xxl:[&_svg]:h-auto xxl:[&_svg]:w-auto">
           {widget.icon}
         </span>
         <div className="flex flex-col items-end text-white">

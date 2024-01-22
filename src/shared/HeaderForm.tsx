@@ -14,7 +14,7 @@ export default function HeaderForm({
 }: HeaderFormProps) {
   return (
     <form
-      className="rounded-3xl bg-white px-[26px] py-4 shadow-[0px_12px_15px_0px_rgba(0,0,0,0.03)]"
+      className="rounded-3xl bg-white px-4 md:px-5 lg:px-6 xl:px-7 py-4 shadow-[0px_12px_15px_0px_rgba(0,0,0,0.03)]"
       onSubmit={onSubmit}
     >
       <div className="flex flex-wrap items-center justify-between gap-4">
@@ -41,7 +41,7 @@ export default function HeaderForm({
         />
 
         {/* RIGHT */}
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-5 [&_svg]:h-5 [&_svg]:w-5 lg:[&_svg]:h-6 lg:[&_svg]:w-6 xl:[&_svg]:h-auto xl:[&_svg]:w-auto">
           <Button type="button">
             <FilterIcon />
             <span>Filter</span>

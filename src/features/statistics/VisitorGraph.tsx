@@ -1,3 +1,4 @@
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import Select from "@/shared/Select";
 import SwitchBtn from "@/shared/SwitchBtn";
 import Title from "@/shared/Title";
@@ -66,9 +67,11 @@ const visitorGraphData = [
 ];
 
 export default function VisitorGraph() {
+  const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
+
   return (
     <article data-stats="visitor-graph">
-      <div className="flex flex-wrap items-center gap-y-3 gap-x-6 justify-between mb-2">
+      <div className="mb-2 flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
         <Title fs={20}>Visitor Graph</Title>
         <SwitchBtn id="graphDetails" checked={false} label="Show Details" />
         <Select
@@ -86,13 +89,20 @@ export default function VisitorGraph() {
             data={visitorGraphData}
             margin={{
               top: 15,
-              right: 30,
-              left: -30,
+              right: isAboveSmallScreens ? 30 : 0,
+              left: isAboveSmallScreens ? -30 : -60,
               bottom: 5,
             }}
           >
             <CartesianGrid strokeDasharray="0" />
-            <XAxis dataKey="name" dy={10} />
+            <XAxis
+              dataKey="name"
+              dy={10}
+              angle={isAboveSmallScreens ? 0 : -25}
+              style={{
+                fontSize: isAboveSmallScreens ? 16 : 12,
+              }}
+            />
             <YAxis tickLine={false} tickFormatter={() => ""} axisLine={false} />
             <Tooltip />
             <Legend
@@ -100,7 +110,11 @@ export default function VisitorGraph() {
               align="left"
               iconType="circle"
               iconSize={15}
-              wrapperStyle={{ marginTop: -10, marginLeft: 56 }}
+              wrapperStyle={{
+                marginTop: -10,
+                marginLeft: 56,
+                fontSize: isAboveSmallScreens ? 16 : 14,
+              }}
             />
             <Line
               type="monotone"

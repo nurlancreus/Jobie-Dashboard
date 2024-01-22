@@ -5,9 +5,9 @@ import AdminProgress from "../dashboard/AdminProgress";
 
 export default function ProfileDetails() {
   return (
-    <div className="rounded-[1.25rem] bg-white px-6 pb-10 pt-5 lg:pt-7 xl:px-8 xl:pt-9">
+    <div className="flex flex-col rounded-[1.25rem] bg-white px-6 pb-10 pt-5 sm:flex-row md:flex-col lg:pt-7 xl:px-8 xl:pt-9">
       {/* Top */}
-      <div>
+      <div className="sm:flex-1 sm:border-r sm:p-7 md:flex-auto md:border-none md:p-0">
         <ProfileAvatarName />
         <div className="flex items-center gap-5">
           <div className="flex flex-1 flex-col items-center gap-1 rounded-[1.25rem] border border-solid border-gray-100 py-3">
@@ -24,7 +24,7 @@ export default function ProfileDetails() {
       <hr className="my-9" />
 
       {/* Bottom */}
-      <div>
+      <div className="sm:flex-1 sm:p-7 md:flex-auto md:p-0">
         {/* Contact */}
         <div className="mb-8 flex flex-col gap-5">
           <div className="flex items-center gap-5">

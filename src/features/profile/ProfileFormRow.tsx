@@ -47,7 +47,7 @@ export default function ProfileFormRow({
 
   if (!isValidElement(children)) return null;
 
-  const id = children?.props.id;
+  const id = children.props.id ?? children.props.children[0].props.id;
 
   if (label.toLocaleLowerCase().includes("phone")) icon = <PhoneIcon />;
   if (label.toLocaleLowerCase().includes("email")) icon = <EnvelopIcon />;
@@ -75,7 +75,7 @@ export default function ProfileFormRow({
         <button
           type="button"
           disabled={disabled}
-          className={`absolute bottom-3 right-3 border-none bg-transparent text-lg font-semibold uppercase disabled:cursor-not-allowed disabled:text-gray-200 lg:bottom-5 lg:right-5 ${
+          className={`absolute bottom-3 right-3 border-none bg-transparent text-base xl:text-lg font-semibold uppercase disabled:cursor-not-allowed disabled:text-gray-200 lg:bottom-5 lg:right-5 ${
             showPassword ? "text-gray-200" : "text-primary"
           }`}
           onClick={() =>

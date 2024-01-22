@@ -1,3 +1,4 @@
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import useSortParams from "@/hooks/useSortParams";
 import useSwitchParams from "@/hooks/useSwitchParams";
 import {
@@ -19,6 +20,7 @@ import {
 } from "recharts";
 
 export default function VacancyStatsChart() {
+  const isScreenSmall = useMediaQuery("(max-width: 992px)");
   const { paramsValue: selectBy } = useSortParams(SELECT_PERIOD_ID, "year");
 
   const { switchOn: showApplication } = useSwitchParams(
@@ -77,8 +79,8 @@ export default function VacancyStatsChart() {
           data={data}
           margin={{
             top: 5,
-            right: 30,
-            left: 20,
+            right: isScreenSmall ? 0 : 30,
+            left: isScreenSmall ? -20 : 10,
             bottom: 5,
           }}
         >
@@ -88,15 +90,27 @@ export default function VacancyStatsChart() {
             axisLine={false}
             tickLine={false}
             dy={16}
+            angle={isScreenSmall ? -25 : 0}
+            style={{
+              fontSize: isScreenSmall ? 12 : 16,
+            }}
             tickFormatter={(d) => `${tickState.unit} ${d}`}
           />
-          <YAxis axisLine={false} tickLine={false} dx={-10} />
+          <YAxis
+            axisLine={false}
+            tickLine={false}
+            dx={-10}
+            style={{
+              fontSize: isScreenSmall ? 12 : 16,
+            }}
+          />
           <Tooltip />
           <Legend
             iconType="circle"
             wrapperStyle={{
               paddingTop: 24,
               textTransform: "capitalize",
+              fontSize: isScreenSmall ? 14 : 16,
             }}
           />
 

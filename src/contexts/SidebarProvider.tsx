@@ -26,14 +26,13 @@ export default function SidebarProvider({ children }: SidebarProviderProps) {
   const [isLargeOpen, setIsLargeOpen] = useState(true);
   const [isSmallOpen, setIsSmallOpen] = useState(false);
 
-  const isOpen = isLargeOpen || isSmallOpen
+  const isOpen = isLargeOpen || isSmallOpen;
 
   const isScreenSmall = useMediaQuery("(max-width: 992px)");
 
   useEffect(() => {
     const handler = () => {
       if (!isScreenSmall) setIsSmallOpen(false);
-      //console.log("ffff", isSmallOpen);
     };
 
     window.addEventListener("resize", handler);
@@ -46,11 +45,7 @@ export default function SidebarProvider({ children }: SidebarProviderProps) {
   function toggle() {
     if (isScreenSmall) {
       setIsSmallOpen((prev) => !prev);
-      console.log("toggle Small", isSmallOpen);
-    } else {
-      setIsLargeOpen((prev) => !prev);
-      console.log("toggle Large", isLargeOpen);
-    }
+    } else setIsLargeOpen((prev) => !prev);
   }
 
   function close() {

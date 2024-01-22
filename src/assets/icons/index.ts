@@ -1,5 +1,4 @@
 export { default as ToggleIcon } from "./ToggleIcon";
-export { default as MenuArrow } from "./MenuArrow";
 export { default as SearchIcon } from "./SearchIcon";
 export { default as ChatIcon } from "./ChatIcon";
 export { default as BellIcon } from "./BellIcon";

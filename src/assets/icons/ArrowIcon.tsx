@@ -6,6 +6,7 @@ export default function ArrowIcon() {
       height="24"
       viewBox="0 0 24 24"
       fill="none"
+      transform="rotate(-90)"
     >
       <g clipPath="url(#clip0_1_396)">
         <path

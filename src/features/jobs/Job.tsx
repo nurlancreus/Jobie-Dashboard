@@ -27,7 +27,7 @@ export default function Job<
 
   return (
     <Link to="#">
-      <article className="flex h-full min-h-[320px] w-full flex-col rounded-[20px] bg-white p-[30px] shadow-[0px_4px_0px_0px_rgba(62,73,84,0.04)] transition-shadow duration-200 hover:shadow-[0px_12px_23px_0px_rgba(0,0,0,0.10)]">
+      <article className="flex h-full min-h-[320px] w-full flex-col rounded-[20px] bg-white p-5 md:p-6 lg:p-7 xl:p-[30px] shadow-[0px_4px_0px_0px_rgba(62,73,84,0.04)] transition-shadow duration-200 hover:shadow-[0px_12px_23px_0px_rgba(0,0,0,0.10)]">
         <div className="flex items-center justify-between">
           <div>
             <h5

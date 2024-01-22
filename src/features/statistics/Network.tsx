@@ -51,14 +51,14 @@ const renderLegend = (props: DefaultLegendContentProps) => {
         return (
           <li key={`item-${index}`} className="flex items-center gap-4">
             <span
-              className={`rounded-full w-8 h-8 custom-legend-${entry.value}`}
+              className={`h-8 w-8 rounded-full custom-legend-${entry.value}`}
             />
 
             <div>
-              <span className="text-sm font-medium text-gray-900 capitalize">
+              <span className="text-sm font-medium capitalize text-gray-900">
                 {entry.value}
               </span>
-              <p className="text-xl text-black font-semibold">
+              <p className="text-xl font-semibold text-black">
                 {formatNumbers(payload.value, { maximumFractionDigits: 0 })}{" "}
                 {payload.name}
               </p>
@@ -72,21 +72,24 @@ const renderLegend = (props: DefaultLegendContentProps) => {
 
 export default function Network() {
   const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
-  
+
   return (
     <article data-stats="network">
-      <div className="flex items-center justify-between mb-2">
+      <div className="mb-2 flex items-center justify-between">
         <Title fs={20}>Network</Title>
         <ActionButton />
       </div>
-      <div className="[&_tspan]:text-lg [&_tspan]:text-black [&_tspan]:font-semibold [&_path]:focus:outline-transparent">
-        <ResponsiveContainer width="100%" height={isAboveSmallScreens ? 220 : 380}>
+      <div className="[&_path]:focus:outline-transparent [&_tspan]:text-lg">
+        <ResponsiveContainer
+          width="100%"
+          height={isAboveSmallScreens ? 220 : 380}
+        >
           <PieChart width={350} height={350}>
             <Legend
               content={renderLegend}
               iconType="circle"
               iconSize={25}
-              layout={isAboveSmallScreens ? "vertical" : "horizontal"} 
+              layout={isAboveSmallScreens ? "vertical" : "horizontal"}
               verticalAlign={isAboveSmallScreens ? "middle" : "top"}
               align="left"
             />
@@ -100,7 +103,15 @@ export default function Network() {
               fill="#8884d8"
               dataKey="value"
             >
-              <Label value={`${LABEL}%`} position="center" />
+              <Label
+                value={`${LABEL}%`}
+                position="center"
+                style={{
+                  textAnchor: "middle",
+                  fill: "black",
+                  fontWeight: 600,
+                }}
+              />
               {data.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}

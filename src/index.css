@@ -22,7 +22,11 @@
   }
 
   .form-input {
-    @apply text-lg text-black font-medium placeholder:text-lg placeholder:text-gray-200 pb-3 lg:pb-5 border-b border-solid border-b-gray-100 focus:outline-none focus:border-b-primary
+    @apply text-lg text-black font-medium placeholder:text-lg placeholder:text-gray-200 pb-3 lg:pb-5 border-b border-solid border-b-gray-100 focus:outline-none focus:border-b-primary focus:border-b-2 hover:border-b-primary hover:border-b-2 transition
+  }
+
+  .input-range {
+    @apply accent-primary
   }
 }
 
@@ -59,35 +63,39 @@
   }
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-  border-radius: 3px;
-  scrollbar-gutter: stable;
+@media (min-width: 992px) {
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 3px;
+    scrollbar-gutter: stable;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+    border-radius: 2px;
+  }
+
+  .textarea-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #40189D;
+    border-radius: 50px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #BEA1FF;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4E36E2;
+  }
 }
 
-.custom-scrollbar::-webkit-scrollbar {
-  width: 3px;
-  height: 3px;
-  border-radius: 2px;
-}
-
-.textarea-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #40189D;
-  border-radius: 50px;
-}
-
-::-webkit-scrollbar-track {
-  background: #BEA1FF;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #4E36E2;
-}
 
 /* WIDGETS BG COLORS */
 

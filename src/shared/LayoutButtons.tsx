@@ -22,9 +22,9 @@ function LayoutButton({ type }: LayoutButtonProps) {
       type="button"
       onClick={() => handleLayoutParams(type)}
       disabled={layoutParamsValue === type}
-      className="rounded-full w-12 h-12 grid place-content-center transition-colors duration-200 [&_path]:transition-colors [&_path]:duration-200 border border-solid outline-transparent border-primary-500 focus:outline-primary-600 
-       bg-transparent [&:hover_path]:fill-white hover:bg-primary [&_path]:fill-primary 
-       [&:disabled_path]:fill-white disabled:bg-primary disabled:cursor-not-allowed"
+      className="grid h-fit w-fit place-content-center rounded-full border border-solid border-primary-500 bg-transparent p-2 outline-transparent transition-colors duration-200 hover:bg-primary 
+       focus:outline-primary-600 disabled:cursor-not-allowed disabled:bg-primary xl:p-3 
+       [&:disabled_path]:fill-white [&:hover_path]:fill-white [&_path]:fill-primary [&_path]:transition-colors [&_path]:duration-200 [&_svg]:h-4 [&_svg]:w-4 lg:[&_svg]:h-5 lg:[&_svg]:w-5 xl:[&_svg]:h-auto xl:[&_svg]:w-auto"
     >
       {type === "list" ? <ListIcon /> : <GridIcon />}
     </button>

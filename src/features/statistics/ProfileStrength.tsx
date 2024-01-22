@@ -93,11 +93,11 @@ const renderLegend = (props: DefaultLegendContentProps) => {
   const { payload } = props as { payload: Array<CustomPayload> };
 
   return (
-    <div className="pl-6 mt-4">
+    <div className="mt-4 pl-6">
       <Title caseForm="capitalize" fw="medium" fs={16}>
         Legend
       </Title>
-      <ul className="flex flex-col gap-4 mt-2">
+      <ul className="mt-2 flex flex-col gap-4">
         {payload?.map((entry, index) => {
           const percentage = profileStrengthWithPercentages[0][
             entry.dataKey
@@ -128,19 +128,22 @@ export default function ProfileStrength() {
 
   return (
     <article data-stats="profile-strength">
-      <div className="flex items-center justify-between mb-2">
+      <div className="mb-2 flex items-center justify-between">
         <Title fs={20}>Profile Strength</Title>
         <ActionButton />
       </div>
       <div>
-        <ResponsiveContainer width="100%" height={isAboveSmallScreens ? 400 : 650}>
+        <ResponsiveContainer
+          width="100%"
+          height={isAboveSmallScreens ? 400 : 650}
+        >
           <BarChart
             width={500}
             height={300}
             data={profileStrengthData}
             margin={{
               top: -20,
-              right: 30,
+              right: isAboveSmallScreens ? 0 : 30,
               left: -30,
               bottom: 5,
             }}
@@ -153,10 +156,11 @@ export default function ProfileStrength() {
               content={renderLegend}
               iconType="circle"
               iconSize={15}
-              layout= {isAboveSmallScreens ? "vertical" : "horizontal"}
+              layout={isAboveSmallScreens ? "vertical" : "horizontal"}
               wrapperStyle={{
                 marginLeft: isAboveSmallScreens ? 0 : 50,
-                width: "40%"
+                width: "40%",
+                fontSize: isAboveSmallScreens ? 16 : 12,
               }}
               verticalAlign={isAboveSmallScreens ? "middle" : "bottom"}
               align={isAboveSmallScreens ? "right" : "left"}

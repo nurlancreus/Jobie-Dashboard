@@ -15,7 +15,7 @@ export default function Portfolios() {
         <Title>Portfolios</Title>
         <ActionButton />
       </div>
-      <ul className="flex flex-col gap-8">
+      <ul className="flex flex-col gap-4 sm:gap-6 lg:gap-8">
         {adminData.portofolios.map((portofolio) => (
           <Portofolio key={portofolio.id} portofolio={portofolio} />
         ))}

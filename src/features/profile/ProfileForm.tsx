@@ -124,6 +124,7 @@ export default function ProfileForm() {
             <input
               type="text"
               id="profileMiddleName"
+              autoComplete="on"
               placeholder="Type here"
               className="form-input"
               {...register("profileMiddleName")}
@@ -136,6 +137,7 @@ export default function ProfileForm() {
             <input
               type="text"
               id="profileLastName"
+              autoComplete="on"
               placeholder="Type here"
               className="form-input"
               {...register("profileLastName")}
@@ -145,6 +147,7 @@ export default function ProfileForm() {
             <input
               type="text"
               id="username"
+              autoComplete="on"
               placeholder="Type here"
               className="form-input"
               {...register("username")}

@@ -19,7 +19,9 @@ export default function Select({
   return (
     <div className="relative w-fit">
       {variant === "sort" && (
-        <span className={`absolute ${variant === "sort" ? "left-3 bottom-3" : ""}`}>
+        <span
+          className={`absolute [&_svg]:h-5 [&_svg]:w-5 xl:[&_svg]:h-auto xl:[&_svg]:w-auto ${variant === "sort" ? "bottom-3 left-3" : ""}`}
+        >
           <SortIcon />
         </span>
       )}
@@ -28,8 +30,10 @@ export default function Select({
         value={paramsValue}
         onChange={(e) => handleParams(e.target.value, id)}
         id={id}
-        className={`border appearance-none bg-transparent border-solid text-gray-700 border-primary-300 py-2 lg:py-3 pr-12 lg:pr-[54px] rounded-[48px] cursor-pointer focus:outline-primary-600 ${
-          variant === "sort" ? "pl-12 lg:pl-[52px] font-medium" : "pl-4 lg:pl-6"
+        className={`cursor-pointer appearance-none rounded-[3rem] border border-solid border-primary-300 bg-transparent py-2 pr-12 text-base text-gray-700 focus:outline-primary-600 lg:py-3 lg:pr-[3.375rem] ${
+          variant === "sort"
+            ? "pl-10 font-medium md:pl-12 lg:pl-[3.25rem]"
+            : "pl-4 lg:pl-6"
         }`}
       >
         {options.map((option) => (
@@ -39,9 +43,9 @@ export default function Select({
         ))}
       </select>
       <span
-        className={`absolute ${
+        className={`absolute [&_svg]:h-4 [&_svg]:w-4 xl:[&_svg]:h-auto xl:[&_svg]:w-auto ${
           variant === "sort" ? "[&_path]:stroke-primary" : ""
-        } right-5 bottom-5`}
+        } bottom-1/2 right-5 translate-y-1/3`}
       >
         <Chevron />
       </span>

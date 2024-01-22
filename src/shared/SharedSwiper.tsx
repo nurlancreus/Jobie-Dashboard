@@ -36,7 +36,7 @@ export default function SharedSwiper<T extends { id: number }>({
             slidesPerView: 1,
             spaceBetween: 10
           },
-          600: {
+          480: {
             slidesPerView: variant === "job" ? 1 : 2,
             spaceBetween: 12
           },

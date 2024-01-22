@@ -4,6 +4,7 @@ import {
   SuitcaseIcon,
   UserIcon,
 } from "@/assets/icons";
+import { formatNumbers } from "@/utils/helpers";
 
 const widgetsData = [
   {
@@ -64,7 +65,7 @@ function Widget({ widget }: WidgetProps) {
           <p className="whitespace-nowrap text-lg font-medium">
             {widget.label}
           </p>
-          <h3 className="text-5xl font-semibold">{widget.value}</h3>
+          <h3 className="text-5xl font-semibold">{formatNumbers(widget.value) }</h3>
         </div>
       </div>
     </article>

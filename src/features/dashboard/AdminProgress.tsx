@@ -61,7 +61,7 @@ export default function AdminProgress({
 
   return (
     <div
-      className={`w-full ${isJobTrends ? "grid grid-cols-[8rem_8rem] grid-rows-2 place-content-center sm:grid-cols-[10rem_10rem_10rem_10rem] sm:grid-rows-1 lg:grid-cols-[10rem_10rem] lg:grid-rows-2 xl:grid-cols-4 xl:grid-rows-1" : "flex items-center justify-between"}  `}
+      className={`w-full ${isJobTrends ? "grid grid-cols-1 grid-rows-2 place-content-center xs:grid-cols-[8rem_8rem] sm:grid-cols-[10rem_10rem_10rem_10rem] sm:grid-rows-1 lg:grid-cols-[10rem_10rem] lg:grid-rows-2 xl:grid-cols-4 xl:grid-rows-1" : "flex items-center justify-between"}  `}
     >
       {progress.map((data) => {
         let color: string;
@@ -82,15 +82,19 @@ export default function AdminProgress({
         }
         return (
           <div
-            className={`relative ${isJobTrends ? "col-span-1" : "h-fit max-h-24 w-fit max-w-24 flex-1"} p-2`}
+            className={`relative ${isJobTrends ? "col-span-1 px-12 xs:px-0" : "h-fit max-h-24 w-fit max-w-24 flex-1"} p-2`}
             key={data.id}
           >
             <div
               className={`absolute ${isJobTrends ? "bottom-[-2.5rem]" : "bottom-[-1.25rem]"}  left-0 right-0 text-center`}
             >
-              <p className={`${isJobTrends ? "font-medium text-lg" : "text-sm"}`}>{data.label}</p>
+              <p
+                className={`${isJobTrends ? "text-lg font-medium" : "text-sm"}`}
+              >
+                {data.label}
+              </p>
               {data.vacancyNumber && (
-                <p className="text-center text-sm text-dark whitespace-nowrap">
+                <p className="whitespace-nowrap text-center text-sm text-dark">
                   {formatNumbers(data.vacancyNumber)} Vacancy
                 </p>
               )}

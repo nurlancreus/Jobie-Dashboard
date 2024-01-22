@@ -100,8 +100,8 @@ export default function RecentActivites() {
       </ul>
       {isAboveLargeScreens && (
         <button
-          className={`z-1 absolute left-0 right-0 mx-auto  grid h-[60px] w-[60px] place-content-center rounded-full bg-white shadow-[0px_12px_24px_0_rgba(0,0,0,0.25)] transition-transform duration-200 ${
-            isListOpen ? "rotate-180" : ""
+          className={`z-1 absolute left-0 right-0 mx-auto grid h-[60px] w-[60px] place-content-center rounded-full bg-white shadow-[0px_12px_24px_0_rgba(0,0,0,0.25)] transition-transform duration-200 ${
+            isListOpen ? "-rotate-90" : "rotate-90"
           }`}
           onClick={() => setIsListOpen((prev) => !prev)}
         >

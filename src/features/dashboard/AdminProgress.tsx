@@ -61,7 +61,7 @@ export default function AdminProgress({
 
   return (
     <div
-      className={`w-full ${isJobTrends ? "grid grid-cols-1 grid-rows-2 place-content-center xs:grid-cols-[8rem_8rem] sm:grid-cols-[10rem_10rem_10rem_10rem] sm:grid-rows-1 lg:grid-cols-[10rem_10rem] lg:grid-rows-2 xl:grid-cols-4 xl:grid-rows-1" : "flex items-center justify-between"}  `}
+      className={`w-full ${isJobTrends ? "grid gap-4 grid-cols-1 grid-rows-2 place-content-center justify-items-center xs:grid-cols-[8rem_8rem] sm:grid-cols-4 sm:grid-rows-1 lg:grid-cols-[10rem_10rem] lg:grid-rows-2 xl:grid-cols-4 xl:grid-rows-1" : "flex items-center justify-between"} `}
     >
       {progress.map((data) => {
         let color: string;
@@ -82,11 +82,24 @@ export default function AdminProgress({
         }
         return (
           <div
-            className={`relative ${isJobTrends ? "col-span-1 px-12 xs:px-0" : "h-fit max-h-24 w-fit max-w-24 flex-1"} p-2`}
+            className={`relative ${isJobTrends ? "col-span-1 max-w-[15rem] px-12 xs:px-0" : "h-fit max-h-24 w-fit max-w-24 flex-1"} p-2`}
             key={data.id}
           >
+            <CircularProgressbar
+              value={data.value}
+              maxValue={1}
+              text={`${data.value * 100}%`}
+              styles={{
+                ...progressBarStyles,
+                root: {
+                  ...progressBarStyles.root,
+                  width: isJobTrends ? 110 : "auto",
+                },
+                path: { ...progressBarStyles.path, stroke: color },
+              }}
+            />
             <div
-              className={`absolute ${isJobTrends ? "bottom-[-2.5rem]" : "bottom-[-1.25rem]"}  left-0 right-0 text-center`}
+              className={`${isJobTrends ? "" : "absolute bottom-[-1.25rem] left-0 right-0"} text-center`}
             >
               <p
                 className={`${isJobTrends ? "text-lg font-medium" : "text-sm"}`}
@@ -99,15 +112,6 @@ export default function AdminProgress({
                 </p>
               )}
             </div>
-            <CircularProgressbar
-              value={data.value}
-              maxValue={1}
-              text={`${data.value * 100}%`}
-              styles={{
-                ...progressBarStyles,
-                path: { ...progressBarStyles.path, stroke: color },
-              }}
-            />
           </div>
         );
       })}

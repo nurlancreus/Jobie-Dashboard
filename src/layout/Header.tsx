@@ -20,7 +20,7 @@ export default function Header() {
   let icon: JSX.Element;
 
   if (isScreenSmall) {
-    if (!isSmallOpen) icon = <ArrowIcon />;
+    if (isSmallOpen) icon = <ArrowIcon />;
     else icon = <ToggleIcon />;
   } else {
     if (!isLargeOpen) icon = <ArrowIcon />;
@@ -52,7 +52,7 @@ export default function Header() {
         {/* Search */}
 
         <form
-          className="relative hidden flex-grow lg:block"
+          className="relative hidden grow lg:block"
           onSubmit={(e) => e.preventDefault()}
           id="mainSearchForm"
           name="mainSearchForm"
@@ -62,7 +62,7 @@ export default function Header() {
             id="mainSearch"
             name="mainSearch"
             placeholder="Search something here..."
-            className="w-full min-w-[300px] rounded-[82px] bg-gray-100 px-6 py-3 placeholder:text-gray-500 focus:outline-primary xl:h-14 xl:px-8 xxl:px-9 xxl:py-4"
+            className="w-full min-w-[18.75rem] rounded-[5.125rem] bg-gray-100 px-6 py-3 placeholder:text-gray-500 focus:outline-primary xl:h-14 xl:px-8 xxl:px-9 xxl:py-4"
           />
 
           <button className="absolute bottom-3 right-6 top-3 xl:right-8 [&_svg]:h-5 [&_svg]:w-5 xl:[&_svg]:h-auto xl:[&_svg]:w-auto">

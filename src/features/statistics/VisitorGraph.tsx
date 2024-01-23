@@ -94,7 +94,7 @@ export default function VisitorGraph() {
               bottom: 5,
             }}
           >
-            <CartesianGrid strokeDasharray="0" />
+            <CartesianGrid strokeDasharray="0" stopOpacity={0.4} />
             <XAxis
               dataKey="name"
               dy={10}

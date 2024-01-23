@@ -14,7 +14,7 @@
 
 @layer utilities {
   .active-nav {
-    @apply bg-body text-dark font-semibold transition [&_svg_path]:fill-primary;
+    @apply bg-body text-dark font-semibold [&_svg_path]:fill-primary relative before:content-[""] after:content-[""] before:w-4 after:w-4 before:transition-shadow after:transition-shadow before:duration-200 after:duration-200 before:h-4 after:h-4 before:absolute after:absolute before:right-0 after:right-0 before:shadow-[5px_5px_0px_5px_rgb(242,242,242)] after:shadow-[5px_-5px_0px_5px_rgb(242,242,242)] before:-top-4 after:-bottom-4 before:rounded-[0_0_1rem] after:rounded-[0_1rem_0_0];
   }
 
   .pagination-custom {
@@ -30,10 +30,36 @@
   }
 }
 
+:root {
+  --body-bg: rgb(242, 242, 242);
+  --primary-clr: #40189D;
+  --border-radius: 3rem;
+}
+
+.active-nav::before,
+.active-nav::after {
+  --border-radius: 1rem;
+
+  content: "";
+  position: absolute;
+  width: var(--border-radius);
+  height: var(--border-radius);
+  right: 0rem;
+}
+
+.active-nav::before {
+  border-radius: 0 0 var(--border-radius);
+  top: calc(var(--border-radius) * -1);
+  box-shadow: 5px 5px 0 5px var(--body-bg);
+}
+
+.active-nav::after {
+  border-radius: 0 var(--border-radius) 0 0;
+  bottom: calc(var(--border-radius) * -1);
+  box-shadow: 5px -5px 0 5px var(--body-bg);
+}
+
 @layer components {
-  .input {
-    @apply w-full rounded-full border border-stone-200 px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-400 focus:outline-none focus:ring focus:ring-yellow-400 md:px-6 md:py-3
-  }
 
   .loader {
     width: 45px;

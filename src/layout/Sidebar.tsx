@@ -87,7 +87,7 @@ export default function Sidebar() {
                 >
                   <Link
                     to={nav.path}
-                    className={`group-hover:active-nav flex h-fit items-center gap-8 lg:gap-9 xl:gap-11 rounded-l-[48px] py-5 pl-6 text-lg font-medium text-gray-200 transition-colors duration-200 xl:py-7 xl:pl-8 [&_path]:fill-gray-200 ${
+                    className={`group-hover:active-nav flex h-fit items-center gap-8 lg:gap-9 xl:gap-11 rounded-l-[48px] py-5 pl-6 text-lg font-medium text-gray-200 transition xl:py-7 xl:pl-8 [&_path]:fill-gray-200 ${
                       isActive ? "active-nav" : ""
                     }`}
                   >

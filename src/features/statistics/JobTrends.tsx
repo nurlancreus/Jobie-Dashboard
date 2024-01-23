@@ -33,12 +33,12 @@ const trendProgress = jobTrends.map((trend) => {
 
 export default function JobTrends() {
   return (
-    <article data-stats="job-trends" className="job-trends px-6 pt-4 pb-10">
+    <article data-stats="job-trends" className="job-trends">
       <div className="mb-1 flex items-center justify-between">
         <Title fs={20}>Job Trends</Title>
         <ActionButton />
       </div>
-      <div className="flex w-full items-center pt-5 [&>div]:gap-10">
+      <div className="flex w-full items-center pt-5">
         <AdminProgress progress={trendProgress} variant="trends" />
       </div>
     </article>

@@ -23,7 +23,7 @@ export default function CompaniesBodyHeader({
   dataLength,
 }: CompaniesBodyHeaderProps) {
   return (
-    <div className="mb-[30px] flex flex-wrap items-center justify-between gap-4 [&>*:first-child]:mr-auto">
+    <div className="flex flex-wrap items-center justify-between gap-4 [&>*:first-child]:mr-auto">
       <Titles title={`Showing ${dataLength} search results`} />
 
       <SwitchBtn

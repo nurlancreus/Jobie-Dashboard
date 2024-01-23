@@ -27,7 +27,7 @@ type JobsBodyHeadeProps = {
 
 export default function JobsBodyHeader({ dataLength }: JobsBodyHeadeProps) {
   return (
-    <div className="flex flex-wrap items-center justify-between gap-4 [&>*:first-child]:mr-auto">
+    <div className="flex flex-wrap items-center justify-between gap-y-2 gap-x-4 [&>*:first-child]:mr-auto">
       <Titles title={`Showing ${dataLength} search results`} />
       <SwitchBtn
         id={SWITCH_FULLTIME_ID}

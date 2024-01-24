@@ -11,7 +11,7 @@ export default function Company<
 >({ variant = "featured", data: company, onSelectId }: CompanyProps<T>) {
   return (
     <article
-      className={`rounded-[20px] bg-white cursor-pointer ${
+      className={`rounded-[20px] bg-card cursor-pointer ${
         variant === "featured"
           ? "p-[30px]"
           : "px-8 pt-9 pb-6 transition-shadow duration-200 hover:shadow-[0px_12px_23px_0px_rgba(0,0,0,0.10)]"
@@ -33,7 +33,7 @@ export default function Company<
             {company.name}
           </h5>
           {variant === "featured" ? (
-            <p className="text-primary font-medium text-base">
+            <p className="text-primary dark:text-slate-200 font-medium text-base">
               {company.vacancies.length} Vacancy
             </p>
           ) : (

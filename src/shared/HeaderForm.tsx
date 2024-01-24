@@ -14,7 +14,7 @@ export default function HeaderForm({
 }: HeaderFormProps) {
   return (
     <form
-      className="rounded-3xl bg-white px-4 md:px-5 lg:px-6 xl:px-7 py-4 shadow-[0px_12px_15px_0px_rgba(0,0,0,0.03)]"
+      className="rounded-3xl bg-card px-4 md:px-5 lg:px-6 xl:px-7 py-4 shadow-[0px_12px_15px_0px_rgba(0,0,0,0.03)]"
       onSubmit={onSubmit}
     >
       <div className="flex flex-wrap items-center justify-between gap-4">
@@ -23,7 +23,7 @@ export default function HeaderForm({
           <span className="[&>svg]:absolute [&>svg]:left-0 [&>svg]:top-3">
             <LocationIcon />
           </span>
-          <select className="w-full min-w-[224px] appearance-none py-4 pl-9 focus:outline-gray-100">
+          <select className="w-full min-w-[224px] appearance-none bg-transparent py-4 pl-9 focus:outline-gray-100">
             <option value="around-you">Around You</option>
           </select>
           <span className="[&>svg]:absolute [&>svg]:bottom-[22px] [&>svg]:right-5">
@@ -35,7 +35,7 @@ export default function HeaderForm({
         <input
           type="text"
           placeholder="Search by Title, Company or any jobs keyword..."
-          className="grow rounded-[48px] px-4 py-4 placeholder:text-base placeholder:text-gray-200 focus:outline-primary"
+          className="grow rounded-[48px] bg-transparent px-4 py-4 placeholder:text-base placeholder:text-gray-200 focus:outline-primary"
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />

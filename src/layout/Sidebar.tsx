@@ -9,6 +9,7 @@ import {
 
 import { useSidebarContext } from "@/contexts/SidebarProvider";
 import MainLogo from "@/shared/MainLogo";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const sidebarNavigation = [
@@ -44,10 +45,47 @@ const sidebarNavigation = [
   },
 ];
 
+const positionTop: Record<number, string> = {
+  0: "translate-y-0",
+  74: "translate-y-[74px]",
+  148: "translate-y-[148px]",
+  222: "translate-y-[222px]",
+  296: "translate-y-[296px]",
+  370: "translate-y-[370px]",
+
+  78: "translate-y-[78px]",
+  156: "translate-y-[156px]",
+  234: "translate-y-[234px]",
+  312: "translate-y-[312px]",
+  390: "translate-y-[390px]",
+
+  90: "translate-y-[90px]",
+  180: "translate-y-[180px]",
+  270: "translate-y-[270px]",
+  360: "translate-y-[360px]",
+  450: "translate-y-[450px]",
+};
+
 export default function Sidebar() {
   const { isLargeOpen, isSmallOpen, isScreenSmall, isOpen, close } =
     useSidebarContext();
   const { pathname } = useLocation();
+  const sidebarRef = useRef<HTMLUListElement>(null);
+  const [offsetTop, setOffsetTop] = useState<number>(0);
+
+  useEffect(() => {
+    if (!sidebarRef.current) return;
+    const list = sidebarRef.current;
+
+    const activeLi = list.querySelector(
+      '[data-active = "true"]',
+    ) as HTMLLIElement;
+
+    if (!activeLi) return;
+
+    setOffsetTop(activeLi.offsetTop);
+    
+  }, [pathname]);
 
   let classNames: string;
 
@@ -72,30 +110,35 @@ export default function Sidebar() {
         <div className="hidden py-7 pl-[14px] md:block">
           <MainLogo />
         </div>
-        <nav>
-          <ul className="flex flex-col gap-[10px]">
+        <nav className="relative isolate">
+          <div
+            data-type="active-nav"
+            className={`active-nav absolute left-0 right-0 top-0 transition ${positionTop[offsetTop]} -z-10 h-16 rounded-l-[48px] py-5 pl-6 text-lg font-medium text-gray-200 transition lg:gap-9 xl:h-20 xl:gap-11 xl:py-7 xl:pl-8 [&_path]:fill-gray-200`}
+          />
+          <ul className="flex flex-col gap-[10px]" ref={sidebarRef}>
             {sidebarNavigation.map((nav) => {
               const isActive = pathname.slice(1) === nav.path;
 
               return (
                 <li
                   key={nav.label}
-                  className="group"
-                  onClick={() => {
-                    isScreenSmall && close();
-                  }}
+                  className="h-20"
+                  onClick={() => isScreenSmall && close()}
+                  data-active={isActive}
                 >
                   <Link
                     to={nav.path}
-                    className={`group-hover:active-nav flex h-fit items-center gap-8 lg:gap-9 xl:gap-11 rounded-l-[48px] py-5 pl-6 text-lg font-medium text-gray-200 transition xl:py-7 xl:pl-8 [&_path]:fill-gray-200 ${
-                      isActive ? "active-nav" : ""
+                    className={`group-hover:active-nav flex h-fit items-center gap-8 rounded-l-[48px] py-5 pl-6 text-lg   transition lg:gap-9 xl:gap-11 xl:py-7 xl:pl-8 [&_path]:fill-gray-200 ${
+                      isActive
+                        ? "font-semibold text-dark [&_svg_path]:fill-primary dark:[&_svg_path]:fill-white"
+                        : "font-medium text-gray-200"
                     }`}
                   >
-                    <span className="[&_svg]:h-5 [&_svg]:w-5 lg:[&_svg]:h-6 lg:[&_svg]:w-6 xl:[&_svg]:h-auto xl:[&_svg]:w-auto">
+                    <span className="[&_svg]:h-5 [&_svg]:w-5 lg:[&_svg]:h-6 lg:[&_svg]:w-6 xl:[&_svg]:h-7 xl:[&_svg]:w-7">
                       {nav.icon}
                     </span>
                     <span
-                      className={`whitespace-nowrap ${isOpen ? "" : "hidden"}`}
+                      className={`whitespace-nowrap  ${isOpen ? "" : "hidden"}`}
                     >
                       {nav.label}
                     </span>

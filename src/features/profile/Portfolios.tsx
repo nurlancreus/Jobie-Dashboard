@@ -10,7 +10,7 @@ import Title from "@/shared/Title";
 
 export default function Portfolios() {
   return (
-    <div className="rounded-[1.25rem] bg-white p-6 xl:p-8">
+    <div className="rounded-[1.25rem] bg-card p-6 xl:p-8">
       <div className="mb-5 flex items-center justify-between">
         <Title>Portfolios</Title>
         <ActionButton />

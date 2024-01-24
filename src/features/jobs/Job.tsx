@@ -27,7 +27,7 @@ export default function Job<
 
   return (
     <Link to="#">
-      <article className="flex h-full min-h-[320px] w-full flex-col rounded-[20px] bg-white p-5 md:p-6 lg:p-7 xl:p-[30px] shadow-[0px_4px_0px_0px_rgba(62,73,84,0.04)] transition-shadow duration-200 hover:shadow-[0px_12px_23px_0px_rgba(0,0,0,0.10)]">
+      <article className="flex h-full min-h-[320px] w-full flex-col rounded-[20px] bg-card p-5 md:p-6 lg:p-7 xl:p-[30px] shadow-[0px_4px_0px_0px_rgba(62,73,84,0.04)] transition-shadow duration-200 hover:shadow-[0px_12px_23px_0px_rgba(0,0,0,0.10)]">
         <div className="flex items-center justify-between">
           <div>
             <h5
@@ -41,7 +41,7 @@ export default function Job<
           <Logo src={company.logo ?? ""} w={60} h={60} />
         </div>
         <div className="my-5">
-          <p className="text-base font-medium text-primary">
+          <p className="text-base font-medium text-primary dark:text-slate-200">
             <span>{formatCurrency(vacancy["min_salary"])}</span> -{" "}
             <span>{formatCurrency(vacancy["max_salary"])}</span>
           </p>
@@ -50,7 +50,7 @@ export default function Job<
           </p>
         </div>
         <div className="mt-auto flex items-center justify-between gap-6">
-          <span className="rounded-[48px] bg-primary-300 px-5 py-[10px] text-base font-medium uppercase text-primary">
+          <span className="rounded-[48px] dark:text-slate-200 bg-primary-300 px-5 py-[10px] text-base font-medium uppercase text-primary">
             {vacancy.location}
           </span>
           <p className="text-base font-medium text-dark">{company.location}</p>

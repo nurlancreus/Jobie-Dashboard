@@ -100,7 +100,7 @@ export default function RecentActivites() {
       </ul>
       {isAboveLargeScreens && (
         <button
-          className={`z-1 absolute left-0 right-0 mx-auto grid h-[60px] w-[60px] place-content-center rounded-full bg-white shadow-[0px_12px_24px_0_rgba(0,0,0,0.25)] transition-transform duration-200 ${
+          className={`z-1 absolute left-0 right-0 mx-auto grid h-[60px] w-[60px] place-content-center rounded-full bg-card dark:[&_path]:fill-neutral-200 shadow-[0px_12px_24px_0_rgba(0,0,0,0.25)] transition-transform duration-200 ${
             isListOpen ? "-rotate-90" : "rotate-90"
           }`}
           onClick={() => setIsListOpen((prev) => !prev)}
@@ -128,7 +128,7 @@ function Activity({ activity }: ActivityProps) {
       className="grid grid-cols-[auto_1fr] items-center gap-4"
       key={activity.id}
     >
-      <span className="grid h-[60px] w-[60px] place-content-center rounded-2xl border [&_svg]:h-6 [&_svg]:w-6 [&_svg_path]:fill-primary">
+      <span className="grid h-[60px] w-[60px] place-content-center rounded-2xl border [&_svg]:h-6 [&_svg]:w-6 [&_path]:fill-primary dark:[&_path]:fill-neutral-100/50">
         {activity.icon}
       </span>
       <div className="text-sm">

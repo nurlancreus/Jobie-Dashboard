@@ -93,7 +93,7 @@ const renderLegend = (props: DefaultLegendContentProps) => {
   const { payload } = props as { payload: Array<CustomPayload> };
 
   return (
-    <div className="mt-4 pl-6">
+    <div className="mt-4 pl-4">
       <Title caseForm="capitalize" fw="medium" fs={16}>
         Legend
       </Title>
@@ -109,10 +109,10 @@ const renderLegend = (props: DefaultLegendContentProps) => {
                 className={`min-h-6 min-w-8 rounded-xl custom-legend-${entry.dataKey}`}
               />
 
-              <p className="text-lg font-medium capitalize text-black">
+              <p className="text-lg font-medium capitalize text-dark">
                 {percentage.toFixed(0)}%
               </p>
-              <p className="text-sm font-medium capitalize text-gray-900">
+              <p className="text-sm font-medium capitalize text-gray-700">
                 {entry.value}
               </p>
             </li>
@@ -144,12 +144,18 @@ export default function ProfileStrength() {
             margin={{
               top: -20,
               right: isAboveSmallScreens ? 0 : 30,
-              left: -30,
+              left: -50,
               bottom: 5,
             }}
             barCategoryGap={10}
           >
-            <XAxis dataKey="name" dy={5} axisLine={false} tickLine={false} />
+            <XAxis
+              dataKey="name"
+              dy={5}
+              axisLine={false}
+              tickLine={false}
+              style={{ fill: "var(--gray-600)" }}
+            />
             <YAxis axisLine={false} tick={false} tickLine={false} />
             <Tooltip />
             <Legend

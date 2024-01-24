@@ -48,7 +48,7 @@ export default function ApplicationsTableRow<
         {app.position}
       </td>
       <td data-type="contact">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 dark:[&_path]:fill-neutral-100/50">
           {app.phone && (
             <div className="grid h-12 w-12 place-content-center rounded-full border border-solid border-primary-300">
               <a href={`tel:${app.phone}`}>
@@ -68,7 +68,7 @@ export default function ApplicationsTableRow<
       </td>
       <td data-type="status">
         <div
-          className={`grid w-[130px] place-content-center rounded-[62px] border border-solid p-2 xl:py-3 xl:px-4 text-base font-medium status-${app.status} capitalize`}
+          className={`grid w-[130px] place-content-center rounded-[62px] border border-solid p-2 text-base font-medium xl:px-4 xl:py-3 status-${app.status} capitalize`}
         >
           {app.status}
         </div>

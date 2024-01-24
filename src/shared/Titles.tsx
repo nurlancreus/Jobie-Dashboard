@@ -6,7 +6,7 @@ type TitleProps = {
 export default function Titles({title, subtitle = "Based your preferences"}: TitleProps) {
   return (
     <div>
-      <h4 className="text-base text-black font-semibold whitespace-nowrap">
+      <h4 className="text-base text-dark font-semibold whitespace-nowrap">
         {title}
       </h4>
       <p className="text-sm text-gray-300 whitespace-nowrap">{subtitle}</p>

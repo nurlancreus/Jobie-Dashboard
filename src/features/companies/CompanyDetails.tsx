@@ -17,7 +17,7 @@ export default function CompanyDetails({
   // if (isLoading || !company) return <LoaderMini />;
 
   return (
-    <aside className="relative mt-8 rounded-[20px] bg-white p-[60px_24px_30px] lg:mt-0">
+    <aside className="relative mt-8 rounded-[20px] bg- p-[60px_24px_30px] lg:mt-0">
       {isLoading || !company ? (
         <LoaderMini />
       ) : (
@@ -40,7 +40,7 @@ export default function CompanyDetails({
             </div>
 
             {/* Follow Button */}
-            <button className="mb-10 mt-7 grid w-full place-content-center rounded-[48px] border border-solid border-primary py-4 text-lg font-semibold text-primary transition-colors duration-200 hover:bg-primary hover:text-white">
+            <button className="mb-10 mt-7 grid w-full place-content-center rounded-[48px] border border-primary py-4 text-lg font-semibold text-primary transition-colors duration-200 hover:bg-primary hover:text-white dark:text-slate-200 dark:border-slate-200">
               <span>+ Follow</span>
             </button>
 
@@ -58,7 +58,7 @@ export default function CompanyDetails({
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="grid h-12 w-12 place-content-center rounded-full bg-secondary [&_path]:fill-white [&_svg]:h-4 [&_svg]:w-4">
+                <div className="grid h-12 w-12 place-content-center rounded-full bg-yellow-400 [&_path]:fill-white [&_svg]:h-4 [&_svg]:w-4">
                   <StarIcon />
                 </div>
                 <div>

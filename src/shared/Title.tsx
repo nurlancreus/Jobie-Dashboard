@@ -29,7 +29,7 @@ export default function Title({
 
   return (
     <h3
-      className={`${fontSizeVariants[fs]} ${fontWeightVariants[fw]} leading-[30px] ${caseForm}`}
+      className={`${fontSizeVariants[fs]} ${fontWeightVariants[fw]} text-dark leading-[30px] ${caseForm}`}
     >
       {children}
     </h3>

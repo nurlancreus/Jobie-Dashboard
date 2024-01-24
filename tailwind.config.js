@@ -1,32 +1,31 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        dark: "#292929",
-        body: "#F2F2F2",
-        "gray-100": "#E3E3E3",
-        "gray-200": "#BFBFBF",
-        "gray-300": "#8F8F8F",
-        "gray-400": "#797979",
-        "gray-500": "#757575",
-        "gray-600": "#616161",
-        "gray-700": "#5C5C5C",
-        "gray-800": "#3D3D3D",
-        //"gray-850": "#0C0C0CB2",
-        "gray-900": "#000000B2",
+        dark: "var(--dark-clr)",
+        body: "var(--body-bg)",
+        card: "var(--card-bg)",
+        "gray-100": "var(--gray-100)",
+        "gray-200": "var(--gray-200)",
+        "gray-300": "var(--gray-300)",
+        "gray-400": "var(--gray-400)",
+        "gray-500": "var(--gray-500)",
+        "gray-600": "var(--gray-600)",
+        "gray-700": "var(--gray-700)",
+        "gray-800": "var(--gray-800)",
+        //"gray-850": "var(--gray-100)",
+        "gray-900": "var(--gray-900)",
 
-        "primary-300": "#E3D7FF",
-        "primary-500": "#BEA1FF",
-        "primary-600": "#9B70FF",
-        "primary-700": "#7649E0",
-        "primary-800": "#4E36E2",
-        primary: "#40189D",
-        "primary-hover": "#2e1171",
-
-        secondary: "#FFBE17",
-        accent: "#FF424D",
+        "primary-300": "var(--primary-300)",
+        "primary-500": "var(--primary-500)",
+        "primary-600": "var(--primary-600)",
+        "primary-700": "var(--primary-700)",
+        "primary-800": "var(--primary-800)",
+        primary: "var(--primary-clr)",
+        "primary-hover": "var(--primary-hover)",
       },
       // backgroundImage: () => ({
       //   "gradient-yellowred":
@@ -63,5 +62,5 @@ export default {
     },
   },
   // eslint-disable-next-line no-undef
-  plugins: [require('@shrutibalasa/tailwind-grid-auto-fit'),],
+  plugins: [require("@shrutibalasa/tailwind-grid-auto-fit")],
 };

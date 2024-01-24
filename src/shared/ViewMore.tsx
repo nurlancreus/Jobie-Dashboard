@@ -5,10 +5,12 @@ export default function ViewMore() {
   return (
     <Link
       to="#"
-      className="pl-6 py-[10px] pr-[30px] rounded-[48px] text-base font-medium text-primary border border-solid border-primary flex items-center justify-between gap-4 [&_path]:fill-primary transition-colors duration-200 hover:bg-primary hover:text-body [&:hover_path]:fill-body"
+      className="flex items-center justify-between gap-4 rounded-[48px] border border-solid border-primary py-[10px] pl-6 pr-[30px] text-base font-medium text-primary transition-colors duration-200 hover:bg-primary hover:text-body dark:border-none dark:bg-primary-300 dark:text-slate-200"
     >
       <span className="whitespace-nowrap">View More</span>
-      <ArrowIcon />
+      <span className="[&:hover_path]:fill-body [&_path]:fill-primary dark:[&_path]:fill-slate-200">
+        <ArrowIcon />
+      </span>
     </Link>
   );
 }

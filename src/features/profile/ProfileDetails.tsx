@@ -5,18 +5,18 @@ import AdminProgress from "../dashboard/AdminProgress";
 
 export default function ProfileDetails() {
   return (
-    <div className="flex flex-col rounded-[1.25rem] bg-white px-6 pb-10 pt-5 sm:flex-row md:flex-col lg:pt-7 xl:px-8 xl:pt-9">
+    <div className="bg-card flex flex-col rounded-[1.25rem] px-6 pb-10 pt-5 sm:flex-row md:flex-col lg:pt-7 xl:px-8 xl:pt-9">
       {/* Top */}
       <div className="sm:flex-1 sm:border-r sm:p-7 md:flex-auto md:border-none md:p-0">
         <ProfileAvatarName />
         <div className="flex items-center gap-5">
-          <div className="flex flex-1 flex-col items-center gap-1 rounded-[1.25rem] border border-solid border-gray-100 py-3">
-            <h3 className="text-xl font-semibold text-black">228</h3>
-            <h5 className="text-base font-normal text-black">Following</h5>
+          <div className="flex flex-1 flex-col items-center gap-1 rounded-[1.25rem] border border-neutral-200 py-3">
+            <h3 className="text-xl font-semibold text-dark">228</h3>
+            <h5 className="text-base font-normal text-dark">Following</h5>
           </div>
-          <div className="flex flex-1 flex-col items-center gap-1 rounded-[1.25rem] border border-solid border-gray-100 py-3">
-            <h3 className="text-xl font-semibold text-black">228</h3>
-            <h5 className="text-base font-normal text-black">Following</h5>
+          <div className="flex flex-1 flex-col items-center gap-1 rounded-[1.25rem] border border-neutral-200 py-3">
+            <h3 className="text-xl font-semibold text-dark">228</h3>
+            <h5 className="text-base font-normal text-dark">Following</h5>
           </div>
         </div>
       </div>
@@ -30,18 +30,22 @@ export default function ProfileDetails() {
           <div className="flex items-center gap-5">
             <div className="grid h-12 w-12 place-content-center rounded-full border border-solid border-primary-300">
               <a href={`tel:${adminData.phone}`}>
-                <PhoneIcon />
+                <span className="dark:[&_path]:fill-neutral-100/50">
+                  <PhoneIcon />
+                </span>
               </a>
             </div>
-            <p className="text-base text-black">{adminData.phone}</p>
+            <p className="text-base text-dark">{adminData.phone}</p>
           </div>
           <div className="flex items-center gap-5">
             <div className="grid h-12 w-12 place-content-center rounded-full border border-solid border-primary-300">
               <a href={`tel:${adminData.email}`}>
-                <EnvelopIcon />
+                <span className="dark:[&_path]:fill-neutral-100/50">
+                  <EnvelopIcon />
+                </span>
               </a>
             </div>
-            <p className="text-base text-black">{adminData.email}</p>
+            <p className="text-base text-dark">{adminData.email}</p>
           </div>
         </div>
         {/* Progress */}

@@ -74,8 +74,10 @@ export default function SidebarProvider({ children }: SidebarProviderProps) {
 
 // eslint-disable-next-line react-refresh/only-export-components
 export function useSidebarContext() {
-  const value = useContext(SidebarContext);
-  if (value == null) throw Error("Cannot use outside of SidebarProvider");
+  const contextValue = useContext(SidebarContext);
+  
+  if (contextValue == null)
+    throw Error("Cannot use outside of SidebarProvider");
 
-  return value;
+  return contextValue;
 }

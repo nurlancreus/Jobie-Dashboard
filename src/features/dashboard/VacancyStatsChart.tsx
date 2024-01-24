@@ -93,6 +93,7 @@ export default function VacancyStatsChart() {
             angle={isScreenSmall ? -25 : 0}
             style={{
               fontSize: isScreenSmall ? 12 : 16,
+              fill: "var(--gray-600)",
             }}
             tickFormatter={(d) => `${tickState.unit} ${d}`}
           />
@@ -102,6 +103,7 @@ export default function VacancyStatsChart() {
             dx={-10}
             style={{
               fontSize: isScreenSmall ? 12 : 16,
+              fill: "var(--gray-600)",
             }}
           />
           <Tooltip />

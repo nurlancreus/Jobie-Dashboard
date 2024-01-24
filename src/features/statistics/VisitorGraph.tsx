@@ -101,6 +101,7 @@ export default function VisitorGraph() {
               angle={isAboveSmallScreens ? 0 : -25}
               style={{
                 fontSize: isAboveSmallScreens ? 16 : 12,
+                fill: "var(--gray-600)",
               }}
             />
             <YAxis tickLine={false} tickFormatter={() => ""} axisLine={false} />

@@ -58,7 +58,7 @@ const renderLegend = (props: DefaultLegendContentProps) => {
               <span className="text-sm font-medium capitalize text-gray-900">
                 {entry.value}
               </span>
-              <p className="text-xl font-semibold text-black">
+              <p className="text-xl font-semibold text-dark">
                 {formatNumbers(payload.value, { maximumFractionDigits: 0 })}{" "}
                 {payload.name}
               </p>
@@ -108,7 +108,7 @@ export default function Network() {
                 position="center"
                 style={{
                   textAnchor: "middle",
-                  fill: "black",
+                  fill: "var(--dark-clr)",
                   fontWeight: 600,
                 }}
               />

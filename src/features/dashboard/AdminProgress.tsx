@@ -31,7 +31,7 @@ const progressBarStyles = {
   // Customize the text
   text: {
     // Text color
-    fill: "#000",
+    fill: "var(--dark-clr)",
     // Text size
     fontSize: "18px",
     fontWeight: 600,

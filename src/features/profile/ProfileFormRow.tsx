@@ -64,7 +64,7 @@ export default function ProfileFormRow({
       <InputLabel forId={id}>{label}</InputLabel>
 
       {showIcon && (
-        <span className="absolute bottom-3 left-4 lg:bottom-5 lg:left-6">
+        <span className="absolute bottom-3 left-4 lg:bottom-5 lg:left-6 dark:[&_path]:fill-neutral-100/50">
           {icon!}
         </span>
       )}
@@ -75,8 +75,10 @@ export default function ProfileFormRow({
         <button
           type="button"
           disabled={disabled}
-          className={`absolute bottom-3 right-3 border-none bg-transparent text-base xl:text-lg font-semibold uppercase disabled:cursor-not-allowed disabled:text-gray-200 lg:bottom-5 lg:right-5 ${
-            showPassword ? "text-gray-200" : "text-primary"
+          className={`absolute bottom-3 right-3 border-none bg-transparent text-base font-semibold uppercase disabled:cursor-not-allowed disabled:text-gray-200 lg:bottom-5 lg:right-5 xl:text-lg dark:disabled:text-neutral-600 ${
+            showPassword
+              ? "text-gray-200 dark:text-neutral-200"
+              : "text-primary dark:text-neutral-400"
           }`}
           onClick={() =>
             onTogglePassword?.(

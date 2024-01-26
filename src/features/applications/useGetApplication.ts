@@ -21,16 +21,9 @@ export function useGetApplications() {
   const { currentPage, pageSize, from, to } =
     usePaginationParams("applications");
 
-  const paginationOptions = {
-    currentPage,
-    from,
-    to,
-  };
+  const paginationOptions = { currentPage, from, to };
 
-  const filterOptions = {
-    filterStatusValue,
-    filterSortValue,
-  };
+  const filterOptions = { filterStatusValue, filterSortValue };
 
   const {
     data: { data: applications = [], count } = {},

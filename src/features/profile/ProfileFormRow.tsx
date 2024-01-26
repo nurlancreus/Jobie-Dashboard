@@ -1,7 +1,7 @@
 import { EnvelopIcon, PhoneIcon, WhatsAppIcon } from "@/assets/icons";
 import { ReactNode, isValidElement } from "react";
-import InputLabel from "../../shared/InputLabel";
-import {
+import InputLabel from "@/shared/InputLabel";
+import type {
   FieldError,
   Merge,
   FieldErrorsImpl,
@@ -60,35 +60,37 @@ export default function ProfileFormRow({
   ].some(Boolean);
 
   return (
-    <div className="relative flex flex-col gap-6 lg:gap-8 xl:gap-10">
-      <InputLabel forId={id}>{label}</InputLabel>
+    <div>
+      <div className="relative flex flex-col gap-6 lg:gap-8 xl:gap-10">
+        <InputLabel forId={id}>{label}</InputLabel>
 
-      {showIcon && (
-        <span className="absolute bottom-3 left-4 lg:bottom-5 lg:left-6 dark:[&_path]:fill-neutral-100/50">
-          {icon!}
-        </span>
-      )}
+        {showIcon && (
+          <span className="absolute bottom-3 left-4 lg:bottom-5 lg:left-6 dark:[&_path]:fill-neutral-100/50">
+            {icon!}
+          </span>
+        )}
 
-      {children}
+        {children}
 
-      {inputType === "password" && (
-        <button
-          type="button"
-          disabled={disabled}
-          className={`absolute bottom-3 right-3 border-none bg-transparent text-base font-semibold uppercase disabled:cursor-not-allowed disabled:text-gray-200 lg:bottom-5 lg:right-5 xl:text-lg dark:disabled:text-neutral-600 ${
-            showPassword
-              ? "text-gray-200 dark:text-neutral-200"
-              : "text-primary dark:text-neutral-400"
-          }`}
-          onClick={() =>
-            onTogglePassword?.(
-              id as "profilePassword" | "profileConfirmPassword",
-            )
-          }
-        >
-          Show
-        </button>
-      )}
+        {inputType === "password" && (
+          <button
+            type="button"
+            disabled={disabled}
+            className={`absolute bottom-3 right-3 border-none bg-transparent text-base font-semibold uppercase disabled:cursor-not-allowed disabled:text-gray-200 lg:bottom-5 lg:right-5 xl:text-lg dark:disabled:text-neutral-600 ${
+              showPassword
+                ? "text-gray-200 dark:text-neutral-200"
+                : "text-primary dark:text-neutral-400"
+            }`}
+            onClick={() =>
+              onTogglePassword?.(
+                id as "profilePassword" | "profileConfirmPassword",
+              )
+            }
+          >
+            Show
+          </button>
+        )}
+      </div>
       {error && <InputError>{error as string}</InputError>}
     </div>
   );

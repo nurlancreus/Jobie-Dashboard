@@ -8,9 +8,9 @@ import {
 } from "@/assets/icons";
 
 import { useSidebarContext } from "@/contexts/SidebarProvider";
+import useActiveNav from "@/hooks/useActiveNav";
 import MainLogo from "@/shared/MainLogo";
-import { useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const sidebarNavigation = [
   {
@@ -45,47 +45,11 @@ const sidebarNavigation = [
   },
 ];
 
-const positionTop: Record<number, string> = {
-  0: "translate-y-0",
-  74: "translate-y-[74px]",
-  148: "translate-y-[148px]",
-  222: "translate-y-[222px]",
-  296: "translate-y-[296px]",
-  370: "translate-y-[370px]",
-
-  78: "translate-y-[78px]",
-  156: "translate-y-[156px]",
-  234: "translate-y-[234px]",
-  312: "translate-y-[312px]",
-  390: "translate-y-[390px]",
-
-  90: "translate-y-[90px]",
-  180: "translate-y-[180px]",
-  270: "translate-y-[270px]",
-  360: "translate-y-[360px]",
-  450: "translate-y-[450px]",
-};
-
 export default function Sidebar() {
   const { isLargeOpen, isSmallOpen, isScreenSmall, isOpen, close } =
     useSidebarContext();
-  const { pathname } = useLocation();
-  const sidebarRef = useRef<HTMLUListElement>(null);
-  const [offsetTop, setOffsetTop] = useState<number>(0);
 
-  useEffect(() => {
-    if (!sidebarRef.current) return;
-    const list = sidebarRef.current;
-
-    const activeLi = list.querySelector(
-      '[data-active = "true"]',
-    ) as HTMLLIElement;
-
-    if (!activeLi) return;
-
-    setOffsetTop(activeLi.offsetTop);
-    
-  }, [pathname]);
+  const { positionTop, pathname, sidebarRef, offsetTop } = useActiveNav();
 
   let classNames: string;
 
@@ -94,7 +58,7 @@ export default function Sidebar() {
     else classNames = "w-[6.25rem] pl-3";
   } else
     classNames =
-      "max-w-[260px] w-full rounded-tr-[1.25rem] pl-4 pt-6 fixed bottom-0 left-0 top-[4.75rem] z-10";
+      "max-w-[260px] w-full rounded-tr-[1.25rem] pl-4 pt-10 fixed bottom-0 left-0 top-[4.75rem] z-10";
 
   return (
     <>
@@ -117,7 +81,7 @@ export default function Sidebar() {
           />
           <ul className="flex flex-col gap-[10px]" ref={sidebarRef}>
             {sidebarNavigation.map((nav) => {
-              const isActive = pathname.slice(1) === nav.path;
+              const isActive = pathname.split("/").at(-1) === nav.path;
 
               return (
                 <li

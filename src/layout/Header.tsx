@@ -2,13 +2,20 @@ import {
   ArrowIcon,
   BellIcon,
   ChatIcon,
+  InboxIcon,
+  LogoutIcon,
+  ProfileIcon,
   SearchIcon,
   ToggleIcon,
 } from "@/assets/icons";
 import { useSidebarContext } from "@/contexts/SidebarProvider";
 import { useThemeContext } from "@/contexts/ThemeProvider";
 import { adminData } from "@/data/adminData";
+import { useSignOut } from "@/features/auth/useSignOut";
+import Dropdown from "@/shared/Dropdown";
+import Loader from "@/shared/Loader";
 import MainLogo from "@/shared/MainLogo";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function Header() {
@@ -17,7 +24,7 @@ export default function Header() {
     useSidebarContext();
   const { pathname } = useLocation();
 
-  const title = pathname.slice(1).replace("-", " ");
+  const title = pathname.split("/").at(-1)?.replace("-", " ");
 
   let icon: JSX.Element;
 
@@ -44,7 +51,7 @@ export default function Header() {
         >
           {icon}
         </button>
-        <h1 className="hidden whitespace-nowrap text-heading text-dark font-semibold capitalize sm:block">
+        <h1 className="hidden whitespace-nowrap text-heading font-semibold capitalize text-dark sm:block">
           {title}
         </h1>
       </div>
@@ -84,13 +91,13 @@ export default function Header() {
         <div className="ml-auto flex items-center gap-5 sm:gap-8 lg:gap-10 xl:gap-12 xxl:gap-16">
           {/* Badge Buttons */}
           <div className="flex gap-2 sm:gap-4 lg:gap-5 xl:gap-8 xxl:gap-11 [&_path]:fill-dark [&_svg]:h-5 [&_svg]:w-5 lg:[&_svg]:h-6 lg:[&_svg]:w-6 xl:[&_svg]:h-auto xl:[&_svg]:w-auto">
-            <button className="relative grid h-fit w-fit place-content-center rounded-full dark:bg-transparent bg-white p-2 xl:p-3">
+            <button className="relative grid h-fit w-fit place-content-center rounded-full bg-white p-2 xl:p-3 dark:bg-transparent">
               <ChatIcon />
               <span className="absolute right-[-5px] top-[-3px] grid h-5 w-5 place-content-center rounded-full bg-primary text-xs font-semibold text-white drop-shadow-[0_6px_8px_rgba(135,67,223,0.37)] xl:h-6 xl:w-6 xxl:h-7 xxl:w-7 xxl:text-sm">
                 18
               </span>
             </button>
-            <button className="relative grid h-fit w-fit place-content-center rounded-full dark:bg-transparent bg-white p-2 xl:p-3">
+            <button className="relative grid h-fit w-fit place-content-center rounded-full bg-white p-2 xl:p-3 dark:bg-transparent">
               <BellIcon />
               <span className="absolute right-[-5px] top-[-3px] grid h-5 w-5 place-content-center rounded-full bg-primary text-xs font-semibold text-white drop-shadow-[0_6px_8px_rgba(135,67,223,0.37)] xl:h-6 xl:w-6 xxl:h-7 xxl:w-7 xxl:text-sm">
                 52
@@ -99,25 +106,71 @@ export default function Header() {
           </div>
 
           {/* Super Admin */}
-          <div className="flex items-center sm:gap-2 lg:gap-4 xl:gap-8">
-            <img
-              src={adminData.avatar}
-              alt="avatar"
-              width={58}
-              height={58}
-              className="h-9 w-9 rounded-full object-cover sm:h-10 sm:w-10 lg:h-12 lg:min-h-12 lg:w-12 lg:min-w-12 xl:h-14 xl:min-h-14 xl:w-14 xl:min-w-14"
-            />
-            <div className="hidden sm:flex sm:flex-col sm:gap-1">
-              <p className="whitespace-nowrap text-base font-semibold text-dark">
-                {adminData.name}
-              </p>
-              <span className="whitespace-nowrap text-sm text-gray-300">
-                Super Admin
-              </span>
-            </div>
-          </div>
+          <SuperAdmin />
         </div>
       </div>
     </header>
+  );
+}
+
+function SuperAdmin() {
+  const [show, setShow] = useState(false);
+  const { signOut, isPending } = useSignOut();
+
+  const dropdownList = [
+    {
+      icon: <ProfileIcon />,
+      label: "Profile",
+      path: "profile",
+    },
+    {
+      icon: <InboxIcon />,
+      label: "Inbox",
+      path: "#",
+    },
+    {
+      icon: <LogoutIcon />,
+      label: "Sign Out",
+      path: "#",
+      onClick() {
+        console.log("Logging out");
+        signOut();
+      },
+    },
+  ];
+
+  const close = () => {
+    setShow(false);
+  };
+
+  if (isPending) return <Loader />;
+
+  return (
+    <div className="relative">
+      <button
+        type="button"
+        className="border-none bg-transparent"
+        onClick={() => setShow((prev) => !prev)}
+      >
+        <div className="flex items-center sm:gap-2 lg:gap-4 xl:gap-8">
+          <img
+            src={adminData.avatar}
+            alt="avatar"
+            width={58}
+            height={58}
+            className="h-9 w-9 rounded-full object-cover sm:h-10 sm:w-10 lg:h-12 lg:min-h-12 lg:w-12 lg:min-w-12 xl:h-14 xl:min-h-14 xl:w-14 xl:min-w-14"
+          />
+          <div className="hidden sm:flex sm:flex-col sm:gap-1">
+            <p className="whitespace-nowrap text-base font-semibold text-dark">
+              {adminData.name}
+            </p>
+            <span className="whitespace-nowrap text-sm text-gray-300">
+              Super Admin
+            </span>
+          </div>
+        </div>
+      </button>
+      {show && <Dropdown list={dropdownList} close={close} />}
+    </div>
   );
 }

@@ -26,10 +26,12 @@ export default function FormTextArea({
   if (!isValidElement(children)) return null;
 
   return (
-    <div className="flex flex-col gap-4 relative">
-      <InputLabel forId={children?.props.id}>{label}</InputLabel>
-      {children}
+    <>
+      <div className="relative flex flex-col gap-4">
+        <InputLabel forId={children?.props.id}>{label}</InputLabel>
+        {children}
+      </div>
       {error && <InputError>{error as string}</InputError>}
-    </div>
+    </>
   );
 }

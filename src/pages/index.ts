@@ -4,3 +4,6 @@ export { default as Applications } from "./Applications";
 export { default as Statistics } from "./Statistics";
 export { default as Profile } from "./Profile";
 export { default as SearchJobs } from "./SearchJobs";
+export { default as SignIn } from "./SignIn";
+export { default as SignUp } from "./SignUp";
+export { default as ForgotPassword } from "./ForgotPassword";

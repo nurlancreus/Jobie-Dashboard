@@ -1,10 +1,19 @@
+import type {
+  CompaniesPositionType,
+  CompaniesSortType,
+} from "@/features/companies/useGetCompanies";
 import { supabase } from "./supabase";
 
 export async function getCompanies(
   paginationOpt: Record<string, number>,
+  filterOpt: {
+    filterPositionValue: CompaniesPositionType;
+    filterSortValue: CompaniesSortType;
+  },
   searchValue?: string,
 ) {
   const { from, to } = paginationOpt;
+  const { filterPositionValue, filterSortValue } = filterOpt;
 
   let query = supabase
     .from("companies")
@@ -18,6 +27,15 @@ export async function getCompanies(
   }
 
   query = query.range(from, to);
+
+  // Filtering by position
+  if (filterPositionValue !== "your-skill")
+    query = query.eq("position", filterPositionValue);
+
+  // Sorting by date
+  query = query.order("created_at", {
+    ascending: filterSortValue === "newest" ? false : true,
+  });
 
   const { data, error, count } = await query;
 

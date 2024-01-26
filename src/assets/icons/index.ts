@@ -35,3 +35,7 @@ export { default as StatsSuitcaseIcon } from "./StatsSuitcaseIcon";
 export { default as StatsCalendarIcon } from "./StatsCalendarIcon";
 export { default as StatsReplyIcon } from "./StatsReplyIcon";
 export { default as PaginationArrow } from "./PaginationArrow";
+export { default as ProfileIcon } from "./ProfileIcon";
+export { default as InboxIcon } from "./InboxIcon";
+export { default as LogoutIcon } from "./LogoutIcon";
+export { default as MiniLoader } from "./MiniLoader";

@@ -7,8 +7,8 @@ type MainLogoProps = {
 
 export default function MainLogo({ variant = "sidebar" }: MainLogoProps) {
   return (
-    <div className={`h-[66px] ${variant === "header" ? "w-[160px]" : "w-[188px]"}`}>
-      <Link to="/">
+    <div className={`h-16 ${variant === "header" ? "w-[160px]" : "w-[188px]"}`}>
+      <Link to="/app">
         <img
           src={logo}
           alt="Logo"

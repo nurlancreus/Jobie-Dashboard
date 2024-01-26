@@ -26,6 +26,8 @@ export default {
         "primary-800": "var(--primary-800)",
         primary: "var(--primary-clr)",
         "primary-hover": "var(--primary-hover)",
+
+        loader: "var(--loader-clr)"
       },
       // backgroundImage: () => ({
       //   "gradient-yellowred":

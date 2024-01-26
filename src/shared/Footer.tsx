@@ -17,7 +17,7 @@ export default function Footer({
 
   return (
     <footer className="mt-12 flex flex-wrap items-center justify-between gap-5 lg:items-start">
-      <div className="whitespace-nowrap text-base font-medium text-zinc-900">
+      <div className="whitespace-nowrap text-base font-medium text-dark">
         Showing <span>{(currentPage - 1) * pageSize + 1}</span> to{" "}
         <span>
           {currentPage === numOfPages ? total : currentPage * pageSize}

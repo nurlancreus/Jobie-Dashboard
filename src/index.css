@@ -22,7 +22,11 @@
   }
 
   .form-input {
-    @apply text-lg text-dark font-medium placeholder:text-lg bg-transparent placeholder:text-gray-200 pb-3 lg:pb-5 border-b border-solid border-b-gray-100 dark:border-b-neutral-100/50 dark:focus:border-b-neutral-100 focus:outline-none focus:border-b-primary focus:border-b-2 hover:border-b-primary dark:hover:border-b-neutral-100 hover:border-b-2 transition
+    @apply text-lg text-dark font-medium placeholder:text-lg bg-transparent placeholder:text-gray-200 pb-3 lg:pb-5 border-b border-solid border-b-gray-100 dark:border-b-neutral-100/50 dark:focus:border-b-neutral-100 focus:outline-none focus:border-b-primary focus:border-b-2 hover:border-b-primary dark:hover:border-b-neutral-100 hover:border-b-2 transition disabled:cursor-not-allowed
+  }
+
+  .auth-form-input {
+    @apply h-10 w-full rounded-lg bg-card px-5 py-1 text-sm text-gray-400 dark:text-neutral-200 outline-transparent placeholder:text-gray-500 focus:outline-primary disabled:cursor-not-allowed
   }
 }
 
@@ -32,6 +36,7 @@
   --primary-clr: #40189D;
   --dark-clr: #292929;
 
+  --loader-clr: var(--primary-clr);
   --range-clr: var(--primary-clr);
   --card-bg: #fff;
 
@@ -62,8 +67,9 @@
   /* COLORS */
   --body-bg: #251e35;
   --primary-clr: #40189D;
-  --dark-clr: #fff;
+  --dark-clr: white;
 
+  --loader-clr: white;
   --range-clr: var(--gray-300);
   --card-bg: #28253b;
 
@@ -110,11 +116,10 @@
 }
 
 @layer components {
-
   .loader {
     width: 45px;
     aspect-ratio: 0.75;
-    --c: no-repeat linear-gradient(theme(colors.primary) 0 0);
+    --c: no-repeat linear-gradient(theme(colors.loader) 0 0);
     background: var(--c) 0% 50%, var(--c) 50% 50%, var(--c) 100% 50%;
     background-size: 20% 50%;
     animation: loading 1s infinite linear;
@@ -172,6 +177,11 @@
   }
 }
 
+/* REMOVE AUTO FILL SELECTED STYLES */
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s;
+}
 
 /* WIDGETS BG COLORS */
 

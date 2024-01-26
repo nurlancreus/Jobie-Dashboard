@@ -5,22 +5,42 @@ import useSearchQuery from "@/hooks/useSearchQuery";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
+export type JobsPositionType =
+  | "your-skill"
+  | "programmer"
+  | "software-engineer"
+  | "photographer"
+  | "digital-marketing";
+export type JobsSortType = "newest" | "oldest";
+
 export function useGetVacancies(withPagination = false) {
   // const queryClient = useQueryClient();
 
   const [searchParams, setSearchParams] = useSearchParams();
+  const filterPositionValue = (searchParams.get("position") ??
+    "your-skill") as JobsPositionType;
+
+  const filterSortValue = (searchParams.get("sortJobsBy") ??
+    "newest") as JobsSortType;
   const { currentPage, pageSize, from, to } = usePaginationParams("vacancies");
   const { searchValue } = useSearchQuery();
 
   const paginationOptions = { withPagination, from, to };
+  const filterOptions = { filterPositionValue, filterSortValue };
 
   const {
     data: { data: vacancies = [], count } = {},
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["vacancies", searchValue, currentPage],
-    queryFn: () => getVacancies(paginationOptions, searchValue), // this fn should return the Promise
+    queryKey: [
+      "vacancies",
+      searchValue,
+      currentPage,
+      filterPositionValue,
+      filterSortValue,
+    ],
+    queryFn: () => getVacancies(paginationOptions, filterOptions, searchValue), // this fn should return the Promise
   });
 
   // RE-PAGINATION

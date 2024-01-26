@@ -1,4 +1,4 @@
-import {
+import type {
   AppsStatusType,
   AppsSortType,
 } from "@/features/applications/useGetApplication";

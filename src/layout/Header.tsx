@@ -106,8 +106,6 @@ function SuperAdmin() {
   const [show, setShow] = useState(false);
   const { signOut, isPending } = useSignOut();
   const { user, isLoading } = useUser();
-  // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain, no-unsafe-optional-chaining
-  const { fullname, avatar } = user?.user_metadata!;
 
   const dropdownList = [
     {
@@ -125,7 +123,6 @@ function SuperAdmin() {
       label: "Sign Out",
       path: "#",
       onClick() {
-        console.log("Logging out");
         signOut();
       },
     },
@@ -135,7 +132,8 @@ function SuperAdmin() {
     setShow(false);
   };
 
-  if (isPending || isLoading) return <Loader />;
+  if (isPending || isLoading || !user) return <Loader />;
+  const { fullname, avatar } = user.user_metadata;
 
   return (
     <div className="relative">

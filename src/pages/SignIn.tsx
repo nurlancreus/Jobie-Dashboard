@@ -1,5 +1,5 @@
-import SIgnInForm from "@/features/auth/SignInForm";
+import SignInForm from "@/features/auth/SignInForm";
 
 export default function SIgnIn() {
-  return <SIgnInForm />;
+  return <SignInForm />;
 }

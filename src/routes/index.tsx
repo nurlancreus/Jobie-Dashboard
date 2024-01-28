@@ -8,6 +8,7 @@ import {
   Statistics,
   Profile,
   Applications,
+  UpdatePassword
 } from "@/pages";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
@@ -27,6 +28,7 @@ export default function AppRoutes() {
             <Route path="sign-in" element={<SignIn />} />
             <Route path="sign-up" element={<SignUp />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
+            <Route path="update-password" element={<UpdatePassword />} />
           </Route>
           <Route
             path="/app"

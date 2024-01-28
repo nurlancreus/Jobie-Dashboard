@@ -95,7 +95,7 @@ export default function ProfileForm() {
             key="forHire"
             checked={true}
           />
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-y-2 gap-x-5 flex-wrap">
             <Button type="reset" onClick={() => reset()}>
               Cancel
             </Button>

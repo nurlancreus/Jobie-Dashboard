@@ -1,14 +1,17 @@
+import { useLayoutEffect } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "@/features/auth/useUser";
 import Loader from "@/shared/Loader";
-import { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
 
 export default function AuthLayout() {
   const { isLoading, isAuthenticated } = useUser();
+  const { pathname } = useLocation();
+
   const navigate = useNavigate();
-  useEffect(() => {
-    if (isAuthenticated) navigate("/app", { replace: true });
-  }, [isAuthenticated, navigate]);
+  useLayoutEffect(() => {
+    if (isAuthenticated && !pathname.endsWith("update-password"))
+      navigate("/app", { replace: true });
+  }, [isAuthenticated, navigate, pathname]);
 
   if (isLoading) return <Loader />;
 

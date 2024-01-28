@@ -4,6 +4,7 @@ import validator from "validator";
 export type TSignUpFormSchema = z.infer<typeof SignUpFormSchema>;
 export type TSignInFormSchema = z.infer<typeof SignInFormSchema>;
 export type TRecoverPwFormSchema = z.infer<typeof RecoverPwFormSchema>;
+export type TUpdatePwFormSchema = z.infer<typeof UpdatePwFormSchema>;
 
 export const SignUpFormSchema = z
   .object({
@@ -67,15 +68,36 @@ export const RecoverPwFormSchema = z.object({
     .refine(validator.isEmail),
 });
 
+export const UpdatePwFormSchema = z
+  .object({
+    newPassword: z
+      .string()
+      .min(1, "This field is required, make changes")
+      .min(8, "Password needs a minimum of 8 characters")
+      .regex(/[0-9]/g, "Need a digit")
+      .regex(/[!,@,#,$,%,^,&,*]/g, "Need a special character !@#$%^&*")
+      .trim(),
+    confirmNewPassword: z
+      .string()
+      .min(1, "This field is required, make changes")
+      .trim(),
+  })
+  .refine((data) => data.confirmNewPassword === data.newPassword, {
+    message: "Passwords need to match",
+    path: ["updateConfirmPassword"],
+  });
+
 // TYPES
 type RemoveAuthPrefix<T> = {
   [K in keyof T as K extends `signup${infer U}`
     ? U
     : K extends `signin${infer V}`
       ? V
-      : K extends `recoverpw${infer Z}`
-        ? Z
-        : K]: T[K];
+      : K extends `recoverpw${infer Y}`
+        ? Y
+        : K extends `update${infer Z}`
+          ? Z
+          : K]: T[K];
 };
 
 type GetAuthParams<T> = {
@@ -95,4 +117,9 @@ export type TUserSignInParams = RemoveAuthPrefix<
 // RECOVER PASSWORD
 export type TUserRecoverPwParams = RemoveAuthPrefix<
   GetAuthParams<TRecoverPwFormSchema>
+>;
+
+// UPDATE PASSWORD
+export type TUserUpdatePwParams = RemoveAuthPrefix<
+  GetAuthParams<TUpdatePwFormSchema>
 >;

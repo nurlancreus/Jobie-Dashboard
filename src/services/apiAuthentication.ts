@@ -1,9 +1,10 @@
+import { supabase } from "./supabase";
 import type {
   TUserRecoverPwParams,
   TUserSignInParams,
   TUserSignUpParams,
+  TUserUpdatePwParams,
 } from "@/features/auth/authSchema";
-import { supabase } from "./supabase";
 
 // SIGN UP
 export async function userSignUp({
@@ -46,13 +47,25 @@ export async function userSignIn({ email, password }: TUserSignInParams) {
 
 // RECOVER PASSWORD
 export async function userRecoverPw({ email }: TUserRecoverPwParams) {
-  const { data, error } = await supabase.auth.resetPasswordForEmail(email);
+  const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: "http://localhost:5173/update-password",
+  });
 
   if (error) throw new Error(error.message);
 
   return data;
 }
 
+// UPDATE PASSWORD
+export async function userUpdatePw({ newpassword }: Omit<TUserUpdatePwParams, "confirmnewpassword">) {
+  const { data, error } = await supabase.auth.updateUser({
+    password: newpassword,
+  });
+
+  if (error) throw new Error(error.message);
+
+  return data;
+}
 // GET CURRENT USER
 export async function getCurrentUser() {
   const { data: session } = await supabase.auth.getSession();

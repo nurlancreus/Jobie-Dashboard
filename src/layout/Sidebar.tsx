@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   ApplicationsIcon,
   DashboardIcon,
@@ -7,11 +8,10 @@ import {
   UserIcon,
 } from "@/assets/icons";
 
-import { useSidebarContext } from "@/contexts/SidebarProvider";
-import { useActiveNav } from "@/hooks/useActiveNav";
 import MainLogo from "@/shared/MainLogo";
 import ToggleThemeBtn from "@/shared/ToggleThemeBtn";
-import { Link } from "react-router-dom";
+import { useSidebarContext } from "@/contexts/SidebarProvider";
+import { useActiveNav } from "@/hooks/useActiveNav";
 
 const sidebarNavigation = [
   {

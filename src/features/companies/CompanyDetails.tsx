@@ -20,7 +20,7 @@ export default function CompanyDetails({
   const { company, isLoading } = useGetCompany(selectedId);
 
   return (
-    <aside className="relative mt-8 rounded-[20px] bg-card p-[50px_20px_28px] xl:p-[60px_24px_30px] lg:mt-0">
+    <aside className="relative mt-8 rounded-[20px] bg-card p-[50px_20px_28px] lg:mt-0 xl:p-[60px_24px_30px]">
       {isLoading || !company ? (
         <span className="flex justify-center [&_svg]:h-14 [&_svg]:w-14">
           <MiniLoader />
@@ -29,7 +29,7 @@ export default function CompanyDetails({
         <div className="flex flex-col gap-5 sm:flex-row lg:flex-col">
           {/* Close Button */}
           <button
-            className="absolute right-6 top-4 xl:right-7 xl:top-6 border-none bg-transparent outline-transparent"
+            className="absolute right-6 top-4 border-none bg-transparent outline-transparent xl:right-7 xl:top-6"
             onClick={() => setSelectedId(null)}
           >
             <CloseIcon />
@@ -90,12 +90,12 @@ export default function CompanyDetails({
             <h4 className="text-base font-semibold">About Company</h4>
             <p className="mt-7 text-sm text-gray-700">{company.about}</p>
             <div className="mt-9 flex items-center gap-5">
-              <button className="grid flex-1 px-1 place-content-center rounded-[70px] bg-primary py-4 text-lg font-semibold capitalize text-white transition-opacity duration-200 hover:opacity-90">
+              <button className="grid flex-1 place-content-center rounded-[70px] bg-primary px-1 py-4 text-lg font-semibold capitalize text-white transition-opacity duration-200 hover:opacity-90">
                 {company.vacancies.length} Vacancy
               </button>
               <button
                 disabled={true}
-                className="grid flex-1 px-1 place-content-center rounded-[70px] bg-gray-100 py-4 text-lg font-semibold capitalize text-gray-500 transition-opacity duration-200 disabled:cursor-not-allowed"
+                className="grid flex-1 place-content-center rounded-[70px] bg-gray-100 px-1 py-4 text-lg font-semibold capitalize text-gray-500 transition-opacity duration-200 disabled:cursor-not-allowed"
               >
                 More Detail
               </button>

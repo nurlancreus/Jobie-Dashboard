@@ -7,11 +7,13 @@ export function useSignUp() {
   const navigate = useNavigate();
   const { mutate: signUp, isPending } = useMutation({
     mutationFn: ({
+      firstname,
+      lastname,
       username,
       email,
       password,
     }: Omit<TUserSignUpParams, "confirmpassword">) =>
-      userSignUp({ username, email, password }),
+      userSignUp({ firstname, lastname, username, email, password }),
     onSuccess: (user) => {
       console.log(user);
       navigate("/");

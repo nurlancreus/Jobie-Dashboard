@@ -21,6 +21,8 @@ export default function SignUpForm() {
   } = useForm<TSignUpFormSchema>({
     resolver: zodResolver(SignUpFormSchema),
     values: {
+      signUpFirstName: "",
+      signUpLastName: "",
       signUpUsername: "",
       signUpEmail: "",
       signUpPassword: "",
@@ -33,9 +35,17 @@ export default function SignUpForm() {
   const { signUp, isPending } = useSignUp();
 
   const onSubmit = (data: TSignUpFormSchema) => {
-    const { signUpUsername, signUpEmail, signUpPassword } = data;
+    const {
+      signUpFirstName,
+      signUpLastName,
+      signUpUsername,
+      signUpEmail,
+      signUpPassword,
+    } = data;
 
     const userData: Omit<TUserSignUpParams, "confirmpassword"> = {
+      firstname: signUpFirstName,
+      lastname: signUpLastName,
       username: signUpUsername,
       email: signUpEmail,
       password: signUpPassword,
@@ -49,6 +59,31 @@ export default function SignUpForm() {
       <form id="signUpForm" name="signUpForm" onSubmit={handleSubmit(onSubmit)}>
         <FormHeader>Sign up your account</FormHeader>
         <div className="flex flex-col gap-4">
+          <div className="flex items-center gap-4">
+            <AuthFormRow label="first name" error={errors?.signUpFirstName?.message}>
+              <input
+                type="text"
+                {...register("signUpFirstName")}
+                id="signUpFirstName"
+                disabled={isPending}
+                autoComplete="name"
+                className="auth-form-input"
+              />
+            </AuthFormRow>
+            <AuthFormRow
+              label="last name"
+              error={errors?.signUpLastName?.message}
+            >
+              <input
+                type="text"
+                {...register("signUpLastName")}
+                id="signUpLastName"
+                disabled={isPending}
+                autoComplete="lastname"
+                className="auth-form-input"
+              />
+            </AuthFormRow>
+          </div>
           <AuthFormRow label="username" error={errors?.signUpUsername?.message}>
             <input
               type="text"

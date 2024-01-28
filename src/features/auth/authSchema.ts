@@ -7,21 +7,35 @@ export type TRecoverPwFormSchema = z.infer<typeof RecoverPwFormSchema>;
 
 export const SignUpFormSchema = z
   .object({
-    signUpUsername: z.string().min(1, "This field is required, make changes"),
+    signUpFirstName: z
+      .string()
+      .min(1, "This field is required, make changes")
+      .trim(),
+    signUpLastName: z
+      .string()
+      .min(1, "This field is required, make changes")
+      .trim(),
+    signUpUsername: z
+      .string()
+      .min(1, "This field is required, make changes")
+      .trim(),
     signUpEmail: z
       .string()
       .min(1, "This field is required, make changes")
       .email("This is not a valid email.")
+      .trim()
       .refine(validator.isEmail),
     signUpPassword: z
       .string()
       .min(1, "This field is required, make changes")
       .min(8, "Password needs a minimum of 8 characters")
       .regex(/[0-9]/g, "Need a digit")
-      .regex(/[!,@,#,$,%,^,&,*]/g, "Need a special character !@#$%^&*"),
+      .regex(/[!,@,#,$,%,^,&,*]/g, "Need a special character !@#$%^&*")
+      .trim(),
     signUpConfirmPassword: z
       .string()
-      .min(1, "This field is required, make changes"),
+      .min(1, "This field is required, make changes")
+      .trim(),
   })
   .refine((data) => data.signUpConfirmPassword === data.signUpPassword, {
     message: "Passwords need to match",
@@ -33,13 +47,15 @@ export const SignInFormSchema = z.object({
     .string()
     .min(1, "This field is required, make changes")
     .email("This is not a valid email.")
+    .trim()
     .refine(validator.isEmail),
   signInPassword: z
     .string()
     .min(1, "This field is required, make changes")
     .min(8, "Password needs a minimum of 8 characters")
     .regex(/[0-9]/g, "Need a digit")
-    .regex(/[!,@,#,$,%,^,&,*]/g, "Need a special character !@#$%^&*"),
+    .regex(/[!,@,#,$,%,^,&,*]/g, "Need a special character !@#$%^&*")
+    .trim(),
 });
 
 export const RecoverPwFormSchema = z.object({
@@ -47,6 +63,7 @@ export const RecoverPwFormSchema = z.object({
     .string()
     .min(1, "This field is required, make changes")
     .email("This is not a valid email.")
+    .trim()
     .refine(validator.isEmail),
 });
 

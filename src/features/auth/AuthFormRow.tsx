@@ -24,7 +24,7 @@ export default function AuthFormRow({
   const id = isValidElement(children) && children.props.id;
 
   return (
-    <div className="relative">
+    <div className="relative flex-1">
       <label
         htmlFor={id}
         className="mb-2 block text-base font-semibold capitalize text-white"

@@ -76,7 +76,9 @@ export default function Sidebar() {
           <MainLogo />
         </div>
         <nav className="relative isolate">
-          <div className="absolute -top-5 right-4 block md:-top-28">
+          <div
+            className={`absolute -top-5 right-4 transition-opacity duration-400 md:-top-28 ${!isLargeOpen ? "pointer-events-none opacity-0" : "opacity-100"}`}
+          >
             <ToggleThemeBtn />
           </div>
           <div

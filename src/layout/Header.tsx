@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import {
   ArrowIcon,
   BellIcon,
@@ -8,14 +10,12 @@ import {
   SearchIcon,
   ToggleIcon,
 } from "@/assets/icons";
-import { useSidebarContext } from "@/contexts/SidebarProvider";
-import { adminData } from "@/data/adminData";
-import { useSignOut } from "@/features/auth/useSignOut";
 import Dropdown from "@/shared/Dropdown";
 import Loader from "@/shared/Loader";
 import MainLogo from "@/shared/MainLogo";
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useSidebarContext } from "@/contexts/SidebarProvider";
+import { useSignOut } from "@/features/auth/useSignOut";
+import { useUser } from "@/features/auth/useUser";
 
 export default function Header() {
   const { toggle, isScreenSmall, isLargeOpen, isSmallOpen } =
@@ -105,6 +105,9 @@ export default function Header() {
 function SuperAdmin() {
   const [show, setShow] = useState(false);
   const { signOut, isPending } = useSignOut();
+  const { user, isLoading } = useUser();
+  // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain, no-unsafe-optional-chaining
+  const { fullname, avatar } = user?.user_metadata!;
 
   const dropdownList = [
     {
@@ -132,7 +135,7 @@ function SuperAdmin() {
     setShow(false);
   };
 
-  if (isPending) return <Loader />;
+  if (isPending || isLoading) return <Loader />;
 
   return (
     <div className="relative">
@@ -142,16 +145,23 @@ function SuperAdmin() {
         onClick={() => setShow((prev) => !prev)}
       >
         <div className="flex items-center sm:gap-2 lg:gap-4 xl:gap-8">
-          <img
-            src={adminData.avatar}
-            alt="avatar"
-            width={58}
-            height={58}
-            className="h-9 w-9 rounded-full object-cover sm:h-10 sm:w-10 lg:h-12 lg:min-h-12 lg:w-12 lg:min-w-12 xl:h-14 xl:min-h-14 xl:w-14 xl:min-w-14"
-          />
+          {avatar ? (
+            <img
+              src={avatar}
+              alt="avatar"
+              width={58}
+              height={58}
+              className="h-9 w-9 rounded-full object-cover sm:h-10 sm:w-10 lg:h-12 lg:min-h-12 lg:w-12 lg:min-w-12 xl:h-14 xl:min-h-14 xl:w-14 xl:min-w-14"
+            />
+          ) : (
+            <span className="[&_svg]:h-8 [&_svg]:w-8 sm:[&_svg]:h-10 sm:[&_svg]:w-10">
+              <ProfileIcon />
+            </span>
+          )}
+
           <div className="hidden sm:flex sm:flex-col sm:gap-1">
             <p className="whitespace-nowrap text-base font-semibold text-dark">
-              {adminData.name}
+              {fullname}
             </p>
             <span className="whitespace-nowrap text-sm text-gray-300">
               Super Admin

@@ -7,15 +7,20 @@ import { supabase } from "./supabase";
 
 // SIGN UP
 export async function userSignUp({
+  firstname,
+  lastname,
   username,
   email,
   password,
 }: Omit<TUserSignUpParams, "confirmpassword">) {
+  const fullname = `${firstname} ${lastname}`;
+
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
       data: {
+        fullname,
         username,
         avatar: "",
       },

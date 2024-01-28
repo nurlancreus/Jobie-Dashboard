@@ -1,13 +1,13 @@
-import HeaderForm from "@/shared/HeaderForm";
 import JobsBody from "./JobsBody";
 import JobsHeader from "./JobsHeader";
-import useSearchQuery from "@/hooks/useSearchQuery";
-import { useGetVacancies } from "./useGetVacancies";
-import Loader from "@/shared/Loader";
-import { NonNullProps } from "@/models/types";
 import JobList from "./JobList";
 import JobsBodyHeader from "./JobsBodyHeader";
 import Job from "./Job";
+import { useGetVacancies } from "./useGetVacancies";
+import { useSearchQuery } from "@/hooks/useSearchQuery";
+import { NonNullProps } from "@/models/types";
+import HeaderForm from "@/shared/HeaderForm";
+import Loader from "@/shared/Loader";
 import Pagination from "@/shared/Pagination";
 import Footer from "@/shared/Footer";
 

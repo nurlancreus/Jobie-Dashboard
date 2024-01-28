@@ -1,5 +1,5 @@
-import { MiniLoader } from "@/assets/icons";
 import { ReactNode } from "react";
+import { MiniLoader } from "@/assets/icons";
 
 type SubmitButtonProps = {
   children: ReactNode;

@@ -1,5 +1,5 @@
-import validator from "validator";
 import { z } from "zod";
+import validator from "validator";
 
 export type TSignUpFormSchema = z.infer<typeof SignUpFormSchema>;
 export type TSignInFormSchema = z.infer<typeof SignInFormSchema>;

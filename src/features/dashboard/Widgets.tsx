@@ -55,7 +55,7 @@ type WidgetProps = {
 function Widget({ widget }: WidgetProps) {
   return (
     <article
-      className={`widget-${widget.id} overflow-hidden rounded-[28px] p-[32px_24px_24px] xl:p-[36px_26px_26px] xxl:p-[40px_30px_30px]`}
+      className={`widget-${widget.id} overflow-hidden rounded-[1.75rem] p-[2rem_1.5rem_1.5rem] xl:p-[2.25rem_1.625rem_1.625rem] xxl:p-[2.5rem_1.875rem_1.875rem]`}
     >
       <div className="flex items-center justify-between">
         <span className="grid min-h-fit min-w-fit place-content-center rounded-xl border border-solid border-primary-300 p-2 lg:p-3 [&_svg]:h-8 [&_svg]:w-8 xl:[&_svg]:h-9 xl:[&_svg]:w-9 xxl:[&_svg]:h-auto xxl:[&_svg]:w-auto">
@@ -65,7 +65,9 @@ function Widget({ widget }: WidgetProps) {
           <p className="whitespace-nowrap text-lg font-medium">
             {widget.label}
           </p>
-          <h3 className="text-5xl font-semibold">{formatNumbers(widget.value) }</h3>
+          <h3 className="text-5xl font-semibold">
+            {formatNumbers(widget.value)}
+          </h3>
         </div>
       </div>
     </article>

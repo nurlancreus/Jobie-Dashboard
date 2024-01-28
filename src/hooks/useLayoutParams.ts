@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 
-export default function useLayoutParams() {
+export function useLayoutParams() {
   const [searchParams, setSearchParams] = useSearchParams();
   const layoutParamsValue = searchParams.get("layout") ?? "grid"
 

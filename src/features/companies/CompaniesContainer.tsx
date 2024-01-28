@@ -1,6 +1,5 @@
 import { useState } from "react";
-import HeaderForm from "@/shared/HeaderForm";
-import useSearchQuery from "@/hooks/useSearchQuery";
+
 import CompaniesHeader from "./CompaniesHeader";
 import CompaniesBody from "./CompaniesBody";
 import CompanyDetails from "./CompanyDetails";
@@ -8,10 +7,13 @@ import CompaniesBodyHeader from "./CompaniesBodyHeader";
 import CompanyList from "./CompanyList";
 import Company from "./Company";
 import { useGetCompanies } from "./useGetCompanies";
-import { NonNullProps } from "@/models/types";
+
 import Loader from "@/shared/Loader";
 import Pagination from "@/shared/Pagination";
 import Footer from "@/shared/Footer";
+import HeaderForm from "@/shared/HeaderForm";
+import { useSearchQuery } from "@/hooks/useSearchQuery";
+import { NonNullProps } from "@/models/types";
 
 export default function CompaniesContainer() {
   const { query, handleQueryChange, handleSubmit } = useSearchQuery();

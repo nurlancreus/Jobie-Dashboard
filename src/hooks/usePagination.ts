@@ -17,7 +17,7 @@ type usePaginationProps = {
   currentPage: number;
 };
 
-export default function usePagination({
+export function usePagination({
   numOfPages,
   siblingCount = 1,
   currentPage,

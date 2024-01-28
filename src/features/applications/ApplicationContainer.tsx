@@ -1,12 +1,12 @@
-import Titles from "@/shared/Titles";
 import ApplicationsHeader from "./ApplicationsHeader";
 import ApplicationsTable from "./ApplicationsTable";
-import { useGetApplications } from "./useGetApplication";
+import { useGetApplications } from "./useGetApplications";
 import ApplicationsTableRow from "./ApplicationsTableRow";
-import { NonNullProps } from "@/models/types";
+import Titles from "@/shared/Titles";
 import Footer from "@/shared/Footer";
 import Pagination from "@/shared/Pagination";
 import Loader from "@/shared/Loader";
+import { NonNullProps } from "@/models/types";
 
 export default function ApplicationContainer() {
   const { applications, isLoading, count } = useGetApplications();

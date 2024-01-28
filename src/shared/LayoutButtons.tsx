@@ -1,5 +1,5 @@
 import { ListIcon, GridIcon } from "@/assets/icons";
-import useLayoutParams from "@/hooks/useLayoutParams";
+import { useLayoutParams } from "@/hooks/useLayoutParams";
 
 export default function LayoutButtons() {
   return (

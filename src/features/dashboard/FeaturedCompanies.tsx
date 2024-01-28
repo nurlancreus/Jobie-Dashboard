@@ -1,9 +1,9 @@
+import Company from "../companies/Company";
+import { useGetCompanies } from "../companies/useGetCompanies";
 import Title from "@/shared/Title";
 import ViewMore from "@/shared/ViewMore";
-import Company from "../companies/Company";
 import SharedSwiper from "@/shared/SharedSwiper";
 import { NonNullProps } from "@/models/types";
-import { useGetCompanies } from "../companies/useGetCompanies";
 
 export default function FeaturedCompanies() {
   const { companies } = useGetCompanies();

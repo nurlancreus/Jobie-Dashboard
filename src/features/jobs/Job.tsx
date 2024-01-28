@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom";
 import Logo from "@/shared/Logo";
 import Title from "@/shared/Title";
 import { formatCurrency, truncate } from "@/utils/helpers";
-import { Link } from "react-router-dom";
 
 type JobProps<T> = {
   data: T;

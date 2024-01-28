@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 
-export default function useSortParams(field: string, defaultValue: string) {
+export function useSortParams(field: string, defaultValue: string) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const paramsValue = searchParams.get(field) ?? defaultValue;

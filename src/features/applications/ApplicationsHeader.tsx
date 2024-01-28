@@ -1,6 +1,6 @@
-import Select from "@/shared/Select";
-import ApplicationsTabs from "./ApplicationsTabs";
 import { ReactNode } from "react";
+import ApplicationsTabs from "./ApplicationsTabs";
+import Select from "@/shared/Select";
 
 const sortOptions = [
   {

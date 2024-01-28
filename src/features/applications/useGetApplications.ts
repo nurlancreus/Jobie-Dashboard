@@ -1,8 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
-import { getApplications } from "@/services/apiApplications";
-import usePaginationParams from "@/hooks/usePaginationParams";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { getApplications } from "@/services/apiApplications";
+import { usePaginationParams } from "@/hooks/usePaginationParams";
 
 export type AppsStatusType = "all" | "pending" | "on-hold" | "candidate";
 

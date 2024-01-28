@@ -27,22 +27,11 @@ export default {
         primary: "var(--primary-clr)",
         "primary-hover": "var(--primary-hover)",
 
-        loader: "var(--loader-clr)"
+        loader: "var(--loader-clr)",
       },
-      // backgroundImage: () => ({
-      //   "gradient-yellowred":
-      //     "linear-gradient(90deg, #FF616A 0%, #FFC837 100%)",
-      //   "mobile-home": "url('./assets/images/HomePageGraphic.png')",
-      // }),
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
       },
-      // content: {
-      //   evolvetext: "url('./assets/images/EvolveText.png')",
-      //   abstractwaves: "url('./assets/images/AbstractWaves.png')",
-      //   sparkles: "url('./assets/images/Sparkles.png')",
-      //   circles: "url('./assets/images/Circles.png')",
-      // },
       fontSize: {
         heading: ["24px", "42px"],
         // sm: ["14px", "20px"],
@@ -50,6 +39,7 @@ export default {
         base: ["clamp(14px,2vw,16px)", "clamp(20px,2vw,24px)"],
         lg: ["clamp(16px,2vw,18px)", "clamp(24px,2vw,28px)"],
         xl: ["clamp(18px,2vw,20px)", "clamp(24px,2vw,28px)"],
+        "2xl": ["clamp(22px,2vw,24px)", "clamp(28ypx,2vw,32px)"],
         // xl: ["24px", "32px"],
         "5xl": ["clamp(36px,2vw + 1px,48px)", "clamp(64px,2vw + 1px,72px)"],
       },

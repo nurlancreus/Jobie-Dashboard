@@ -1,9 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import { getVacancies } from "@/services/apiVacancies";
-import usePaginationParams from "@/hooks/usePaginationParams";
-import useSearchQuery from "@/hooks/useSearchQuery";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { getVacancies } from "@/services/apiVacancies";
+import { usePaginationParams } from "@/hooks/usePaginationParams";
+import { useSearchQuery } from "@/hooks/useSearchQuery";
 
 export type JobsPositionType =
   | "your-skill"

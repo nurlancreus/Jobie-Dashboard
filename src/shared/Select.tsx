@@ -1,5 +1,5 @@
 import { Chevron, SortIcon } from "@/assets/icons";
-import useSortParams from "@/hooks/useSortParams";
+import { useSortParams } from "@/hooks/useSortParams";
 
 type SelectProps = {
   variant?: "sort" | "default";

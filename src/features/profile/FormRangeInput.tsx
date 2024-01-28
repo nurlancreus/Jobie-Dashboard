@@ -1,11 +1,11 @@
 import { ReactNode, isValidElement } from "react";
-import InputLabel from "../../shared/InputLabel";
 import {
   FieldError,
   Merge,
   FieldErrorsImpl,
   FieldValues,
 } from "react-hook-form";
+import InputLabel from "@/shared/InputLabel";
 import InputError from "@/shared/InputError";
 
 type FormRangeInputProps = {

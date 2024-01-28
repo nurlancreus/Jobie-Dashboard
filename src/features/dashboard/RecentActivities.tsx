@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ApplicationsIcon, ArrowIcon } from "@/assets/icons";
-import { timeAgo } from "@/utils/helpers";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { timeAgo } from "@/utils/helpers";
 
 const recentActivities = [
   {
@@ -90,7 +90,7 @@ export default function RecentActivites() {
       <ul
         className={`custom-scrollbar flex flex-col gap-4 transition-all duration-200 ${
           isListOpen || !isAboveLargeScreens
-            ? "h-[380px] overflow-y-auto"
+            ? "h-[400px] overflow-y-auto"
             : "h-[360px] overflow-hidden"
         }`}
       >
@@ -128,7 +128,7 @@ function Activity({ activity }: ActivityProps) {
       className="grid grid-cols-[auto_1fr] items-center gap-4"
       key={activity.id}
     >
-      <span className="grid h-[60px] w-[60px] place-content-center rounded-2xl border [&_svg]:h-6 [&_svg]:w-6 [&_path]:fill-primary dark:[&_path]:fill-neutral-100/50">
+      <span className="grid h-[3.75rem] w-[3.75rem] place-content-center rounded-2xl border [&_svg]:h-6 [&_svg]:w-6 [&_path]:fill-primary dark:[&_path]:fill-neutral-100/50">
         {activity.icon}
       </span>
       <div className="text-sm">

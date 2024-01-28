@@ -1,4 +1,4 @@
-import useSwitchParams from "@/hooks/useSwitchParams";
+import { useSwitchParams } from "@/hooks/useSwitchParams";
 
 type SwitchBtn = {
   label: string;

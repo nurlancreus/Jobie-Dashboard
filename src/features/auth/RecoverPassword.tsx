@@ -1,11 +1,11 @@
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import AuthFormRow from "./AuthFormRow";
 import FormHeader from "./FormHeader";
 import SubmitButton from "./SubmitButton";
 import FormFooter from "./FormFooter";
+import { useRecoverPw } from "./useRecoverPw";
 import { RecoverPwFormSchema, type TRecoverPwFormSchema } from "./authSchema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import useRecoverPw from "./useRecoverPw";
 
 export default function RecoverPassword() {
   const {
@@ -23,7 +23,6 @@ export default function RecoverPassword() {
   const { recoverPw, isPending } = useRecoverPw();
 
   const onSubmit = ({ recoverPwEmail }: TRecoverPwFormSchema) => {
-    
     recoverPw(recoverPwEmail, { onSuccess: () => reset() });
   };
 

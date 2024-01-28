@@ -1,4 +1,4 @@
-import usePaginationParams from "@/hooks/usePaginationParams";
+import {usePaginationParams} from "@/hooks/usePaginationParams";
 import { cloneElement, isValidElement } from "react";
 
 type PaginationProps = {

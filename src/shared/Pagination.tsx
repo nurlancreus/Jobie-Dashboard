@@ -1,7 +1,7 @@
 import { PaginationArrow } from "@/assets/icons";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import usePagination from "@/hooks/usePagination";
-import usePaginationParams from "@/hooks/usePaginationParams";
+import { usePagination } from "@/hooks/usePagination";
+import { usePaginationParams } from "@/hooks/usePaginationParams";
 import { ReactNode } from "react";
 
 type PaginationProps = {
@@ -91,7 +91,7 @@ function PaginationButton({
   return (
     <button
       disabled={disabled}
-      className={`bg-card flex items-center gap-2 rounded-[62px] border-none px-3 py-2 text-lg font-medium text-primary outline-transparent transition hover:bg-primary hover:text-white dark:[&_path]:stroke-slate-200 disabled:cursor-not-allowed lg:gap-3 lg:px-5 xl:px-6 xl:py-3 dark:text-slate-200 [&:hover_path]:stroke-white [&_path]:transition ${
+      className={`flex items-center gap-2 rounded-[62px] border-none bg-card px-3 py-2 text-lg font-medium text-primary outline-transparent transition hover:bg-primary hover:text-white disabled:cursor-not-allowed lg:gap-3 lg:px-5 xl:px-6 xl:py-3 dark:text-slate-200 [&:hover_path]:stroke-white [&_path]:transition dark:[&_path]:stroke-slate-200 ${
         variant === "next" ? "flex-row-reverse [&>svg]:rotate-180" : ""
       }`}
       onClick={() => handleClick(currentPage)}

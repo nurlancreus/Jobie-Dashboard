@@ -39,3 +39,5 @@ export { default as ProfileIcon } from "./ProfileIcon";
 export { default as InboxIcon } from "./InboxIcon";
 export { default as LogoutIcon } from "./LogoutIcon";
 export { default as MiniLoader } from "./MiniLoader";
+export { default as MoonIcon } from "./MoonIcon";
+export { default as SunIcon } from "./SunIcon";

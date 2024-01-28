@@ -1,9 +1,10 @@
 import type {
   AppsStatusType,
   AppsSortType,
-} from "@/features/applications/useGetApplication";
+} from "@/features/applications/useGetApplications";
 import { supabase } from "./supabase";
 
+//GET APPLICATIONS
 export async function getApplications(
   paginationOpt: Record<string, number>,
   filterOpt: {
@@ -39,7 +40,7 @@ export async function getApplications(
   return { data, count };
 }
 
-// Get Statuses
+// GET APPLICATION STATUSES
 export async function getApplicationsStatus() {
   const { data, error } = await supabase.from("applications").select("status");
 

@@ -1,12 +1,3 @@
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-import useSortParams from "@/hooks/useSortParams";
-import useSwitchParams from "@/hooks/useSwitchParams";
-import {
-  SELECT_PERIOD_ID,
-  SWITCH_APPLICATIONS_ID,
-  SWITCH_INTERVIEWS_ID,
-  SWITCH_REJECTED_ID,
-} from "@/utils/constants";
 import { useMemo } from "react";
 import {
   ResponsiveContainer,
@@ -18,6 +9,15 @@ import {
   Legend,
   Line,
 } from "recharts";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { useSortParams } from "@/hooks/useSortParams";
+import { useSwitchParams } from "@/hooks/useSwitchParams";
+import {
+  SELECT_PERIOD_ID,
+  SWITCH_APPLICATIONS_ID,
+  SWITCH_INTERVIEWS_ID,
+  SWITCH_REJECTED_ID,
+} from "@/utils/constants";
 
 export default function VacancyStatsChart() {
   const isScreenSmall = useMediaQuery("(max-width: 992px)");

@@ -9,7 +9,6 @@ import {
   ToggleIcon,
 } from "@/assets/icons";
 import { useSidebarContext } from "@/contexts/SidebarProvider";
-import { useThemeContext } from "@/contexts/ThemeProvider";
 import { adminData } from "@/data/adminData";
 import { useSignOut } from "@/features/auth/useSignOut";
 import Dropdown from "@/shared/Dropdown";
@@ -19,7 +18,6 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function Header() {
-  const { isDarkModeOn, toggleTheme } = useThemeContext();
   const { toggle, isScreenSmall, isLargeOpen, isSmallOpen } =
     useSidebarContext();
   const { pathname } = useLocation();
@@ -40,7 +38,7 @@ export default function Header() {
     <header className="relative z-10 col-start-2 col-end-3 row-start-1 row-end-2 flex items-center justify-between bg-body px-6 py-5 md:rounded-tl-[48px] lg:px-8 xl:px-10 xl:py-7 xxl:px-12 xxl:py-8">
       {/* Toggle & Title */}
       {isScreenSmall && (
-        <div className="absolute bottom-0 left-0 top-0 w-20 overflow-hidden bg-primary px-2">
+        <div className="absolute bottom-0 left-0 top-0 h-fit w-20 overflow-hidden bg-primary p-2">
           <MainLogo variant="header" />
         </div>
       )}
@@ -78,15 +76,6 @@ export default function Header() {
             <SearchIcon />
           </button>
         </form>
-
-        <div>
-          <button
-            className="h-fit w-fit rounded-full bg-white p-2 xl:p-3"
-            onClick={toggleTheme}
-          >
-            {isDarkModeOn ? "Dark Mode" : "Light Mode"}
-          </button>
-        </div>
 
         <div className="ml-auto flex items-center gap-5 sm:gap-8 lg:gap-10 xl:gap-12 xxl:gap-16">
           {/* Badge Buttons */}

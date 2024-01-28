@@ -1,5 +1,5 @@
-import logo from "@/assets/images/logo.svg";
 import { ReactNode } from "react";
+import logo from "@/assets/images/logo.svg";
 
 type FormHeaderProps = {
   children: ReactNode;

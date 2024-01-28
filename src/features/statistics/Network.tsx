@@ -1,7 +1,3 @@
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-import ActionButton from "@/shared/ActionButton";
-import Title from "@/shared/Title";
-import { formatNumbers } from "@/utils/helpers";
 import { ReactText } from "react";
 import {
   ResponsiveContainer,
@@ -13,6 +9,10 @@ import {
   DefaultLegendContentProps,
 } from "recharts";
 import { Payload } from "recharts/types/component/DefaultLegendContent";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { formatNumbers } from "@/utils/helpers";
+import ActionButton from "@/shared/ActionButton";
+import Title from "@/shared/Title";
 
 const data = [
   { name: "Person", value: 3_334 },

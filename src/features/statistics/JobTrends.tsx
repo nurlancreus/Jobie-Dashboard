@@ -1,6 +1,6 @@
+import AdminProgress from "../dashboard/AdminProgress";
 import ActionButton from "@/shared/ActionButton";
 import Title from "@/shared/Title";
-import AdminProgress from "../dashboard/AdminProgress";
 
 const jobTrends = [
   {

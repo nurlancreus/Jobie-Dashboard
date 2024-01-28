@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 
-export default function useSwitchParams(id: string, checked: boolean) {
+export function useSwitchParams(id: string, checked: boolean) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const value = checked ? "on" : "off";

@@ -9,16 +9,19 @@ import type {
 } from "react-hook-form";
 import InputError from "@/shared/InputError";
 
-// type InputPasswordType = {
-//   inputType: "password";
-//   showPassword: boolean;
-//   disabled: boolean;
-//   onTogglePassword: (id: "profilePassword" | "profileConfirmPassword") => void;
-// };
+type InputPasswordTypeProps = {
+  inputType?: "password";
+  showPassword: boolean;
+  disabled: boolean;
+  onTogglePassword: (id: "profilePassword" | "profileConfirmPassword") => void;
+};
 
-// type InputTextType = {
-//   inputType: "text";
-// };
+type InputTextTypeProps = {
+  inputType?: "text";
+  showPassword?: null;
+  disabled?: false;
+  onTogglePassword?: null;
+};
 
 type ProfileFormRowProps = {
   children: ReactNode;
@@ -28,11 +31,7 @@ type ProfileFormRowProps = {
     | FieldError
     | Merge<FieldError, FieldErrorsImpl<FieldValues>>
     | undefined;
-  inputType?: "text" | "password";
-  showPassword?: boolean;
-  disabled?: boolean;
-  onTogglePassword?: (id: "profilePassword" | "profileConfirmPassword") => void;
-};
+} & (InputTextTypeProps | InputPasswordTypeProps);
 
 export default function ProfileFormRow({
   children,

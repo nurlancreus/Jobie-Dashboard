@@ -5,7 +5,7 @@ import {
   FieldErrorsImpl,
   FieldValues,
 } from "react-hook-form";
-import InputLabel from "../../shared/InputLabel";
+import InputLabel from "@/shared/InputLabel";
 import InputError from "@/shared/InputError";
 
 type FormTextAreaProps = {

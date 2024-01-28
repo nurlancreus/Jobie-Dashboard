@@ -1,10 +1,12 @@
-import { formatNumbers } from "@/utils/helpers";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { CircularProgressbarStyles } from "react-circular-progressbar/dist/types";
+import { formatNumbers } from "@/utils/helpers";
 
 const progressBarStyles = {
   // Customize the root svg element
-  root: {},
+  root: {
+    width: "100%"
+  },
   // Customize the path, i.e. the "completed progress"
   path: {
     // Path color
@@ -93,7 +95,7 @@ export default function AdminProgress({
                 ...progressBarStyles,
                 root: {
                   ...progressBarStyles.root,
-                  width: isJobTrends ? 110 : "auto",
+                  maxWidth: isJobTrends ? 110 : "auto",
                 },
                 path: { ...progressBarStyles.path, stroke: color },
               }}

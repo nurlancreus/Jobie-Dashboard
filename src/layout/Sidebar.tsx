@@ -8,8 +8,9 @@ import {
 } from "@/assets/icons";
 
 import { useSidebarContext } from "@/contexts/SidebarProvider";
-import useActiveNav from "@/hooks/useActiveNav";
+import { useActiveNav } from "@/hooks/useActiveNav";
 import MainLogo from "@/shared/MainLogo";
+import ToggleThemeBtn from "@/shared/ToggleThemeBtn";
 import { Link } from "react-router-dom";
 
 const sidebarNavigation = [
@@ -55,7 +56,7 @@ export default function Sidebar() {
 
   if (!isScreenSmall) {
     if (isLargeOpen) classNames = "w-[18.75rem] pl-5";
-    else classNames = "w-[6.25rem] pl-3";
+    else classNames = "w-[6rem] pl-1";
   } else
     classNames =
       "max-w-[260px] w-full rounded-tr-[1.25rem] pl-4 pt-10 fixed bottom-0 left-0 top-[4.75rem] z-10";
@@ -75,6 +76,9 @@ export default function Sidebar() {
           <MainLogo />
         </div>
         <nav className="relative isolate">
+          <div className="absolute -top-5 right-4 block md:-top-28">
+            <ToggleThemeBtn />
+          </div>
           <div
             data-type="active-nav"
             className={`active-nav absolute left-0 right-0 top-0 transition ${positionTop[offsetTop]} -z-10 h-16 rounded-l-[48px] py-5 pl-6 text-lg font-medium text-gray-200 transition lg:gap-9 xl:h-20 xl:gap-11 xl:py-7 xl:pl-8 [&_path]:fill-gray-200`}

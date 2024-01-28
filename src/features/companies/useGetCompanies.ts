@@ -1,8 +1,8 @@
+import { useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getCompanies } from "@/services/apiCompanies";
-import useSearchQuery from "@/hooks/useSearchQuery";
-import usePaginationParams from "@/hooks/usePaginationParams";
-import { useSearchParams } from "react-router-dom";
+import { useSearchQuery } from "@/hooks/useSearchQuery";
+import { usePaginationParams } from "@/hooks/usePaginationParams";
 
 export type CompaniesPositionType =
   | "your-skill"

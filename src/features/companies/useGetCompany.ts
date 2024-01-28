@@ -1,5 +1,5 @@
-import { getCompany } from "@/services/apiCompanies";
 import { useQuery } from "@tanstack/react-query";
+import { getCompany } from "@/services/apiCompanies";
 
 export function useGetCompany(id: number) {
   const {

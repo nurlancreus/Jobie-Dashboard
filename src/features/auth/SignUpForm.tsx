@@ -1,15 +1,15 @@
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import AuthFormRow from "./AuthFormRow";
 import FormHeader from "./FormHeader";
 import SubmitButton from "./SubmitButton";
 import FormFooter from "./FormFooter";
+import { useSignUp } from "./useSignUp";
 import {
   SignUpFormSchema,
-  TUserSignUpParams,
+  type TUserSignUpParams,
   type TSignUpFormSchema,
 } from "./authSchema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { useSignUp } from "./useSignUp";
 
 export default function SignUpForm() {
   const {

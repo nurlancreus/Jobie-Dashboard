@@ -1,17 +1,17 @@
 import { Link, useSearchParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import AuthFormRow from "./AuthFormRow";
 import FormHeader from "./FormHeader";
 import SubmitButton from "./SubmitButton";
 import FormFooter from "./FormFooter";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useSignIn } from "./useSignIn";
+import InputError from "@/shared/InputError";
 import {
   SignInFormSchema,
-  TUserSignInParams,
+  type TUserSignInParams,
   type TSignInFormSchema,
 } from "./authSchema";
-import InputError from "@/shared/InputError";
-import { useSignIn } from "./useSignIn";
 
 export default function SIgnInForm() {
   const [searchParams] = useSearchParams();

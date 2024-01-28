@@ -1,7 +1,3 @@
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-import Select from "@/shared/Select";
-import SwitchBtn from "@/shared/SwitchBtn";
-import Title from "@/shared/Title";
 import {
   ResponsiveContainer,
   LineChart,
@@ -12,6 +8,10 @@ import {
   Legend,
   Line,
 } from "recharts";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import Select from "@/shared/Select";
+import SwitchBtn from "@/shared/SwitchBtn";
+import Title from "@/shared/Title";
 
 const selectOptions = [
   {

@@ -1,7 +1,7 @@
-import { userSignUp } from "@/services/apiAuthentication";
-import { type TUserSignUpParams } from "./authSchema";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { userSignUp } from "@/services/apiAuthentication";
+import { type TUserSignUpParams } from "./authSchema";
 
 export function useSignUp() {
   const navigate = useNavigate();

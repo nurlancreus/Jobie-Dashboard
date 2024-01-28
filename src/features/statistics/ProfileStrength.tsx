@@ -1,6 +1,3 @@
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-import ActionButton from "@/shared/ActionButton";
-import Title from "@/shared/Title";
 import {
   ResponsiveContainer,
   BarChart,
@@ -12,6 +9,9 @@ import {
   DefaultLegendContentProps,
 } from "recharts";
 import { Payload } from "recharts/types/component/DefaultLegendContent";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import ActionButton from "@/shared/ActionButton";
+import Title from "@/shared/Title";
 
 const profileStrengthData = [
   {

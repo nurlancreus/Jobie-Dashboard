@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function useSearchQuery() {
+export function useSearchQuery() {
   const [query, setQuery] = useState("");
   const [searchValue, setSearchValue] = useState("");
 

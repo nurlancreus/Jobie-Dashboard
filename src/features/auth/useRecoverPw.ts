@@ -1,9 +1,9 @@
-import { userRecoverPw } from "@/services/apiAuthentication";
-import { useMutation } from "@tanstack/react-query";
-import { type TUserRecoverPwParams } from "./authSchema";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { userRecoverPw } from "@/services/apiAuthentication";
+import { type TUserRecoverPwParams } from "./authSchema";
 
-export default function useRecoverPw() {
+export function useRecoverPw() {
   const navigate = useNavigate();
   const { mutate: recoverPw, isPending } = useMutation({
     mutationFn: (email: TUserRecoverPwParams["email"]) =>

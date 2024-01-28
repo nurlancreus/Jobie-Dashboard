@@ -1,7 +1,12 @@
-import { CloseIcon, LocationIcon, StarIcon, UserIcon } from "@/assets/icons";
+import {
+  CloseIcon,
+  LocationIcon,
+  MiniLoader,
+  StarIcon,
+  UserIcon,
+} from "@/assets/icons";
 import Logo from "@/shared/Logo";
 import { useGetCompany } from "./useGetCompany";
-import LoaderMini from "@/shared/LoaderMini";
 
 type CompanyDetailsProps = {
   selectedId: number;
@@ -14,17 +19,17 @@ export default function CompanyDetails({
 }: CompanyDetailsProps) {
   const { company, isLoading } = useGetCompany(selectedId);
 
-  // if (isLoading || !company) return <LoaderMini />;
-
   return (
-    <aside className="relative mt-8 rounded-[20px] bg- p-[60px_24px_30px] lg:mt-0">
+    <aside className="relative mt-8 rounded-[20px] bg-card p-[50px_20px_28px] xl:p-[60px_24px_30px] lg:mt-0">
       {isLoading || !company ? (
-        <LoaderMini />
+        <span className="flex justify-center [&_svg]:h-14 [&_svg]:w-14">
+          <MiniLoader />
+        </span>
       ) : (
         <div className="flex flex-col gap-5 sm:flex-row lg:flex-col">
           {/* Close Button */}
           <button
-            className="absolute right-7 top-6 border-none bg-transparent outline-transparent"
+            className="absolute right-6 top-4 xl:right-7 xl:top-6 border-none bg-transparent outline-transparent"
             onClick={() => setSelectedId(null)}
           >
             <CloseIcon />
@@ -33,14 +38,14 @@ export default function CompanyDetails({
             {/* Details */}
             <div className="flex flex-col items-center">
               <Logo src={company.logo} h={134} w={134} />
-              <div className="mt-[30px]">
+              <div className="mt-[30px] text-center lg:text-left">
                 <h3 className="text-2xl font-medium">{company.name}</h3>
                 <p className="text-gray-900">Creative Design Agency</p>
               </div>
             </div>
 
             {/* Follow Button */}
-            <button className="mb-10 mt-7 grid w-full place-content-center rounded-[48px] border border-primary py-4 text-lg font-semibold text-primary transition-colors duration-200 hover:bg-primary hover:text-white dark:text-slate-200 dark:border-slate-200">
+            <button className="mb-10 mt-7 grid w-full place-content-center rounded-[48px] border border-primary py-4 text-lg font-semibold text-primary transition-colors duration-200 hover:bg-primary hover:text-white dark:border-slate-200 dark:text-slate-200">
               <span>+ Follow</span>
             </button>
 
@@ -85,12 +90,12 @@ export default function CompanyDetails({
             <h4 className="text-base font-semibold">About Company</h4>
             <p className="mt-7 text-sm text-gray-700">{company.about}</p>
             <div className="mt-9 flex items-center gap-5">
-              <button className="grid flex-1 place-content-center rounded-[70px] bg-primary py-4 text-lg font-semibold capitalize text-white transition-opacity duration-200 hover:opacity-90">
+              <button className="grid flex-1 px-1 place-content-center rounded-[70px] bg-primary py-4 text-lg font-semibold capitalize text-white transition-opacity duration-200 hover:opacity-90">
                 {company.vacancies.length} Vacancy
               </button>
               <button
                 disabled={true}
-                className="grid flex-1 place-content-center rounded-[70px] bg-gray-100 py-4 text-lg font-semibold capitalize text-gray-500 transition-opacity duration-200 disabled:cursor-not-allowed"
+                className="grid flex-1 px-1 place-content-center rounded-[70px] bg-gray-100 py-4 text-lg font-semibold capitalize text-gray-500 transition-opacity duration-200 disabled:cursor-not-allowed"
               >
                 More Detail
               </button>

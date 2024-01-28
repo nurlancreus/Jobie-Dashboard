@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 
-export default function usePaginationParams(
+export function usePaginationParams(
   variant?: "vacancies" | "companies" | "applications",
 ) {
   const [searchParams, setSearchParams] = useSearchParams();

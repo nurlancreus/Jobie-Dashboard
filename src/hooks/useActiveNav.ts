@@ -26,7 +26,7 @@ const positionTop: Record<number, string> = {
   450: "translate-y-[450px]",
 };
 
-export default function useActiveNav() {
+export function useActiveNav() {
   const { pathname } = useLocation();
   const sidebarRef = useRef<HTMLUListElement>(null);
   const [offsetTop, setOffsetTop] = useState<number>(0);

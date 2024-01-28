@@ -4,6 +4,7 @@ import type {
 } from "@/features/companies/useGetCompanies";
 import { supabase } from "./supabase";
 
+// GET COMPANIES
 export async function getCompanies(
   paginationOpt: Record<string, number>,
   filterOpt: {
@@ -47,6 +48,7 @@ export async function getCompanies(
   return { data, count };
 }
 
+// GET COMPANY
 export async function getCompany(id: number) {
   const { data, error } = await supabase
     .from("companies")

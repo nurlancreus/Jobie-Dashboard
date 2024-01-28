@@ -1,5 +1,5 @@
-import { getApplicationsStatus } from "@/services/apiApplications";
 import { useQuery } from "@tanstack/react-query";
+import { getApplicationsStatus } from "@/services/apiApplications";
 
 export function useGetApplicationsStatus() {
   const {

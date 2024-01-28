@@ -4,6 +4,7 @@ import type {
 } from "@/features/jobs/useGetVacancies";
 import { supabase } from "./supabase";
 
+// GET VACANCIES
 export async function getVacancies(
   paginationOpt: {
     withPagination: boolean;

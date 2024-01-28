@@ -1,7 +1,7 @@
 import Job from "../jobs/Job";
+import { useGetVacancies } from "../jobs/useGetVacancies";
 import SharedSwiper from "@/shared/SharedSwiper";
 import Title from "@/shared/Title";
-import { useGetVacancies } from "../jobs/useGetVacancies";
 import Loader from "@/shared/Loader";
 import { NonNullProps } from "@/models/types";
 

@@ -1,16 +1,18 @@
+import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
+import ProfileFormRow from "./ProfileFormRow";
+import ProfileFormField from "./ProfileFormField";
+import FormFieldHeader from "./FormFieldHeader";
+import FormRangeInput from "./FormRangeInput";
+import FormTextArea from "./FormTextArea";
+
 import Button from "@/shared/Button";
 import SwitchBtn from "@/shared/SwitchBtn";
 import Title from "@/shared/Title";
-import ProfileFormRow from "./ProfileFormRow";
-import ProfileFormField from "./ProfileFormField";
 import { Chevron } from "@/assets/icons";
-import FormFieldHeader from "./FormFieldHeader";
-import FormRangeInput from "./FormRangeInput";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { type TEditProfileSchema, editProfileSchema } from "./profileSchema";
-import FormTextArea from "./FormTextArea";
-import { useState } from "react";
 
 export default function ProfileForm() {
   const [showPasswords, setShowPasswords] = useState<

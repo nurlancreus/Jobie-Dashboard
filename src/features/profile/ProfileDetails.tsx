@@ -1,7 +1,7 @@
-import { EnvelopIcon, PhoneIcon } from "@/assets/icons";
 import ProfileAvatarName from "./ProfileAvatarName";
-import { adminData } from "@/data/adminData";
 import AdminProgress from "../dashboard/AdminProgress";
+import { EnvelopIcon, PhoneIcon } from "@/assets/icons";
+import { adminData } from "@/data/adminData";
 
 export default function ProfileDetails() {
   return (

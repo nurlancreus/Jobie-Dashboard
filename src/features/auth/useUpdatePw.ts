@@ -1,7 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 import { userUpdatePw } from "@/services/apiAuthentication";
 import { type TUserUpdatePwParams } from "./authSchema";
-import { useNavigate } from "react-router-dom";
 
 export function useUpdatePw() {
   const queryClient = useQueryClient();
@@ -14,13 +15,11 @@ export function useUpdatePw() {
       queryClient.setQueryData(["user"], user); // manually setting cash
       queryClient.invalidateQueries({ queryKey: ["user"] });
       navigate("/app");
-      // toast.success(
-      //   "Password successfully changed",
-      // );
+      toast.success("Password successfully updated");
     },
     onError: (error) => {
       console.log("ERROR", error);
-      //toast.error("Could not change password. Please, try again");
+      toast.error(`Could not change password. ${error.message}`);
     },
   });
   return { updatePw, isPending };

@@ -1,3 +1,5 @@
+import { Suspense, lazy } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import {
   SignIn,
   SignUp,
@@ -8,11 +10,10 @@ import {
   Statistics,
   Profile,
   Applications,
-  UpdatePassword
+  UpdatePassword,
+  Error,
 } from "@/pages";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
-import { Suspense, lazy } from "react";
 import Loader from "@/shared/Loader";
 
 const AppLayout = lazy(() => import("@/layout/AppLayout"));
@@ -46,7 +47,7 @@ export default function AppRoutes() {
             <Route path="profile" element={<Profile />} />
             <Route path="applications" element={<Applications />} />
           </Route>
-          {/* <Route path="*" element={<Navigate to="/" />} /> */}
+          <Route path="*" element={<Error />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

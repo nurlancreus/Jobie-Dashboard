@@ -41,7 +41,8 @@ export default {
         xl: ["clamp(18px,2vw,20px)", "clamp(24px,2vw,28px)"],
         "2xl": ["clamp(22px,2vw,24px)", "clamp(28ypx,2vw,32px)"],
         // xl: ["24px", "32px"],
-        "5xl": ["clamp(36px,2vw + 1px,48px)", "clamp(64px,2vw + 1px,72px)"],
+        "4xl": ["clamp(32px,2vw + 1px,36px)", "clamp(36px,2vw + 1px,40px)"],
+        "5xl": ["clamp(40px,2vw + 1px,48px)", "clamp(64px,2vw + 1px,72px)"],
       },
     },
     screens: {

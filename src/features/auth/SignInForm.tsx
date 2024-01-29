@@ -27,8 +27,8 @@ export default function SIgnInForm() {
   } = useForm<TSignInFormSchema>({
     resolver: zodResolver(SignInFormSchema),
     values: {
-      signInEmail: "",
-      signInPassword: "",
+      signInEmail: "nurlan@example.com",
+      signInPassword: "12345678@",
     },
   });
 

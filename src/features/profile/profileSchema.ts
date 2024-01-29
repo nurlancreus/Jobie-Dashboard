@@ -1,66 +1,61 @@
-import validator from "validator";
+//import validator from "validator";
 import { z } from "zod";
 
-export type TEditProfileSchema = z.infer<typeof editProfileSchema>;
+export type TUserUpdateSchema = z.infer<typeof userUpdateSchema>;
 
-export const editProfileSchema = z
+export const userUpdateSchema = z
   .object({
-    profileFirstName: z
-      .string()
-      .min(1, "This field is required, make changes")
-      .trim(),
-    profileMiddleName: z
-      .string()
-      .min(1, "This field is required, make changes")
-      .trim(),
-    profileLastName: z
-      .string()
-      .min(1, "This field is required, make changes")
-      .trim(),
-    username: z.string().min(1, "This field is required, make changes").trim(),
+    profileFirstName: z.string().trim().optional(),
+    profileMiddleName: z.string().trim().optional(),
+    profileLastName: z.string().trim().optional(),
+    username: z.string().trim().optional(),
     profilePassword: z
       .string()
-      .min(1, "This field is required, make changes")
-      .min(8, "Password needs a minimum of 8 characters")
-      .regex(/[0-9]/g, "Need a digit")
-      .regex(/[!,@,#,$,%,^,&,*]/g, "Need a special character !@#$%^&*")
-      .trim(),
-    profileConfirmPassword: z
-      .string()
-      .min(1, "This field is required, make changes")
-      .trim(),
+      // .min(8, "Password needs a minimum of 8 characters")
+      // .regex(/[0-9]/g, "Need a digit")
+      // .regex(/[!,@,#,$,%,^,&,*]/g, "Need a special character !@#$%^&*")
+      // .trim()
+      .optional(),
+    profileConfirmPassword: z.string().trim().optional(),
     profileMobilePhone: z
       .string()
-      .min(1, "This field is required, make changes")
       .trim()
-      .refine(validator.isMobilePhone),
+      //.refine(validator.isMobilePhone)
+      .optional(),
     profileWhatsapp: z
       .string()
-      .min(1, "This field is required, make changes")
       .trim()
-      .refine(validator.isMobilePhone),
+      //.refine(validator.isMobilePhone)
+      .optional(),
     profileEmail: z
       .string()
-      .min(1, "This field is required, make changes")
       .email("This is not a valid email.")
       .trim()
-      .refine(validator.isEmail),
-    profileAddress: z.string().min(1, "This field is required, make changes"),
-    selectCity: z.string().min(1, "This field is required, make changes"),
-    selectCountry: z.string().min(1, "This field is required, make changes"),
-    aboutMe: z.string().min(1, "This field is required, make changes").trim(),
-    programming: z.coerce
-      .number()
-      .min(1, "This field is required, make changes"),
-    prototyping: z.coerce
-      .number()
-      .min(1, "This field is required, make changes"),
-    uiDesign: z.coerce.number().min(1, "This field is required, make changes"),
-    researching: z.coerce
-      .number()
-      .min(1, "This field is required, make changes"),
+      //.refine(validator.isEmail)
+      .optional(),
+    profileAddress: z.string().optional(),
+    selectCity: z.string().optional(),
+    selectCountry: z.string().optional(),
+    aboutMe: z.string().trim().optional(),
+    programming: z.coerce.number().optional(),
+    prototyping: z.coerce.number().optional(),
+    uiDesign: z.coerce.number().optional(),
+    researching: z.coerce.number().optional(),
   })
   .refine((data) => data.profileConfirmPassword === data.profilePassword, {
     message: "Passwords need to match",
     path: ["profileConfirmPassword"],
   });
+
+// TYPES
+type RemoveProfilePrefix<T> = {
+  [K in keyof T as K extends `profile${infer U}` ? U : K]: T[K];
+};
+
+type GetUpdateProfileParams<T> = {
+  [Property in keyof T as `${Lowercase<string & Property>}`]: T[Property];
+};
+
+export type TUserUpdateParams = RemoveProfilePrefix<
+  GetUpdateProfileParams<TUserUpdateSchema>
+>;

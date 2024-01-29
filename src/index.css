@@ -22,7 +22,7 @@
   }
 
   .form-input {
-    @apply text-lg text-dark font-medium placeholder:text-lg bg-transparent placeholder:text-gray-200 pb-3 lg:pb-5 border-b border-solid border-b-gray-100 dark:border-b-neutral-100/50 dark:focus:border-b-neutral-100 focus:outline-none focus:border-b-primary focus:border-b-2 hover:border-b-primary dark:hover:border-b-neutral-100 hover:border-b-2 transition disabled:cursor-not-allowed
+    @apply text-lg text-dark font-medium placeholder:text-lg bg-transparent placeholder:text-gray-200 dark:placeholder:text-neutral-500 pb-3 lg:pb-5 border-b border-solid border-b-gray-100 dark:border-b-neutral-100/50 dark:focus:border-b-neutral-100 focus:outline-none focus:border-b-primary focus:border-b-2 hover:border-b-primary dark:hover:border-b-neutral-100 hover:border-b-2 h-12 transition disabled:cursor-not-allowed
   }
 
   .auth-form-input {

@@ -11,43 +11,58 @@ import FormTextArea from "./FormTextArea";
 import Button from "@/shared/Button";
 import SwitchBtn from "@/shared/SwitchBtn";
 import Title from "@/shared/Title";
+import Loader from "@/shared/Loader";
 import { Chevron } from "@/assets/icons";
-import { type TEditProfileSchema, editProfileSchema } from "./profileSchema";
+import {
+  type TUserUpdateSchema,
+  type TUserUpdateParams,
+  userUpdateSchema,
+} from "./profileSchema";
+import { useUser } from "../auth/useUser";
+import { useUpdateUser } from "./useUpdateUser";
 
 export default function ProfileForm() {
   const [showPasswords, setShowPasswords] = useState<
     Array<"profilePassword" | "profileConfirmPassword">
   >([]);
 
+  const { user, isLoading } = useUser();
+  const { updateUser, isUpdating } = useUpdateUser();
+
+  const { firstname, lastname, username } = user?.user_metadata ?? {};
+
   const {
     register,
     handleSubmit,
     reset,
     watch,
-    formState: { errors },
-  } = useForm<TEditProfileSchema>({
-    resolver: zodResolver(editProfileSchema),
+    formState: { errors, dirtyFields },
+  } = useForm<TUserUpdateSchema>({
+    resolver: zodResolver(userUpdateSchema),
     values: {
-      profileFirstName: "",
+      profileFirstName: firstname ?? "",
       profileMiddleName: "",
-      profileLastName: "",
-      username: "",
+      profileLastName: lastname ?? "",
+      username: username ?? "",
       profilePassword: "",
       profileConfirmPassword: "",
-      profileMobilePhone: "+50 444 5511 11",
-      profileWhatsapp: "+50 444 5511 11",
-      profileEmail: "davidheree@mail.com",
-      profileAddress: "Franklin Avenue St. Corner",
-      selectCity: "london",
-      selectCountry: "england",
-      aboutMe:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora exercitationem omnis alias voluptatibus ex. Doloremque, a totam distinctio sapiente natus, nulla rerum facilis quos libero fugiat impedit odit, magni temporibus. Iusto sint ipsam doloribus quis inventore, suscipit magnam, cupiditate sequi quos asperiores placeat reprehenderit fuga, pariatur omnis magni voluptas. Tempore explicabo delectus totam cupiditate cum? Ipsam deleniti neque numquam nihil? Molestiae iste, cumque harum ipsa cupiditate provident, porro veritatis voluptates odio enim sunt quos quaerat commodi adipisci! Iusto nobis molestias illum nam repudiandae cumque. Vero, dicta quae! Consequatur, natus consequuntur? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora exercitationem omnis alias voluptatibus ex. Doloremque, a totam distinctio sapiente natus, nulla rerum facilis quos libero fugiat impedit odit, magni temporibus. Iusto sint ipsam doloribus quis inventore, suscipit magnam, cupiditate sequi quos asperiores placeat reprehenderit fuga, pariatur omnis magni voluptas. Tempore explicabo delectus totam cupiditate cum? Ipsam deleniti neque numquam nihil? Molestiae iste, cumque harum ipsa cupiditate provident, porro veritatis voluptates odio enim sunt quos quaerat commodi adipisci! Iusto nobis molestias illum nam repudiandae cumque. Vero, dicta quae! Consequatur, natus consequuntur?",
-      programming: 20,
-      prototyping: 30,
-      uiDesign: 60,
-      researching: 80,
+      profileMobilePhone: "",
+      profileWhatsapp: "",
+      profileEmail: user?.email ?? "",
+      profileAddress: "",
+      selectCity: "",
+      selectCountry: "",
+      aboutMe: "",
+      programming: 0,
+      prototyping: 0,
+      uiDesign: 0,
+      researching: 0,
     },
   });
+
+  // Check if field is modified
+  const isFieldDirty = (fieldName: keyof TUserUpdateSchema) =>
+    dirtyFields[fieldName];
 
   const [
     watchPasswordField,
@@ -65,8 +80,47 @@ export default function ProfileForm() {
     "researching",
   ]);
 
-  const onSubmit = (data: TEditProfileSchema) => {
-    console.log(data);
+  const watchSelectCountry = watch("selectCountry");
+  const isFieldsModified = Object.keys(dirtyFields).length !== 0;
+
+  const onSubmit = (data: TUserUpdateSchema) => {
+    const modifiedFields: Partial<TUserUpdateParams> = {};
+    if (!isFieldsModified) return;
+
+    console.log("EDIT FORM DATA", data);
+
+    const {
+      profileEmail: email,
+      profileFirstName: firstname,
+      username,
+      profileLastName: lastname,
+      profileMiddleName: middlename,
+      aboutMe: aboutme,
+      profileMobilePhone: mobilephone,
+      profilePassword: password,
+      profileAddress: address,
+      selectCity: selectcity,
+      selectCountry: selectcountry,
+    } = data;
+
+    // Check each field and add to modifiedFields if it is modified
+    if (isFieldDirty("profileFirstName")) modifiedFields.firstname = firstname;
+    if (isFieldDirty("profileLastName")) modifiedFields.lastname = lastname;
+    if (isFieldDirty("username")) modifiedFields.username = username;
+    if (isFieldDirty("aboutMe")) modifiedFields.aboutme = aboutme;
+    if (isFieldDirty("profileAddress")) modifiedFields.address = address;
+    if (isFieldDirty("profileEmail")) modifiedFields.email = email;
+    if (isFieldDirty("profileMiddleName"))
+      modifiedFields.middlename = middlename;
+    if (isFieldDirty("profileMobilePhone"))
+      modifiedFields.mobilephone = mobilephone;
+    if (isFieldDirty("profilePassword")) modifiedFields.password = password;
+    if (isFieldDirty("selectCity")) modifiedFields.selectcity = selectcity;
+    if (isFieldDirty("selectCountry"))
+      modifiedFields.selectcountry = selectcountry;
+
+    // Call updateUser with the modified fields
+    updateUser(modifiedFields, { onSuccess: () => reset() });
   };
 
   const handleTogglePasswords = (
@@ -77,11 +131,13 @@ export default function ProfileForm() {
     );
   };
 
+  if (isLoading || !user) return <Loader />;
+
   return (
     <form
       id="profileForm"
       name="profileForm"
-      className="bg-card rounded-[1.25rem] px-6 pb-8 pt-5 md:pb-10 lg:pb-12 xl:px-[1.875rem] xl:pb-14 xl:pt-7"
+      className="rounded-[1.25rem] bg-card px-6 pb-8 pt-5 md:pb-10 lg:pb-12 xl:px-[1.875rem] xl:pb-14 xl:pt-7"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="mb-8 flex flex-wrap items-center justify-between lg:mb-10 xl:mb-14">
@@ -95,11 +151,17 @@ export default function ProfileForm() {
             key="forHire"
             checked={true}
           />
-          <div className="flex items-center gap-y-2 gap-x-5 flex-wrap">
-            <Button type="reset" onClick={() => reset()}>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <Button type="reset" onClick={() => reset()} isLoading={isUpdating}>
               Cancel
             </Button>
-            <Button type="submit">Save Changes</Button>
+            <Button
+              type="submit"
+              disabled={!isFieldsModified}
+              isLoading={isUpdating}
+            >
+              Save Changes
+            </Button>
           </div>
         </div>
       </div>
@@ -115,6 +177,7 @@ export default function ProfileForm() {
               type="text"
               id="profileFirstName"
               placeholder="Type here"
+              disabled={isUpdating}
               className="form-input"
               {...register("profileFirstName")}
             />
@@ -128,6 +191,7 @@ export default function ProfileForm() {
               id="profileMiddleName"
               autoComplete="on"
               placeholder="Type here"
+              disabled={isUpdating}
               className="form-input"
               {...register("profileMiddleName")}
             />
@@ -141,6 +205,7 @@ export default function ProfileForm() {
               id="profileLastName"
               autoComplete="on"
               placeholder="Type here"
+              disabled={isUpdating}
               className="form-input"
               {...register("profileLastName")}
             />
@@ -151,6 +216,7 @@ export default function ProfileForm() {
               id="username"
               autoComplete="on"
               placeholder="Type here"
+              disabled={isUpdating}
               className="form-input"
               {...register("username")}
             />
@@ -169,6 +235,7 @@ export default function ProfileForm() {
               }
               id="profilePassword"
               placeholder="Type here"
+              disabled={isUpdating}
               className="form-input"
               autoComplete="off"
               {...register("profilePassword")}
@@ -190,6 +257,7 @@ export default function ProfileForm() {
               }
               id="profileConfirmPassword"
               placeholder="Type here"
+              disabled={isUpdating}
               className="form-input"
               autoComplete="off"
               {...register("profileConfirmPassword")}
@@ -207,6 +275,7 @@ export default function ProfileForm() {
               type="text"
               id="profileMobilePhone"
               placeholder="Type here"
+              disabled={isUpdating}
               className="form-input pl-16"
               {...register("profileMobilePhone")}
             />
@@ -219,6 +288,7 @@ export default function ProfileForm() {
               type="text"
               id="profileWhatsapp"
               placeholder="Type here"
+              disabled={isUpdating}
               className="form-input pl-16"
               {...register("profileWhatsapp")}
             />
@@ -228,6 +298,7 @@ export default function ProfileForm() {
               type="text"
               id="profileEmail"
               placeholder="Type here"
+              disabled={isUpdating}
               className="form-input pl-16"
               {...register("profileEmail")}
             />
@@ -240,6 +311,7 @@ export default function ProfileForm() {
               type="text"
               id="profileAddress"
               placeholder="Type here"
+              disabled={isUpdating}
               className="form-input"
               {...register("profileAddress")}
             />
@@ -248,10 +320,13 @@ export default function ProfileForm() {
             <div className="relative">
               <select
                 id="selectCity"
+                disabled={!watchSelectCountry || isUpdating}
                 className="form-input w-full appearance-none"
                 {...register("selectCity")}
               >
-                <option value="london" className="bg-card">London</option>
+                <option value="select-city" className="bg-card">
+                  Select City
+                </option>
               </select>
               <span className="absolute bottom-4 right-6 lg:bottom-6 lg:right-8 [&_path]:stroke-primary dark:[&_path]:stroke-neutral-100/50">
                 <Chevron />
@@ -265,10 +340,13 @@ export default function ProfileForm() {
             <div className="relative">
               <select
                 id="selectCountry"
+                disabled={isUpdating}
                 className="form-input w-full appearance-none"
                 {...register("selectCountry")}
               >
-                <option value="england" className="bg-card">England</option>
+                <option value="select-country" className="bg-card">
+                  Select Country
+                </option>
               </select>
               <span className="absolute bottom-4 right-6 lg:bottom-6 lg:right-8 [&_path]:stroke-primary dark:[&_path]:stroke-neutral-100/50">
                 <Chevron />
@@ -283,6 +361,7 @@ export default function ProfileForm() {
           <FormTextArea label="Tell About You" error={errors?.aboutMe?.message}>
             <textarea
               id="aboutMe"
+              disabled={isUpdating}
               className="textarea-scrollbar h-[10.625rem] w-full resize-none rounded-[1.25rem] border border-solid border-gray-200 bg-body p-4 text-sm text-gray-800 outline-transparent focus:outline-primary-500 lg:p-6"
               {...register("aboutMe")}
             ></textarea>
@@ -312,6 +391,7 @@ export default function ProfileForm() {
               <input
                 type="range"
                 id="programming"
+                disabled={isUpdating}
                 className="input-range"
                 {...register("programming")}
               />
@@ -324,6 +404,7 @@ export default function ProfileForm() {
               <input
                 type="range"
                 id="prototyping"
+                disabled={isUpdating}
                 className="input-range"
                 {...register("prototyping")}
               />
@@ -336,6 +417,7 @@ export default function ProfileForm() {
               <input
                 type="range"
                 id="uiDesign"
+                disabled={isUpdating}
                 className="input-range"
                 {...register("uiDesign")}
               />
@@ -348,6 +430,7 @@ export default function ProfileForm() {
               <input
                 type="range"
                 id="researching"
+                disabled={isUpdating}
                 className="input-range"
                 {...register("researching")}
               />

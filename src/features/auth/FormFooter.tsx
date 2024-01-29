@@ -21,7 +21,11 @@ export default function FormFooter({ children, label, path }: FormFooterProps) {
   return (
     <footer>
       <p className="mt-5 text-base text-white">
-        {children} <Link to={path}>{label}</Link>
+        {children}{" "}
+        <Link to={path}>
+          {" "}
+          <span className="font-medium">{label}</span>
+        </Link>
       </p>
     </footer>
   );

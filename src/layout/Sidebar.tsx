@@ -55,7 +55,7 @@ export default function Sidebar() {
   let classNames: string;
 
   if (!isScreenSmall) {
-    if (isLargeOpen) classNames = "w-[18.75rem] pl-5";
+    if (isLargeOpen) classNames = "w-[18.5rem] pl-5";
     else classNames = "w-[6rem] pl-1";
   } else
     classNames =
@@ -83,9 +83,9 @@ export default function Sidebar() {
           </div>
           <div
             data-type="active-nav"
-            className={`active-nav absolute left-0 right-0 top-0 transition ${positionTop[offsetTop]} -z-10 h-16 rounded-l-[48px] py-5 pl-6 text-lg font-medium text-gray-200 transition lg:gap-9 xl:h-20 xl:gap-11 xl:py-7 xl:pl-8 [&_path]:fill-gray-200`}
+            className={`active-nav absolute left-2 right-0 top-0 transition ${positionTop[offsetTop]} -z-10 h-16 rounded-l-[48px] py-5 pl-6 text-lg font-medium text-gray-200 transition lg:gap-9 xl:h-20 xl:gap-11 xl:py-7 xl:pl-8 [&_path]:fill-gray-200`}
           />
-          <ul className="flex flex-col gap-[10px]" ref={sidebarRef}>
+          <ul className="flex flex-col gap-[10px] pl-2" ref={sidebarRef}>
             {sidebarNavigation.map((nav) => {
               const isActive = pathname.split("/").at(-1) === nav.path;
 
@@ -98,7 +98,7 @@ export default function Sidebar() {
                 >
                   <Link
                     to={nav.path}
-                    className={`group-hover:active-nav flex h-fit items-center gap-8 rounded-l-[48px] py-5 pl-6 text-lg   transition lg:gap-9 xl:gap-11 xl:py-7 xl:pl-8 [&_path]:fill-gray-200 ${
+                    className={`group-hover:active-nav flex h-fit items-center gap-8 rounded-l-[48px] py-5 pl-6 text-lg transition lg:gap-9 xl:gap-11 xl:py-7 xl:pl-8 [&_path]:fill-gray-200 ${
                       isActive
                         ? "font-semibold text-dark [&_svg_path]:fill-primary dark:[&_svg_path]:fill-white"
                         : "font-medium text-gray-200"

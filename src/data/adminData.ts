@@ -1,5 +1,3 @@
-import avatar from "@/assets/images/adminAvatar.jpeg";
-
 export const adminData = {
   name: "Eiichiro Oda",
   possesion: "programmer",
@@ -10,19 +8,16 @@ export const adminData = {
       id: 1,
       value: 0.78,
       label: "Js",
-   
     },
     {
       id: 2,
       value: 0.82,
       label: "React",
- 
     },
     {
       id: 3,
       value: 0.7,
       label: "Ts",
-
     },
   ],
   portofolios: [
@@ -47,5 +42,4 @@ export const adminData = {
       site: "youtube",
     },
   ],
-  avatar,
 };

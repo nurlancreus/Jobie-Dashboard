@@ -130,7 +130,7 @@ export default function SignUpForm() {
             </AuthFormRow>
           )}
         </div>
-        <SubmitButton isLoading={isPending}>Sign me Up</SubmitButton>
+        <SubmitButton isLoading={isPending}>Sign Up</SubmitButton>
       </form>
       <FormFooter path="/sign-in" label="Sign In">
         Already have an account?

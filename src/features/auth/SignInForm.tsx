@@ -75,7 +75,7 @@ export default function SIgnInForm() {
             Forgot Password?
           </Link>
         </div>
-        <SubmitButton isLoading={isPending}>Sign me In</SubmitButton>
+        <SubmitButton isLoading={isPending}>Sign In</SubmitButton>
       </form>
 
       <FormFooter path="/sign-up" label="Sign Up">

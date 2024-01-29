@@ -6,10 +6,10 @@ type LogoProps = {
   h: number;
 };
 
-export default function Logo({ src = placeholder, w, h }: LogoProps) {
+export default function Logo({ src, w, h }: LogoProps) {
   return (
     <img
-      src={src as string}
+      src={src || placeholder}
       alt="Logo"
       width={w}
       height={h}

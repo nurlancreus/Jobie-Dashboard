@@ -32,7 +32,7 @@ export default function Button({
           <MiniLoader />
         </span>
       )}
-      <span>{children}</span>
+      {children}
     </button>
   );
 }

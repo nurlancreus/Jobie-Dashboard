@@ -12,16 +12,22 @@ export default function ToastProvider({ children }: { children: ReactNode }) {
         toastOptions={{
           success: {
             duration: 3000,
+            style: {
+              border: "1px solid green",
+            },
           },
           error: {
             duration: 5000,
+            style: {
+              border: "1px solid red",
+            },
           },
           style: {
             fontSize: "16px",
             maxWidth: "500px",
             padding: "16px 24px",
-            backgroundColor: "var(--color-gray-0)",
-            color: "var(--color-gray-700)",
+            backgroundColor: "var(--body-bg)",
+            color: "var(--dark-clr)",
           },
         }}
       />

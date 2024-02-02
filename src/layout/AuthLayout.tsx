@@ -16,13 +16,17 @@ export default function AuthLayout() {
 
   const redirectTo = searchParams.get("redirectTo") || null;
 
+  const notRecoverPwPath =
+    !pathname.endsWith("update-password") &&
+    !pathname.endsWith("forgot-password");
+
   const navigate = useNavigate();
   useLayoutEffect(() => {
-    if (isAuthenticated && !pathname.endsWith("update-password"))
+    if (isAuthenticated && notRecoverPwPath)
       redirectTo
         ? navigate(redirectTo, { replace: true })
         : navigate("/app", { replace: true });
-  }, [isAuthenticated, navigate, pathname, redirectTo]);
+  }, [isAuthenticated, navigate, notRecoverPwPath, redirectTo]);
 
   if (isLoading) return <Loader />;
 

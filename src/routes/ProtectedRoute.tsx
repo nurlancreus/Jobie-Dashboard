@@ -1,6 +1,6 @@
-import { useUser } from "@/features/auth/useUser";
-import Loader from "@/shared/Loader";
 import { ReactNode, useEffect } from "react";
+import Loader from "@/shared/Loader";
+import { useUser } from "@/features/auth/useUser";
 import { useLocation, useNavigate } from "react-router-dom";
 
 type ProtectedRouteProps = {
@@ -17,7 +17,7 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
   // 2. If there is NO authenticated user, redirect to the "/sign-in".
   useEffect(() => {
     if (!isAuthenticated && !isLoading) {
-      if (pathname !== "/app") {
+      if (pathname !== "/") {
         navigate(
           `/sign-in?redirectTo=${pathname}&message=Please, first sign in, then try again`,
         );

@@ -1,9 +1,13 @@
+import { useGetApplicationStatuses } from "./useGetApplicationStatuses";
 import FilterTabs from "@/shared/FilterTabs";
-import { appsData } from "@/data/appsData";
+import Loader from "@/shared/Loader";
 
 export default function ApplicationsTabs() {
-  
-  const tabOptions = appsData.reduce(
+  const { applications, isLoading } = useGetApplicationStatuses();
+
+  if (isLoading) return <Loader />;
+
+  const tabOptions = applications.reduce(
     (acc, curr) => {
       if (!acc.map((tab) => tab.value).includes(curr.status)) {
         return [...acc, { value: curr.status, label: curr.status }];

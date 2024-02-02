@@ -70,56 +70,59 @@ export default function Sidebar() {
         />
       )}
       <aside
-        className={`col-[1/2] ${isSmallOpen || !isScreenSmall ? "translate-x-0" : "-translate-x-full"} row-span-full bg-primary text-white ${classNames} flex flex-col gap-6 overflow-hidden transition-all duration-300`}
+        className={`col-[1/2] ${isSmallOpen || !isScreenSmall ? "translate-x-0" : "-translate-x-full"} row-span-full bg-primary text-white ${classNames} flex pb-10 xl:pb-20 flex-col gap-6 overflow-hidden transition-all duration-300`}
       >
         <div className="hidden py-7 pl-[14px] md:block">
           <MainLogo />
         </div>
-        <nav className="relative isolate">
+        <div className="relative pt-5 md:pt-0">
           <div
-            className={`duration-400 absolute -top-6 right-4 transition-opacity md:-top-28 ${!isLargeOpen ? "pointer-events-none opacity-0" : "opacity-100"}`}
+            className={`duration-400 absolute -top-6 right-4  transition-opacity md:-top-28 ${!isLargeOpen ? "pointer-events-none opacity-0" : "opacity-100"}`}
           >
             <ToggleThemeBtn />
           </div>
-          <div
-            data-type="active-nav"
-            className={`active-nav absolute left-2 right-0 top-0 transition ${positionTop[offsetTop]} -z-10 h-16 rounded-l-[48px] py-5 pl-6 text-lg font-medium text-gray-200 transition lg:gap-9 xl:h-20 xl:gap-11 xl:py-7 xl:pl-8 [&_path]:fill-gray-200`}
-          />
-          <ul className="flex flex-col gap-[10px] pl-2" ref={sidebarRef}>
-            {sidebarNavigation.map((nav) => {
-              const isActive = pathname.split("/").at(-1) === nav.path;
 
-              return (
-                <li
-                  key={nav.label}
-                  className="h-20"
-                  onClick={() => isScreenSmall && close()}
-                  data-active={isActive}
-                >
-                  <Link
-                    to={nav.path}
-                    className={`group-hover:active-nav flex h-fit items-center gap-8 rounded-l-[48px] py-5 pl-6 text-lg transition lg:gap-9 xl:gap-11 xl:py-7 xl:pl-8 [&_path]:fill-gray-200 ${
-                      isActive
-                        ? "font-semibold text-dark [&_svg_path]:fill-primary dark:[&_svg_path]:fill-white"
-                        : "font-medium text-gray-200"
-                    }`}
+          <nav className="relative isolate">
+            <div
+              data-type="active-nav"
+              className={`active-nav absolute left-2 right-0 top-0 transition ${positionTop[offsetTop]} -z-10 h-16 rounded-l-[48px] py-6 pl-6 text-lg font-medium text-gray-200 transition lg:gap-9 xl:h-20 xl:gap-11 xl:py-7 xl:pl-8 [&_path]:fill-gray-200`}
+            />
+            <ul className="flex flex-col gap-3 pl-2" ref={sidebarRef}>
+              {sidebarNavigation.map((nav) => {
+                const isActive = pathname.split("/").at(-1) === nav.path;
+
+                return (
+                  <li
+                    key={nav.label}
+                    className="h-16 md:h-18 xl:h-20"
+                    onClick={() => isScreenSmall && close()}
+                    data-active={isActive}
                   >
-                    <span className="[&_svg]:h-5 [&_svg]:w-5 lg:[&_svg]:h-6 lg:[&_svg]:w-6 xl:[&_svg]:h-7 xl:[&_svg]:w-7">
-                      {nav.icon}
-                    </span>
-                    <span
-                      className={`whitespace-nowrap  ${isOpen ? "" : "hidden"}`}
+                    <Link
+                      to={nav.path}
+                      className={`group-hover:active-nav flex h-fit items-center gap-8 rounded-l-[48px] py-5 pl-6 text-lg transition lg:gap-9 xl:gap-11 xl:py-7 xl:pl-8 [&_path]:fill-gray-200 ${
+                        isActive
+                          ? "font-semibold text-dark [&_svg_path]:fill-primary dark:[&_svg_path]:fill-white"
+                          : "font-medium text-gray-200"
+                      }`}
                     >
-                      {nav.label}
-                    </span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+                      <span className="[&_svg]:h-5 [&_svg]:w-5 lg:[&_svg]:h-6 lg:[&_svg]:w-6 xl:[&_svg]:h-7 xl:[&_svg]:w-7">
+                        {nav.icon}
+                      </span>
+                      <span
+                        className={`whitespace-nowrap  ${isOpen ? "" : "hidden"}`}
+                      >
+                        {nav.label}
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        </div>
         {isOpen && (
-          <div className="mb-8 mt-auto pr-10 md:pr-0">
+          <div className="mb-8 mt-auto pl-4 pr-4 md:pr-0">
             <p className="mb-2 text-balance text-sm font-semibold text-primary-600 md:whitespace-nowrap">
               Jobie Job Portal Admin Dashboard
             </p>

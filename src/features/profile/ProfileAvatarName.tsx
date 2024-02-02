@@ -1,19 +1,29 @@
 import { adminData } from "@/data/adminData";
 import { useUser } from "../auth/useUser";
 import { MiniLoader, ProfileIcon } from "@/assets/icons";
+import { ReactNode } from "react";
 
-export default function ProfileAvatarName() {
+type ProfileAvatarNameProps = {
+  children?: ReactNode;
+};
+
+export default function ProfileAvatarName({
+  children,
+}: ProfileAvatarNameProps) {
   const { user, isLoading } = useUser();
 
   if (isLoading || !user) return <MiniLoader />;
-  const { fullname, avatar } = user.user_metadata;
+  const { firstname, lastname, avatar } = user.user_metadata;
+
+  const fullname = `${firstname} ${lastname}`;
 
   return (
     <div className="flex flex-col items-center">
       {/* Admin Avatar */}
       <div
-        className={`grid h-[8.375rem] w-[8.375rem] place-content-center overflow-hidden rounded-full bg-gradient-to-r from-primary to-fuchsia-600 p-4`}
+        className={`relative grid h-[8.375rem] w-[8.375rem] place-content-center overflow-hidden rounded-full bg-gradient-to-r from-primary to-fuchsia-600 p-4`}
       >
+        {children}
         <div
           className={`h-[7.375rem] w-[7.375rem] overflow-hidden rounded-full`}
         >

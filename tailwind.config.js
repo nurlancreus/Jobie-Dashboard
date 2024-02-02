@@ -8,6 +8,8 @@ export default {
         dark: "var(--dark-clr)",
         body: "var(--body-bg)",
         card: "var(--card-bg)",
+        loader: "var(--loader-clr)",
+        range: "var(--range-clr)",
         "gray-100": "var(--gray-100)",
         "gray-200": "var(--gray-200)",
         "gray-300": "var(--gray-300)",
@@ -26,8 +28,6 @@ export default {
         "primary-800": "var(--primary-800)",
         primary: "var(--primary-clr)",
         "primary-hover": "var(--primary-hover)",
-
-        loader: "var(--loader-clr)",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

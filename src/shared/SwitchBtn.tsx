@@ -19,7 +19,7 @@ export default function SwitchBtn({ label, id, checked }: SwitchBtn) {
         htmlFor={id}
         className={`relative h-4 w-8 cursor-pointer rounded-3xl after:absolute after:top-1/2 after:h-4 after:w-4 after:-translate-y-1/2 after:rounded-full after:transition-all after:duration-300 after:content-[''] lg:after:h-5 lg:after:w-5 xl:after:h-6 xl:after:w-6 ${
           switchOn
-            ? "bg-primary-300 after:translate-x-[20px] after:bg-primary dark:bg-purple-950"
+            ? "bg-primary-300 after:translate-x-[20px] after:bg-primary dark:bg-purple-600"
             : "bg-gray-100 after:translate-x-[-10px] after:bg-gray-300 dark:bg-neutral-600"
         }`}
       />

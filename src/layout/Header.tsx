@@ -35,7 +35,7 @@ export default function Header() {
   }
 
   return (
-    <header className="relative z-10 col-start-2 col-end-3 row-start-1 row-end-2 flex items-center justify-between bg-body px-6 py-5 md:rounded-tl-[48px] lg:px-8 xl:px-10 xl:py-7 xxl:px-12 xxl:py-8">
+    <header className="relative z-10 col-start-2 col-end-3 row-start-1 row-end-2 flex h-20 items-center justify-between bg-body px-6 py-5 md:h-auto md:rounded-tl-[48px] lg:px-8 xl:px-10 xl:py-7 xxl:px-12 xxl:py-8">
       {/* Toggle & Title */}
       {isScreenSmall && (
         <div className="absolute bottom-0 left-0 top-0 h-fit w-20 overflow-hidden bg-primary p-2">
@@ -104,8 +104,9 @@ export default function Header() {
 
 function SuperAdmin() {
   const [show, setShow] = useState(false);
-  const { signOut, isPending } = useSignOut();
   const { user, isLoading } = useUser();
+
+  const { signOut, isPending } = useSignOut();
 
   const dropdownList = [
     {
@@ -128,12 +129,12 @@ function SuperAdmin() {
     },
   ];
 
-  const close = () => {
-    setShow(false);
-  };
+  const close = () => setShow(false);
 
   if (isPending || isLoading || !user) return <Loader />;
-  const { fullname, avatar } = user.user_metadata;
+  const { firstname, lastname, avatar } = user.user_metadata;
+
+  const fullname = `${firstname} ${lastname}`;
 
   return (
     <div className="relative">

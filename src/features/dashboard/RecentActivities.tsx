@@ -11,7 +11,7 @@ export default function RecentActivites() {
   const { activities, isLoading } = useGetActivities();
 
   return (
-    <div className="relative basis-7/12 p-4">
+    <div className="relative sm:basis-1/2 md:basis-7/12 p-4">
       <h3 className="mb-5 pt-2 text-lg font-medium text-dark">
         Recent Activites
       </h3>

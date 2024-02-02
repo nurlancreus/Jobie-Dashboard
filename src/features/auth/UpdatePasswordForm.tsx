@@ -37,7 +37,7 @@ export default function UpdatePasswordForm() {
         name="recoverPwForm"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <FormHeader>Forgot Password</FormHeader>
+        <FormHeader>Update Password</FormHeader>
 
         <div className="flex flex-col gap-4">
           <AuthFormRow label="new password" error={errors?.newPassword?.message}>

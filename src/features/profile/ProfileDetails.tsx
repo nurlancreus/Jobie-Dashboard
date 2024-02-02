@@ -1,8 +1,9 @@
-import ProfileAvatarName from "./ProfileAvatarName";
 import AdminProgress from "../dashboard/AdminProgress";
 import { EnvelopIcon, MiniLoader, PhoneIcon } from "@/assets/icons";
 import { adminData } from "@/data/adminData";
 import { useUser } from "../auth/useUser";
+import UpdateAvatar from "./UpdateAvatar";
+import Modal from "@/shared/Modal";
 
 export default function ProfileDetails() {
   const { user, isLoading } = useUser();
@@ -17,7 +18,9 @@ export default function ProfileDetails() {
         <>
           {/* Top */}
           <div className="sm:flex-1 sm:border-r sm:p-7 md:flex-auto md:border-none md:p-0">
-            <ProfileAvatarName />
+            <Modal>
+              <UpdateAvatar />
+            </Modal>
             <div className="flex items-center gap-5">
               <div className="flex flex-1 flex-col items-center gap-1 rounded-[1.25rem] border border-neutral-200 py-3">
                 <h3 className="text-xl font-semibold text-dark">228</h3>

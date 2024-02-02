@@ -41,3 +41,4 @@ export { default as LogoutIcon } from "./LogoutIcon";
 export { default as MiniLoader } from "./MiniLoader";
 export { default as MoonIcon } from "./MoonIcon";
 export { default as SunIcon } from "./SunIcon";
+export { default as EditUserIcon } from "./EditUserIcon";

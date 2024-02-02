@@ -51,7 +51,7 @@ export async function userSignIn({ email, password }: TUserSignInParams) {
 // RECOVER PASSWORD
 export async function userRecoverPw({ email }: TUserRecoverPwParams) {
   const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: "http://localhost:5173/update-password",
+    redirectTo: "https://jobbie-dashboard.netlify.app/update-password",
   });
 
   if (error) throw new Error(error.message);
@@ -105,14 +105,10 @@ export async function updateCurrentUser(
     address,
     selectcity: city,
     selectcountry: country,
+    avatar,
   } = updatedData;
 
-  let fullname;
-
-  if ([firstname, lastname].every(Boolean))
-    fullname = `${firstname} ${lastname}`;
-
-  // 1. Update fullname OR password
+  // 1. Update fields
   type TUpdateData = {
     [key: string]: string | (Record<string, string> | undefined);
 
@@ -132,8 +128,8 @@ export async function updateCurrentUser(
     updateData = { ...updateData, data: { ...updateData.data, lastname } };
   if (middlename)
     updateData = { ...updateData, data: { ...updateData.data, middlename } };
-  if (fullname)
-    updateData = { ...updateData, data: { ...updateData.data, fullname } };
+  // if (fullname)
+  //   updateData = { ...updateData, data: { ...updateData.data, fullname } };
   if (aboutme)
     updateData = { ...updateData, data: { ...updateData.data, aboutme } };
   if (address)
@@ -142,12 +138,77 @@ export async function updateCurrentUser(
   if (country)
     updateData = { ...updateData, data: { ...updateData.data, country } };
 
-  
-  // If no fields to update, return early
-  if (Object.keys(updateData).length === 0) return;
-  
+  // If no fields or avatar to update, return early
+  if (Object.keys(updateData).length === 0 && !avatar) return;
+
+  // DELETE IF YOU WANT TO UPDATE USER INFO AND DELETE COMMENTS BELOW
+  throw Error("Data mutations are deactivated in this demo app");
+
+  /* 
   const { data, error } = await supabase.auth.updateUser(updateData);
 
   if (error) throw new Error(error.message);
-  return data;
+
+  if (!avatar) return data;
+
+  // 2. Upload the avatar image
+  const avatarFile = avatar[0];
+  const fileName = `avatar-${data.user.id}-${Math.random()}`;
+  //const fileName = `avatar-${avatarFile.name}-${data.user.id}`;
+  const avatarUrl = `${supabaseUrl}/storage/v1/object/public/avatars/${fileName}`;
+
+  const { error: storageError } = await supabase.storage
+    .from("avatars")
+    .upload(fileName, avatarFile);
+
+  if (storageError) throw new Error(storageError.message);
+
+  // 3. Update avatar in the user
+  const { data: updatedUser, error: updatedUserError } =
+    await supabase.auth.updateUser({
+      data: {
+        avatar: avatarUrl,
+      },
+    });
+
+  if (updatedUserError) throw new Error(updatedUserError.message);
+
+  return updatedUser;
+  
+  */
+}
+
+// DELETE USER AVATAR
+export async function userDeleteAvatar() {
+  // DELETE IF YOU WANT TO UPDATE USER INFO AND DELETE COMMENTS BELOW
+  throw Error("Data mutations are deactivated in this demo app");
+
+  /* 
+  const userData = await getCurrentUser();
+
+  if (!userData) return;
+  const { avatar } = userData.user_metadata as { avatar: string };
+
+  if (!avatar) return;
+
+  const index = avatar.lastIndexOf("avatar");
+  const fileName = avatar.slice(index);
+
+  // LOOK
+  const { error } = await supabase.storage
+    .from("avatars")
+    .remove([`folder/${fileName}`]);
+
+  if (error) throw new Error(error.message);
+
+  const { data: updatedUserData, error: userError } =
+    await supabase.auth.updateUser({
+      data: { avatar: null },
+    });
+
+  if (userError) throw new Error(userError.message);
+
+  return updatedUserData;
+
+  */
 }

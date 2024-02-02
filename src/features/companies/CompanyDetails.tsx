@@ -1,11 +1,6 @@
-import {
-  CloseIcon,
-  LocationIcon,
-  MiniLoader,
-  StarIcon,
-  UserIcon,
-} from "@/assets/icons";
+import { LocationIcon, MiniLoader, StarIcon, UserIcon } from "@/assets/icons";
 import Logo from "@/shared/Logo";
+import CloseButton from "@/shared/CloseButton";
 import { useGetCompany } from "./useGetCompany";
 
 type CompanyDetailsProps = {
@@ -28,12 +23,7 @@ export default function CompanyDetails({
       ) : (
         <div className="flex flex-col gap-5 sm:flex-row lg:flex-col">
           {/* Close Button */}
-          <button
-            className="absolute right-6 top-4 border-none bg-transparent outline-transparent xl:right-7 xl:top-6"
-            onClick={() => setSelectedId(null)}
-          >
-            <CloseIcon />
-          </button>
+          <CloseButton close={() => setSelectedId(null)} />
           <div className="flex-1">
             {/* Details */}
             <div className="flex flex-col items-center">

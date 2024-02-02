@@ -12,7 +12,7 @@ export function useUpdatePw() {
     mutationFn: (newpassword: TUserUpdatePwParams["newpassword"]) =>
       userUpdatePw({ newpassword }),
     onSuccess: (user) => {
-      queryClient.setQueryData(["user"], user); // manually setting cash
+      queryClient.setQueryData(["user"], user); // manually setting cache
       queryClient.invalidateQueries({ queryKey: ["user"] });
       navigate("/app");
       toast.success("Password successfully updated");

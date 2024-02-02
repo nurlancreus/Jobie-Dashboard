@@ -4,7 +4,7 @@ type TitleProps = {
   children: ReactNode;
   fs?: number;
   fw?: "medium" | "semibold" | "bold";
-  caseForm?: "capitalize" | "uppercase";
+  caseForm?: "capitalize" | "uppercase" | "normal-case";
 };
 
 export default function Title({

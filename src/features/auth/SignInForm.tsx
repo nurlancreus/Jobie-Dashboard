@@ -27,7 +27,7 @@ export default function SIgnInForm() {
   } = useForm<TSignInFormSchema>({
     resolver: zodResolver(SignInFormSchema),
     values: {
-      signInEmail: "nurlan@example.com",
+      signInEmail: "tadirap635@giratex.com",
       signInPassword: "12345678@",
     },
   });

@@ -25,6 +25,10 @@
     @apply text-lg text-dark font-medium placeholder:text-lg bg-transparent placeholder:text-gray-200 dark:placeholder:text-neutral-500 pb-3 lg:pb-5 border-b border-solid border-b-gray-100 dark:border-b-neutral-100/50 dark:focus:border-b-neutral-100 focus:outline-none focus:border-b-primary focus:border-b-2 hover:border-b-primary dark:hover:border-b-neutral-100 hover:border-b-2 h-12 transition disabled:cursor-not-allowed
   }
 
+  .input-range {
+    @apply accent-range disabled:cursor-not-allowed
+  }
+
   .auth-form-input {
     @apply h-10 w-full rounded-lg bg-card px-5 py-1 text-sm text-gray-400 dark:text-neutral-200 outline-transparent placeholder:text-gray-500 focus:outline-primary disabled:cursor-not-allowed
   }
@@ -39,6 +43,10 @@
   --loader-clr: var(--primary-clr);
   --range-clr: var(--primary-clr);
   --card-bg: #fff;
+
+  --scroll-thumb-clr: var(--primary-clr);
+  --scroll-thumb-hover-clr: var(--primary-hover);
+  --scroll-track-clr: var(--primary-500);
 
   --gray-100: #E3E3E3;
   --gray-200: #BFBFBF;
@@ -72,6 +80,10 @@
   --loader-clr: white;
   --range-clr: var(--gray-300);
   --card-bg: #28253b;
+
+  --scroll-thumb-clr: #332d56;
+  --scroll-thumb-hover-clr: #3d3957;
+  --scroll-track-clr: var(--gray-600);
 
   --gray-100: #28253b;
   --gray-200: #BFBFBF;
@@ -164,16 +176,15 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--primary-clr);
-    border-radius: 50px;
+    background: var(--scroll-thumb-clr);
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--primary-500);
+    background: var(--scroll-track-clr);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-hover);
+    background: var(--scroll-thumb-hover-clr);
   }
 }
 
@@ -260,10 +271,4 @@ input:-webkit-autofill:focus {
 
 .custom-legend-hired {
   background-color: #3F9AE0;
-}
-
-/* Range Input */
-
-.input-range {
-  accent-color: var(--range-clr);
 }

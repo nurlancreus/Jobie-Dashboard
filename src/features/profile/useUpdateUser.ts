@@ -9,7 +9,6 @@ export function useUpdateUser() {
   const { mutate: updateUser, isPending: isUpdating } = useMutation({
     mutationFn: (data: Partial<TUserUpdateParams>) => updateCurrentUser(data),
     onSuccess: () => {
-      // queryClient.setQueryData(["user"], user); // manually setting cash
       queryClient.invalidateQueries({ queryKey: ["user"] });
       toast.success("User account successfully updated.");
     },

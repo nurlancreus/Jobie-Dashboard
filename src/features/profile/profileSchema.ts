@@ -34,6 +34,7 @@ export const userUpdateSchema = z
       //.refine(validator.isEmail)
       .optional(),
     profileAddress: z.string().optional(),
+    profileAvatar: z.custom<FileList>().optional(),
     selectCity: z.string().optional(),
     selectCountry: z.string().optional(),
     aboutMe: z.string().trim().optional(),

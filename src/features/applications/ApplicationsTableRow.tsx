@@ -7,6 +7,8 @@ import { timeAgo } from "@/utils/helpers";
 type ApplicationsTableRowProps<AppType, CompanyType> = {
   app: AppType;
   company: CompanyType;
+  checked: boolean;
+  onChange: () => void;
 };
 
 export default function ApplicationsTableRow<
@@ -20,15 +22,22 @@ export default function ApplicationsTableRow<
     status: "pending" | "on-hold" | "candidate";
   },
   CompanyType extends { id: number; logo: string; name: string },
->({ app, company }: ApplicationsTableRowProps<AppType, CompanyType>) {
+>({
+  app,
+  company,
+  checked,
+  onChange,
+}: ApplicationsTableRowProps<AppType, CompanyType>) {
   return (
     <tr className="py-8">
       <td className="pl-10">
         <input
           type="checkbox"
-          name={`select${company.id}`}
-          id={`select${company.id}`}
-          className="cursor-pointer"
+          name={`check${company.id}`}
+          id={`check${company.id}`}
+          checked={checked}
+          onChange={onChange}
+          className="h-4 w-4 cursor-pointer accent-primary lg:h-5 lg:w-5 xl:h-6 xl:w-6"
         />
       </td>
       <td data-type="id" className="font-medium uppercase">

@@ -41,7 +41,7 @@ export async function getApplications(
 }
 
 // GET APPLICATION STATUSES
-export async function getApplicationsStatus() {
+export async function getApplicationStatuses() {
   const { data, error } = await supabase.from("applications").select("status");
 
   if (error) {
@@ -49,5 +49,5 @@ export async function getApplicationsStatus() {
     throw new Error("Applications could not loaded");
   }
 
-  return { data };
+  return data;
 }

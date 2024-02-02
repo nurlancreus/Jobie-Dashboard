@@ -1,5 +1,5 @@
-import ProfileLayout from "@/features/profile/ProfileLayout";
+import ProfileForm from "@/features/profile/ProfileForm";
 
 export default function Profile() {
-  return <ProfileLayout />;
+  return <ProfileForm />;
 }

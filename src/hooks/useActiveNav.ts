@@ -5,25 +5,18 @@ const positionTop: Record<number, string> = {
   0: "translate-y-0",
 
   // small screens
-  74: "translate-y-[74px]",
-  148: "translate-y-[148px]",
-  222: "translate-y-[222px]",
-  296: "translate-y-[296px]",
-  370: "translate-y-[370px]",
-
-  // medium screens
-  78: "translate-y-[78px]",
-  156: "translate-y-[156px]",
-  234: "translate-y-[234px]",
-  312: "translate-y-[312px]",
-  390: "translate-y-[390px]",
+  76: "translate-y-[76px]",
+  152: "translate-y-[152px]",
+  228: "translate-y-[228px]",
+  304: "translate-y-[304px]",
+  380: "translate-y-[380px]",
 
   // large screens
-  90: "translate-y-[90px]",
-  180: "translate-y-[180px]",
-  270: "translate-y-[270px]",
-  360: "translate-y-[360px]",
-  450: "translate-y-[450px]",
+  92: "translate-y-[92px]",
+  184: "translate-y-[184px]",
+  276: "translate-y-[276px]",
+  368: "translate-y-[368px]",
+  460: "translate-y-[460px]",
 };
 
 export function useActiveNav() {

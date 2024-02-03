@@ -13,6 +13,9 @@ import {
   type TSignInFormSchema,
 } from "./authSchema";
 
+const email = import.meta.env.VITE_EMAIL;
+const password = import.meta.env.VITE_PASSWORD;
+
 export default function SIgnInForm() {
   const [searchParams] = useSearchParams();
   const routeError = searchParams.get("message") ?? null;
@@ -27,8 +30,8 @@ export default function SIgnInForm() {
   } = useForm<TSignInFormSchema>({
     resolver: zodResolver(SignInFormSchema),
     values: {
-      signInEmail: "tadirap635@giratex.com",
-      signInPassword: "12345678@",
+      signInEmail: email,
+      signInPassword: password,
     },
   });
 
